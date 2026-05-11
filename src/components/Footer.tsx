@@ -26,9 +26,9 @@ function Footer() {
         <div className="footer-col">
           <h4 style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.4)", marginBottom: 18 }}>Company</h4>
           <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-            {["About Us", "Join Us", "Partner Hub"].map(c => (
-              <li key={c} style={{ marginBottom: 12 }}><a href="#" className="footer-col" style={{ fontSize: 13.5, color: "rgba(255,255,255,0.6)", textDecoration: "none", transition: "var(--transition)" }}>{c}</a></li>
-            ))}
+            <li style={{ marginBottom: 12 }}><a href="#" className="footer-col" style={{ fontSize: 13.5, color: "rgba(255,255,255,0.6)", textDecoration: "none", transition: "var(--transition)" }}>About Us</a></li>
+            <li style={{ marginBottom: 12 }}><a href="#" className="footer-col" style={{ fontSize: 13.5, color: "rgba(255,255,255,0.6)", textDecoration: "none", transition: "var(--transition)" }}>Join Us</a></li>
+            <li style={{ marginBottom: 12 }}><Link to="/partner-hub" className="footer-col" style={{ fontSize: 13.5, color: "rgba(255,255,255,0.6)", textDecoration: "none", transition: "var(--transition)" }}>Partner Hub</Link></li>
           </ul>
         </div>
         <div className="footer-col">
