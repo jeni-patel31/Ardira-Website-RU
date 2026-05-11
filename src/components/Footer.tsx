@@ -4,47 +4,277 @@ import SalesForcePartnerLogo from "@assets/SalesForcePartnerLogo.webp";
 
 function Footer() {
   return (
-    <footer style={{ background: "var(--navy)", color: "rgba(255,255,255,0.85)", padding: "60px 40px 32px", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-      <div className="footer-grid" style={{ maxWidth: "var(--max-width)", margin: "0 auto 48px", display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: 40 }}>
-        <div className="footer-col">
+    <footer
+      style={{
+        background: "var(--navy)",
+        color: "rgba(255,255,255,0.85)",
+        padding: "60px 40px 32px",
+        borderTop: "1px solid rgba(255,255,255,0.08)",
+      }}
+    >
+      <div
+        className="footer-grid"
+        style={{
+          maxWidth: "var(--max-width)",
+          margin: "0 auto 48px",
+          display: "grid",
+          gridTemplateColumns: "2.5fr 1fr 1fr 1.5fr",
+          gap: 60,
+        }}
+      >
+        <div className="footer-col" style={{ paddingRight: "40px" }}>
           <div style={{ marginBottom: 16 }}>
-            <img src={ArdiraFooterLogo} alt="Ardira" style={{ height: 40, width: "auto", display: "block" }} />
+            <img
+              src={ArdiraFooterLogo}
+              alt="Ardira"
+              style={{ height: 40, width: "auto", display: "block" }}
+            />
           </div>
-          <p style={{ fontSize: 13.5, fontWeight: 300, lineHeight: 1.75, color: "rgba(255,255,255,0.6)", marginBottom: 20 }}>Building 100% Salesforce-native applications that turn your CRM into an intelligence and action engine.</p>
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: 12, marginTop: 16 }}>
-            <img src={SalesForcePartnerLogo} alt="Salesforce Partner" style={{ height: 40, width: "auto", objectFit: "contain" }} />
+          <p
+            style={{
+              fontSize: 13.5,
+              fontWeight: 300,
+              lineHeight: 1.75,
+              color: "rgba(255,255,255,0.6)",
+              marginBottom: 20,
+            }}
+          >
+            Building 100% Salesforce-native applications that turn your CRM into
+            an intelligence and action engine.
+          </p>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "flex-start",
+              gap: 12,
+              marginTop: 16,
+            }}
+          >
+            <img
+              src={SalesForcePartnerLogo}
+              alt="Salesforce Partner"
+              style={{ height: 40, width: "auto", objectFit: "contain" }}
+            />
           </div>
         </div>
         <div className="footer-col">
-          <h4 style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.4)", marginBottom: 18 }}>Products</h4>
+          <h4
+            style={{
+              fontSize: 11,
+              fontWeight: 700,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase" as const,
+              color: "rgba(255,255,255,0.4)",
+              marginBottom: 18,
+            }}
+          >
+            Products
+          </h4>
           <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-            {["SurveyVista", "FormVista", "ComplianceVista", "AgentVista", "RelationshipVista"].map(p => (
-              <li key={p} style={{ marginBottom: 12 }}><a href="#" className="footer-col" style={{ fontSize: 13.5, color: "rgba(255,255,255,0.6)", textDecoration: "none", transition: "var(--transition)" }}>{p}</a></li>
+            {[
+              "SurveyVista",
+              "FormVista",
+              "ComplianceVista",
+              "AgentVista",
+              "RelationshipVista",
+            ].map((p) => (
+              <li key={p} style={{ marginBottom: 12 }}>
+                <a
+                  href="#"
+                  className="footer-col"
+                  style={{
+                    fontSize: 13.5,
+                    color: "rgba(255,255,255,0.6)",
+                    textDecoration: "none",
+                    transition: "var(--transition)",
+                  }}
+                >
+                  {p}
+                </a>
+              </li>
             ))}
           </ul>
         </div>
         <div className="footer-col">
-          <h4 style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.4)", marginBottom: 18 }}>Company</h4>
+          <h4
+            style={{
+              fontSize: 11,
+              fontWeight: 700,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase" as const,
+              color: "rgba(255,255,255,0.4)",
+              marginBottom: 18,
+            }}
+          >
+            Company
+          </h4>
           <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-            <li style={{ marginBottom: 12 }}><a href="#" className="footer-col" style={{ fontSize: 13.5, color: "rgba(255,255,255,0.6)", textDecoration: "none", transition: "var(--transition)" }}>About Us</a></li>
-            <li style={{ marginBottom: 12 }}><a href="#" className="footer-col" style={{ fontSize: 13.5, color: "rgba(255,255,255,0.6)", textDecoration: "none", transition: "var(--transition)" }}>Join Us</a></li>
-            <li style={{ marginBottom: 12 }}><Link to="/partner-hub" className="footer-col" style={{ fontSize: 13.5, color: "rgba(255,255,255,0.6)", textDecoration: "none", transition: "var(--transition)" }}>Partner Hub</Link></li>
+            {["About Us", "Join Us", "Partner Hub"].map((c) => (
+              <li key={c} style={{ marginBottom: 12 }}>
+                <a
+                  href="#"
+                  className="footer-col"
+                  style={{
+                    fontSize: 13.5,
+                    color: "rgba(255,255,255,0.6)",
+                    textDecoration: "none",
+                    transition: "var(--transition)",
+                  }}
+                >
+                  {c}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
         <div className="footer-col">
-          <h4 style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.4)", marginBottom: 18 }}>Resources</h4>
-          <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-            {["Documentation", "Case Studies", "Contact", "Support"].map(r => (
-              <li key={r} style={{ marginBottom: 12 }}><a href="#" className="footer-col" style={{ fontSize: 13.5, color: "rgba(255,255,255,0.6)", textDecoration: "none", transition: "var(--transition)" }}>{r}</a></li>
-            ))}
-          </ul>
+          <h4
+            style={{
+              fontSize: 11,
+              fontWeight: 700,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase" as const,
+              color: "rgba(255,255,255,0.4)",
+              marginBottom: 18,
+            }}
+          >
+            Contact Info
+          </h4>
+          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+            <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#22c55e"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                style={{ marginTop: 2, flexShrink: 0 }}
+              >
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <div
+                style={{
+                  fontSize: 13.5,
+                  color: "rgba(255,255,255,0.6)",
+                  lineHeight: 1.6,
+                }}
+              >
+                2040 Martin Ave
+                <br />
+                Santa Clara, CA 95050
+                <br />
+                United States
+              </div>
+            </div>
+            <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#22c55e"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                style={{ flexShrink: 0 }}
+              >
+                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </svg>
+              <a
+                href="mailto:info@ardira.com"
+                style={{
+                  fontSize: 13.5,
+                  color: "rgba(255,255,255,0.6)",
+                  textDecoration: "none",
+                  transition: "var(--transition)",
+                }}
+              >
+                info@ardira.com
+              </a>
+            </div>
+            <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#22c55e"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                style={{ flexShrink: 0 }}
+              >
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <a
+                href="tel:16697776838"
+                style={{
+                  fontSize: 13.5,
+                  color: "rgba(255,255,255,0.6)",
+                  textDecoration: "none",
+                  transition: "var(--transition)",
+                }}
+              >
+                1.669.777.6838
+              </a>
+            </div>
+          </div>
         </div>
       </div>
-      <div className="footer-bottom-col" style={{ maxWidth: "var(--max-width)", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", paddingTop: 24, borderTop: "1px solid rgba(255,255,255,0.08)", flexWrap: "wrap" as const, gap: 12 }}>
-        <p style={{ fontSize: 12.5, color: "rgba(255,255,255,0.35)", margin: 0 }}>&copy; 2026 Ardira Corporation. All rights reserved.</p>
-        <div className="footer-links footer-links-col" style={{ display: "flex", gap: 24 }}>
-          <Link to="/privacy-policy" style={{ fontSize: 12.5, color: "rgba(255,255,255,0.35)", textDecoration: "none", transition: "var(--transition)" }}>Privacy Policy</Link>
-          <Link to="/terms" style={{ fontSize: 12.5, color: "rgba(255,255,255,0.35)", textDecoration: "none", transition: "var(--transition)" }}>Terms of Service</Link>
+      <div
+        className="footer-bottom-col"
+        style={{
+          maxWidth: "var(--max-width)",
+          margin: "0 auto",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          paddingTop: 24,
+          borderTop: "1px solid rgba(255,255,255,0.08)",
+          flexWrap: "wrap" as const,
+          gap: 12,
+        }}
+      >
+        <p
+          style={{ fontSize: 12.5, color: "rgba(255,255,255,0.35)", margin: 0 }}
+        >
+          &copy; 2026 Ardira Corporation. All rights reserved.
+        </p>
+        <div
+          className="footer-links footer-links-col"
+          style={{ display: "flex", gap: 24 }}
+        >
+          <Link
+            to="/privacy-policy"
+            style={{
+              fontSize: 12.5,
+              color: "rgba(255,255,255,0.35)",
+              textDecoration: "none",
+              transition: "var(--transition)",
+            }}
+          >
+            Privacy Policy
+          </Link>
+          <Link
+            to="/terms"
+            style={{
+              fontSize: 12.5,
+              color: "rgba(255,255,255,0.35)",
+              textDecoration: "none",
+              transition: "var(--transition)",
+            }}
+          >
+            Terms of Service
+          </Link>
         </div>
       </div>
     </footer>
