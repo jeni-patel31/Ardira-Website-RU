@@ -12,8 +12,8 @@ function Features() {
     <section id="features" style={{ padding: "80px 40px", background: "var(--bg-light)", borderTop: "1px solid var(--border-color)" }}>
       <div style={{ textAlign: "center", maxWidth: 700, margin: "0 auto 60px", animation: "fadeIn 0.8s ease" }}>
         <span style={{ display: "block", fontSize: 11.5, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "var(--primary-green)", marginBottom: 12 }}>Why Native Matters</span>
-        <h2 style={{ color: "var(--navy)", marginBottom: 16 }}>The Best Integration<br />Is <span style={{ color: "var(--primary-green)" }}>No Integration</span></h2>
-        <p style={{ maxWidth: 600, margin: "0 auto" }}>Every non-native tool in your Salesforce stack is a confession that your intelligence lives in exile.</p>
+        <h2 style={{ color: "var(--navy)", marginBottom: 16 }}>The best integration<br />is <span style={{ color: "var(--primary-green)" }}>no integration.</span></h2>
+        <p style={{ maxWidth: 600, margin: "0 auto" }}>Every non-native tool in your Salesforce stack is a confession that your intelligence lives in exile — separate from where your team actually works.</p>
       </div>
       <div className="features-grid-cols" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24, marginBottom: 60 }}>
         {features.map((f, i) => (

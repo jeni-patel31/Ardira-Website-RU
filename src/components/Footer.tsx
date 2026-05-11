@@ -110,20 +110,39 @@ function Footer() {
             Company
           </h4>
           <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-            {["About Us", "Join Us", "Partner Hub"].map((c) => (
-              <li key={c} style={{ marginBottom: 12 }}>
-                <a
-                  href="#"
-                  className="footer-col"
-                  style={{
-                    fontSize: 13.5,
-                    color: "rgba(255,255,255,0.6)",
-                    textDecoration: "none",
-                    transition: "var(--transition)",
-                  }}
-                >
-                  {c}
-                </a>
+            {[
+              { name: "About Us", link: "#" },
+              { name: "Join Us", link: "#" },
+              { name: "Partner Hub", link: "/partner-hub" },
+            ].map((c) => (
+              <li key={c.name} style={{ marginBottom: 12 }}>
+                {c.link.startsWith("/") ? (
+                  <Link
+                    to={c.link}
+                    className="footer-col"
+                    style={{
+                      fontSize: 13.5,
+                      color: "rgba(255,255,255,0.6)",
+                      textDecoration: "none",
+                      transition: "var(--transition)",
+                    }}
+                  >
+                    {c.name}
+                  </Link>
+                ) : (
+                  <a
+                    href={c.link}
+                    className="footer-col"
+                    style={{
+                      fontSize: 13.5,
+                      color: "rgba(255,255,255,0.6)",
+                      textDecoration: "none",
+                      transition: "var(--transition)",
+                    }}
+                  >
+                    {c.name}
+                  </a>
+                )}
               </li>
             ))}
           </ul>

@@ -83,6 +83,20 @@ function Navbar() {
               Company
             </a>
           </li>
+          <li className="nav-hide-mobile">
+            <Link
+              to="/partner-hub"
+              style={{
+                fontSize: 14,
+                fontWeight: 500,
+                color: "var(--text-secondary)",
+                whiteSpace: "nowrap",
+                textDecoration: "none",
+              }}
+            >
+              Partner Hub
+            </Link>
+          </li>
           <li>
             <a
               href="#contact"

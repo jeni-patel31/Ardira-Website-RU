@@ -46,11 +46,11 @@ function Products() {
   const meta = productMeta[activeTab];
 
   return (
-    <section id="products" style={{ padding: "80px 40px", background: "#fff" }}>
-      <div style={{ textAlign: "center", maxWidth: 700, margin: "0 auto 60px", animation: "fadeIn 0.8s ease" }}>
-        <span style={{ display: "block", fontSize: 11.5, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "var(--primary-green)", marginBottom: 12 }}>Our Products</span>
-        <h2 style={{ color: "var(--navy)", marginBottom: 16 }}>Five Native Apps.<br />Unlimited Possibilities.</h2>
-        <p style={{ maxWidth: 600, margin: "0 auto" }}>Each product is 100% built on Salesforce platform — no middleware, no integrations, no data leaving your org.</p>
+    <section id="products" style={{ padding: "100px 40px", background: "#fff" }}>
+      <div style={{ textAlign: "center", maxWidth: 800, margin: "0 auto 80px", animation: "fadeIn 0.8s ease" }}>
+        <span style={{ display: "block", fontSize: 12, fontWeight: 800, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "var(--primary-green)", marginBottom: 20 }}>Our Products</span>
+        <h2 style={{ color: "var(--navy)", marginBottom: 24, fontSize: "clamp(28px, 4vw, 48px)", fontWeight: 800, lineHeight: 1.2 }}>One suite. <span style={{ color: "var(--primary-green)" }}>Five native apps.</span></h2>
+        <p style={{ maxWidth: 700, margin: "0 auto", fontSize: 16, color: "var(--text-secondary)", lineHeight: 1.6 }}>Every Ardira product is built entirely on the Salesforce platform — no middleware, no integrations, no data leaving your org.</p>
       </div>
       <div className="product-tabs-grid" style={{ display: "grid", gridTemplateColumns: "200px 1fr", gap: 1, background: "var(--border-color)", border: "1.5px solid var(--border-color)", borderRadius: 12, overflow: "hidden", boxShadow: "var(--shadow-sm)" }}>
         <div className="tabs-list-row" style={{ background: "var(--bg-light)", display: "flex", flexDirection: "column", borderRight: "1.5px solid var(--border-color)" }}>

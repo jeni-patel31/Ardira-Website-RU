@@ -1,3 +1,180 @@
+@import "./fonts.css";
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html {
+  scroll-behavior: smooth;
+}
+
+/* reCAPTCHA Badge - Logo Only with Hover Tooltip */
+.grecaptcha-badge {
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: fixed !important;
+  bottom: 20px !important;
+  right: 20px !important;
+  z-index: 9999 !important;
+  width: 60px !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+  overflow: visible !important; /* Allow custom slide-out to overflow */
+}
+
+/* Restrict the iframe strictly to 60px so it doesn't spill out */
+.grecaptcha-badge iframe {
+  max-width: 60px !important;
+  border-radius: 4px;
+}
+
+/* Hide the text content, show only logo */
+.grecaptcha-badge {
+  font-size: 0 !important;
+  line-height: 0 !important;
+}
+
+.grecaptcha-badge * {
+  font-size: initial !important;
+  line-height: initial !important;
+}
+
+/* Create slide-out text on hover */
+.grecaptcha-badge::after {
+  content: "protected by reCAPTCHA";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 60px;
+  background: #0066cc;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0;
+  font-size: 13px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  white-space: nowrap;
+  border-radius: 4px 0 0 4px;
+  max-width: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.grecaptcha-badge:hover::after {
+  max-width: 200px;
+  padding: 0 16px;
+  opacity: 1;
+}
+
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-card-border: hsl(var(--card-border));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-popover-border: hsl(var(--popover-border));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --font-sans: "Inter", sans-serif;
+  --font-display: "Poppins", sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222 47% 8%;
+  --border: 142 70% 90%;
+  --input: 142 30% 95%;
+  --ring: 142 71% 35%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 8%;
+  --card-border: 142 70% 88%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 47% 8%;
+  --popover-border: 142 70% 88%;
+  --primary: 142 71% 35%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 142 40% 95%;
+  --secondary-foreground: 142 71% 25%;
+  --muted: 142 20% 96%;
+  --muted-foreground: 220 9% 46%;
+  --accent: 142 40% 95%;
+  --accent-foreground: 142 71% 30%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --radius: 0.75rem;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    background: #ffffff;
+    color: #0f172a;
+    font-family: "Inter", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Poppins", sans-serif;
+  }
+}
+
+/* Infinite marquee animation for customer carousel */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
 /* Global Styles - Ardira Website */
 :root {
   --primary-green: #39b44a;
@@ -19,17 +196,6 @@
   --font-family: "Poppins", sans-serif;
   --transition: all 0.3s ease;
 }
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; -webkit-font-smoothing:antialiased; }
-body { font-family:var(--font-family); color:var(--text-primary); background:var(--white); line-height:1.6; overflow-x:hidden; }
-#root { display:flex; flex-direction:column; }
-h1,h2,h3,h4,h5,h6 { font-weight:700; line-height:1.2; letter-spacing:-0.02em; }
-h1 { font-size:clamp(32px,5vw,64px); }
-h2 { font-size:clamp(28px,4vw,48px); }
-h3 { font-size:clamp(22px,3vw,32px); }
-p { font-weight:300; line-height:1.7; color:var(--text-secondary); }
-a { text-decoration:none; color:inherit; transition:var(--transition); }
-::selection { background:var(--primary-green); color:var(--white); }
 
 /* Animations */
 @keyframes fadeInDown { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)} }
