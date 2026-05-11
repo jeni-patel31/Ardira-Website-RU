@@ -1,29 +1,26 @@
-import React from "react";
-import "./TrustedSection.css";
+import p1 from "@assets/TrustedPartner/8squadlogo.webp";
+import p2 from "@assets/TrustedPartner/accenturelogo.webp";
+import p3 from "@assets/TrustedPartner/actumdigitallogo.webp";
+import p4 from "@assets/TrustedPartner/allcloudlogo.webp";
+import p5 from "@assets/TrustedPartner/asugologojpg.webp";
+import p6 from "@assets/TrustedPartner/bearinglogojpg.webp";
+import p7 from "@assets/TrustedPartner/capgeminilogo.webp";
+import p8 from "@assets/TrustedPartner/nolticlogo.webp";
+import p9 from "@assets/TrustedPartner/syragonlogojpg.webp";
+import p10 from "@assets/TrustedPartner/verasolutionlogo.webp";
+import p11 from "@assets/TrustedPartner/zenyus.webp";
+
+const partners = [p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11];
 
 function TrustedSection() {
-  const partners = [
-    "/assets/TrustedPartner/8squadlogo.webp",
-    "/assets/TrustedPartner/accenturelogo.webp",
-    "/assets/TrustedPartner/actumdigitallogo.webp",
-    "/assets/TrustedPartner/allcloudlogo.webp",
-    "/assets/TrustedPartner/asugologojpg.webp",
-    "/assets/TrustedPartner/bearinglogojpg.webp",
-    "/assets/TrustedPartner/capgeminilogo.webp",
-    "/assets/TrustedPartner/nolticlogo.webp",
-    "/assets/TrustedPartner/syragonlogojpg.webp",
-    "/assets/TrustedPartner/verasolutionlogo.webp",
-    "/assets/TrustedPartner/zenyus.webp",
-  ];
-
   return (
-    <section className="trusted-section">
-      <p className="section-label">Trusted by leading organizations</p>
-      <div className="logos-container">
-        <div className="logo-track">
+    <section style={{ padding: "56px 40px", background: "var(--bg-light)", borderTop: "1px solid var(--border-color)", borderBottom: "1px solid var(--border-color)", textAlign: "center" }}>
+      <p style={{ fontSize: 11.5, fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "var(--text-muted)", marginBottom: 36 }}>Trusted by leading organizations</p>
+      <div className="logos-container" style={{ overflow: "hidden", position: "relative" }}>
+        <div className="logo-track" style={{ display: "flex", gap: 60, alignItems: "center", width: "max-content" }}>
           {[...partners, ...partners].map((logo, idx) => (
-            <div key={idx} className="logo-item">
-              <img src={logo} alt={`Partner ${idx}`} loading="lazy" />
+            <div key={idx} className="logo-item" style={{ display: "flex", alignItems: "center", height: 32, minWidth: "max-content" }}>
+              <img src={logo} alt={`Partner ${idx}`} loading="lazy" style={{ height: 26, width: "auto", maxWidth: 140, objectFit: "contain" }} />
             </div>
           ))}
         </div>

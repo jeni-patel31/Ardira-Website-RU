@@ -1,12 +1,9 @@
-import React from "react";
-import "./PageStyles.css";
-
 function TermsOfService() {
   return (
-    <div className="page-content">
-      <div className="page-header">
-        <h1>Terms of Use</h1>
-        <p>Last Updated: May 6, 2026</p>
+    <div style={{ padding: "60px 40px", maxWidth: 900, margin: "0 auto", minHeight: "60vh" }}>
+      <div style={{ marginBottom: 40, borderBottom: "1px solid var(--border-color)", paddingBottom: 24 }}>
+        <h1 style={{ color: "var(--navy)", marginBottom: 8 }}>Terms of Use</h1>
+        <p style={{ color: "var(--text-muted)", fontSize: 14 }}>Last Updated: May 6, 2026</p>
       </div>
 
       <div className="page-body">
