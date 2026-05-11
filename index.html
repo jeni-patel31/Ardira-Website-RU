@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ardira — 100% Native Salesforce Applications</title>
+    <meta name="description" content="Ardira builds 100% Salesforce-native applications with no integrations and no data leaving your org.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-wrapper">
+                <a href="#" class="logo">
+                    <img src="assets/ArdiraLogo.webp" alt="Ardira">
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#features">Why Native</a></li>
+                    <li><a href="#contact">Company</a></li>
+                    <li><a href="#contact" class="btn-demo">Book Demo</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-dots"></div>
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="pulse-dot"></span>
+                    100% Salesforce-Native Applications
+                </div>
+                <h1 class="hero-title">
+                    Your Salesforce org<br>
+                    is only as powerful as<br>
+                    what's <span class="highlight">native</span> to it.
+                </h1>
+                <p class="hero-subtitle">
+                    Ardira builds applications that live entirely inside Salesforce — no integrations to maintain, 
+                    no data leaving your org, no hidden costs. Intelligence and action, where your team already works.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#products" class="btn btn-primary">Explore Products →</a>
+                    <a href="#features" class="btn btn-secondary">Why Native Matters</a>
+                </div>
+                <div class="trust-indicators">
+                    <div class="trust-item">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M8 1L10 5.5L15 6.2L11.5 9.6L12.4 14.5L8 12.2L3.6 14.5L4.5 9.6L1 6.2L6 5.5Z" fill="#39B44A"/>
+                        </svg>
+                        5-star AppExchange rating
+                    </div>
+                    <div class="trust-sep"></div>
+                    <div class="trust-item">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <circle cx="8" cy="8" r="6.5" stroke="#27AAE1" stroke-width="1.5"/>
+                            <path d="M5 8l2 2 4-4" stroke="#27AAE1" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                        400+ organizations worldwide
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trusted Logos Section -->
+        <section class="trusted-section">
+            <p class="section-label">Trusted by leading organizations</p>
+            <div class="logos-container">
+                <div class="logo-track">
+                    <div class="logo-item"><img src="assets/TrustedPartner/1.webp" alt="Partner" loading="lazy"></div>
+                    <div class="logo-item"><img src="assets/TrustedPartner/2.webp" alt="Partner" loading="lazy"></div>
+                    <div class="logo-item"><img src="assets/TrustedPartner/3.webp" alt="Partner" loading="lazy"></div>
+                    <div class="logo-item"><img src="assets/TrustedPartner/4.webp" alt="Partner" loading="lazy"></div>
+                    <div class="logo-item"><img src="assets/TrustedPartner/5.webp" alt="Partner" loading="lazy"></div>
+                    <div class="logo-item"><img src="assets/TrustedPartner/6.webp" alt="Partner" loading="lazy"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="products-section">
+            <div class="section-header">
+                <span class="section-eyebrow">Our Products</span>
+                <h2>Five Native Apps.<br>Unlimited Possibilities.</h2>
+                <p>Each product is 100% built on Salesforce platform — no middleware, no integrations, no data leaving your org.</p>
+            </div>
+
+            <div class="product-tabs">
+                <div class="tabs-list">
+                    <button class="tab-btn active" data-tab="surveyvista">
+                        <img src="assets/ProductLogo/SVLogo.webp" alt="SurveyVista">
+                        <div>
+                            <div class="tab-title">SurveyVista</div>
+                            <div class="tab-subtitle">Intelligence & Action</div>
+                        </div>
+                    </button>
+                    <button class="tab-btn" data-tab="formvista">
+                        <img src="assets/ProductLogo/FVLogo.webp" alt="FormVista">
+                        <div>
+                            <div class="tab-title">FormVista</div>
+                            <div class="tab-subtitle">Native Forms</div>
+                        </div>
+                    </button>
+                    <button class="tab-btn" data-tab="compliancevista">
+                        <img src="assets/ProductLogo/CVLogo.webp" alt="ComplianceVista">
+                        <div>
+                            <div class="tab-title">ComplianceVista</div>
+                            <div class="tab-subtitle">Risk & Compliance</div>
+                        </div>
+                    </button>
+                    <button class="tab-btn" data-tab="agentvista">
+                        <img src="assets/ProductLogo/AVLogo.webp" alt="AgentVista">
+                        <div>
+                            <div class="tab-title">AgentVista</div>
+                            <div class="tab-subtitle">AI-Powered Agents</div>
+                        </div>
+                    </button>
+                    <button class="tab-btn" data-tab="relationshipvista">
+                        <img src="assets/ProductLogo/RVLogo.webp" alt="RelationshipVista">
+                        <div>
+                            <div class="tab-title">RelationshipVista</div>
+                            <div class="tab-subtitle">Account Hierarchies</div>
+                        </div>
+                    </button>
+                </div>
+
+                <div class="product-content">
+                    <div class="product-panel active" id="surveyvista">
+                        <div class="panel-left">
+                            <img src="assets/ProductCard/SV.webp" alt="SurveyVista" class="product-image">
+                        </div>
+                        <div class="panel-right">
+                            <h3>Turn Customer Signals Into Results</h3>
+                            <p>The 100% Salesforce-native Customer Intelligence & Action Platform. Every response writes directly to your CRM — AI triggers automated workflows instantly, preventing churn and surfacing revenue.</p>
+                            <ul class="feature-list">
+                                <li>Surveys, forms & assessments unified</li>
+                                <li>AI churn detection & intervention</li>
+                                <li>Workflows fire on response receipt</li>
+                                <li>Enriches Salesforce records instantly</li>
+                                <li>5-star rated on AppExchange</li>
+                                <li>Trusted by 400+ organizations</li>
+                            </ul>
+                            <a href="#" class="btn btn-primary">Learn More →</a>
+                        </div>
+                    </div>
+
+                    <div class="product-panel" id="formvista">
+                        <div class="panel-left">
+                            <img src="assets/ProductCard/FV.webp" alt="FormVista" class="product-image">
+                        </div>
+                        <div class="panel-right">
+                            <h3>Endless Applications Native Forms</h3>
+                            <p>Native Salesforce business forms that write data directly into your CRM — no third-party tools, no integration overhead, no data leaving your org. Beautiful, branded forms connected to any Salesforce object.</p>
+                            <ul class="feature-list">
+                                <li>Writes to any Salesforce object</li>
+                                <li>Branded, mobile-responsive design</li>
+                                <li>Conditional logic & smart branching</li>
+                                <li>Pre-fill from Salesforce data</li>
+                                <li>Workflow triggers on submission</li>
+                                <li>Zero integration tax</li>
+                            </ul>
+                            <a href="#" class="btn btn-primary">Learn More →</a>
+                        </div>
+                    </div>
+
+                    <div class="product-panel" id="compliancevista">
+                        <div class="panel-left">
+                            <img src="assets/ProductCard/CV.webp" alt="ComplianceVista" class="product-image">
+                        </div>
+                        <div class="panel-right">
+                            <h3>Automate Risk and Compliance</h3>
+                            <p>Native Salesforce assessments, risk scoring, and compliance workflows. Signals detected in real-time — alerts fire instantly, evidence preserved automatically, regulators never catch you unprepared.</p>
+                            <ul class="feature-list">
+                                <li>Real-time compliance risk detection</li>
+                                <li>Automated evidence preservation</li>
+                                <li>Regulatory response workflows</li>
+                                <li>Complete audit trail in one system</li>
+                                <li>Risk scoring with full CRM context</li>
+                                <li>Inherits Salesforce security</li>
+                            </ul>
+                            <a href="#" class="btn btn-primary">Learn More →</a>
+                        </div>
+                    </div>
+
+                    <div class="product-panel" id="agentvista">
+                        <div class="panel-left">
+                            <img src="assets/ProductCard/AV.webp" alt="AgentVista" class="product-image">
+                        </div>
+                        <div class="panel-right">
+                            <h3>AI-Powered Feedback Automation</h3>
+                            <p>Deploy intelligent AI agents that operate natively within Salesforce — with full CRM context, executing automated actions, delivering results without ever leaving your secure org environment.</p>
+                            <ul class="feature-list">
+                                <li>AI agents with full CRM context</li>
+                                <li>Executes actions directly in Salesforce</li>
+                                <li>No external AI data exposure</li>
+                                <li>Agentforce native integration</li>
+                                <li>Automated multi-step workflows</li>
+                                <li>Inherits your org's security model</li>
+                            </ul>
+                            <a href="#" class="btn btn-primary">Learn More →</a>
+                        </div>
+                    </div>
+
+                    <div class="product-panel" id="relationshipvista">
+                        <div class="panel-left">
+                            <img src="assets/ProductCard/RV.webp" alt="RelationshipVista" class="product-image">
+                        </div>
+                        <div class="panel-right">
+                            <h3>Uncover Salesforce Relationships</h3>
+                            <p>Visualize, analyze and navigate complex Salesforce account relationships and hierarchies — natively. See parent-child structures and account networks without ever leaving your CRM.</p>
+                            <ul class="feature-list">
+                                <li>Interactive hierarchy visualization</li>
+                                <li>Any Salesforce object relationship</li>
+                                <li>Click-through to records in context</li>
+                                <li>Configurable depth & display options</li>
+                                <li>No external tools or exports needed</li>
+                                <li>Works with all Salesforce editions</li>
+                            </ul>
+                            <a href="#" class="btn btn-primary">Learn More →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="stat-card">
+                <div class="stat-number"><span class="green">400</span>+</div>
+                <div class="stat-label">Organizations worldwide trust Ardira</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number"><span class="green">5</span>★</div>
+                <div class="stat-label">Rating on Salesforce AppExchange</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number"><span class="green">0</span></div>
+                <div class="stat-label">Integrations required to get started</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number"><span class="green">100</span>%</div>
+                <div class="stat-label">Native — your data never leaves Salesforce</div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features-section">
+            <div class="section-header">
+                <span class="section-eyebrow">Why Native Matters</span>
+                <h2>The Best Integration<br>Is <span class="highlight">No Integration</span></h2>
+                <p>Every non-native tool in your Salesforce stack is a confession that your intelligence lives in exile.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#39B44A" stroke-width="2">
+                            <circle cx="12" cy="12" r="9"/>
+                            <path d="M12 7v5l3.5 2"/>
+                        </svg>
+                    </div>
+                    <h3>No Sync Delays</h3>
+                    <p>When feedback lives outside Salesforce, you're acting on yesterday's data. Native means every response writes instantly to your records.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#39B44A" stroke-width="2">
+                            <path d="M12 2L4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6L12 2z"/>
+                            <path d="M9 12l2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <h3>Data Never Leaves Salesforce</h3>
+                    <p>Every integration is an attack surface. Ardira apps inherit Salesforce's security and compliance standards.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#39B44A" stroke-width="2">
+                            <circle cx="12" cy="12" r="4"/>
+                            <path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/>
+                        </svg>
+                    </div>
+                    <h3>Eliminate Integration Tax</h3>
+                    <p>Save $12,000–$24,000 per year per integration. No licenses, no projects, no maintenance overhead.</p>
+                </div>
+            </div>
+
+            <div class="comparison-section">
+                <div class="comparison-col non-native">
+                    <h4>Non-Native Tools</h4>
+                    <div class="comparison-row">
+                        <span class="icon">✕</span>
+                        <div>Data syncs in batches</div>
+                    </div>
+                    <div class="comparison-row">
+                        <span class="icon">✕</span>
+                        <div>Integration projects and maintenance</div>
+                    </div>
+                    <div class="comparison-row">
+                        <span class="icon">✕</span>
+                        <div>Expanded security surface</div>
+                    </div>
+                    <div class="comparison-row">
+                        <span class="icon">✕</span>
+                        <div>Fragmented intelligence</div>
+                    </div>
+                </div>
+                <div class="comparison-col native">
+                    <h4>Ardira Native Apps</h4>
+                    <div class="comparison-row">
+                        <span class="icon">✓</span>
+                        <div>Instant data availability</div>
+                    </div>
+                    <div class="comparison-row">
+                        <span class="icon">✓</span>
+                        <div>Deploy in hours, configure instantly</div>
+                    </div>
+                    <div class="comparison-row">
+                        <span class="icon">✓</span>
+                        <div>Salesforce security inherited</div>
+                    </div>
+                    <div class="comparison-row">
+                        <span class="icon">✓</span>
+                        <div>Complete intelligence unified</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h2>Ready to Transform Your Salesforce Org?</h2>
+            <p>Join 400+ organizations already using Ardira's native applications</p>
+            <a href="#contact" class="btn btn-primary btn-large">Book a Demo Today →</a>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="contact-wrapper">
+                <div class="contact-left">
+                    <span class="section-eyebrow">Get in Touch</span>
+                    <h2>Talk to Us About<br><span class="highlight">Your Salesforce Org</span></h2>
+                    <p>Contact our team to schedule a demo, learn more about our products, or simply ask a question.</p>
+                    
+                    <div class="contact-info">
+                        <div class="info-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#39B44A" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            <div>
+                                <div class="info-label">Address</div>
+                                <div class="info-value">2040 Martin Ave, Santa Clara, CA 95050</div>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#39B44A" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8A19.79 19.79 0 01.12 2.22a2 2 0 012-2.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.13 6.13l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7a2 2 0 011.72 2v3z"/>
+                            </svg>
+                            <div>
+                                <div class="info-label">Phone</div>
+                                <div class="info-value"><a href="tel:+16697776838">+1 (669) 777-6838</a></div>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#39B44A" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                            <div>
+                                <div class="info-label">Email</div>
+                                <div class="info-value"><a href="mailto:info@ardira.com">info@ardira.com</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form">
+                    <h3>Send us a Message</h3>
+                    <p class="form-subtitle">We'll respond promptly to your inquiry</p>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Full Name <span>*</span></label>
+                            <input type="text" placeholder="Your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email <span>*</span></label>
+                            <input type="email" placeholder="your@email.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="tel" placeholder="+1 (000) 000-0000">
+                        </div>
+                        <div class="form-group">
+                            <label>Company</label>
+                            <input type="text" placeholder="Your company">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Product of Interest</label>
+                        <select>
+                            <option value="">Select a product...</option>
+                            <option value="surveyvista">SurveyVista</option>
+                            <option value="formvista">FormVista</option>
+                            <option value="compliancevista">ComplianceVista</option>
+                            <option value="agentvista">AgentVista</option>
+                            <option value="relationshipvista">RelationshipVista</option>
+                            <option value="general">General Inquiry</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea placeholder="Tell us about your Salesforce use case..." rows="5"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                    <p class="form-note">We're committed to your privacy. We will never share your data.</p>
+                </form>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <img src="assets/ArdiraFooterLogo.webp" alt="Ardira" class="footer-logo">
+                    <p>Building 100% Salesforce-native applications that turn your CRM into an intelligence and action engine.</p>
+                    <div class="footer-badges">
+                        <img src="assets/SalesForcePartnerLogo.webp" alt="Salesforce Partner" class="badge">
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="#">SurveyVista</a></li>
+                        <li><a href="#">FormVista</a></li>
+                        <li><a href="#">ComplianceVista</a></li>
+                        <li><a href="#">AgentVista</a></li>
+                        <li><a href="#">RelationshipVista</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Join Us</a></li>
+                        <li><a href="#">Partner Hub</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Ardira Corporation. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
