@@ -19,13 +19,77 @@ const stats = [
 
 function Stats() {
   return (
-    <section style={{ width: "100%", padding: "80px 5%", background: "#f8fafc", display: "flex", justifyContent: "center" }}>
-      <div className="stats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 64, maxWidth: 900, width: "100%" }}>
+    <section style={{ width: "100%", padding: "80px 5%", background: "#fff", display: "flex", justifyContent: "center" }}>
+      <div className="stats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 32, maxWidth: 1200, width: "100%" }}>
         {stats.map((s, i) => (
-          <div key={i} className="stat-card" style={{ background: "#fff", padding: "48px 32px", textAlign: "center", borderRadius: 24, boxShadow: "0 10px 30px rgba(0,0,0,0.04)", display: "flex", flexDirection: "column", alignItems: "center", transition: "transform 0.3s ease, box-shadow 0.3s ease", cursor: "default" }}>
-            <div style={{ width: 80, height: 80, borderRadius: 20, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 24, background: iconColors[s.c].bg, color: iconColors[s.c].color }}>{s.icon}</div>
-            <div style={{ fontSize: 48, fontWeight: 800, color: "#22c55e", lineHeight: 1, marginBottom: 12, letterSpacing: "-0.02em" }}>{s.number}{s.symbol}</div>
-            <div style={{ fontSize: 16, fontWeight: 500, color: "#334155", lineHeight: 1.5, maxWidth: 200 }}>{s.label}</div>
+          <div 
+            key={i} 
+            className="stat-card" 
+            style={{ 
+              background: iconColors[s.c].bg,
+              padding: "40px 24px",
+              textAlign: "center",
+              borderRadius: 16,
+              border: `1px solid ${iconColors[s.c].bg}`,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              transition: "all 0.3s ease",
+              cursor: "default",
+              position: "relative",
+              overflow: "hidden",
+              boxShadow: `0 4px 12px ${iconColors[s.c].color}12`,
+            }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLElement).style.borderColor = iconColors[s.c].color;
+              (e.currentTarget as HTMLElement).style.boxShadow = `0 8px 24px ${iconColors[s.c].color}20`;
+              (e.currentTarget as HTMLElement).style.transform = "translateY(-4px)";
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLElement).style.borderColor = iconColors[s.c].bg;
+              (e.currentTarget as HTMLElement).style.boxShadow = `0 4px 12px ${iconColors[s.c].color}12`;
+              (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
+            }}
+          >
+            <div 
+              style={{ 
+                width: 64,
+                height: 64,
+                borderRadius: 14,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginBottom: 20,
+                background: iconColors[s.c].bg,
+                color: iconColors[s.c].color,
+                flexShrink: 0,
+              }}
+            >
+              {s.icon}
+            </div>
+            <div 
+              style={{ 
+                fontSize: 44,
+                fontWeight: 700,
+                color: iconColors[s.c].color,
+                lineHeight: 1,
+                marginBottom: 8,
+                letterSpacing: "-0.01em",
+              }}
+            >
+              {s.number}{s.symbol}
+            </div>
+            <div 
+              style={{ 
+                fontSize: 14,
+                fontWeight: 500,
+                color: "#64748b",
+                lineHeight: 1.6,
+                maxWidth: 150,
+              }}
+            >
+              {s.label}
+            </div>
           </div>
         ))}
       </div>

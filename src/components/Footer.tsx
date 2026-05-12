@@ -3,6 +3,10 @@ import ArdiraFooterLogo from "@assets/ArdiraFooterLogo.webp";
 import SalesForcePartnerLogo from "@assets/SalesForcePartnerLogo.webp";
 
 function Footer() {
+  const handleLinkClick = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <footer
       style={{
@@ -111,14 +115,15 @@ function Footer() {
           </h4>
           <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
             {[
-              { name: "About Us", link: "#" },
-              { name: "Join Us", link: "#" },
+              { name: "About Us", link: "/team" },
+              { name: "Join Us", link: "https://surveyvista.com/join-us/" },
               { name: "Partner Hub", link: "/partner-hub" },
             ].map((c) => (
               <li key={c.name} style={{ marginBottom: 12 }}>
                 {c.link.startsWith("/") ? (
                   <Link
                     to={c.link}
+                    onClick={handleLinkClick}
                     className="footer-col"
                     style={{
                       fontSize: 13.5,

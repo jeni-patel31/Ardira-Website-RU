@@ -2,6 +2,10 @@ import { Link } from "react-router-dom";
 import ArdiraLogo from "@assets/ArdiraLogo.webp";
 
 function Navbar() {
+  const handleLinkClick = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <nav
       style={{
@@ -25,7 +29,7 @@ function Navbar() {
           justifyContent: "space-between",
         }}
       >
-        <Link to="/">
+        <Link to="/" onClick={handleLinkClick}>
           <img
             src={ArdiraLogo}
             alt="Ardira"
@@ -42,8 +46,9 @@ function Navbar() {
           }}
         >
           <li className="nav-hide-mobile">
-            <a
-              href="#products"
+            <Link
+              to="/#products"
+              onClick={handleLinkClick}
               style={{
                 fontSize: 14,
                 fontWeight: 500,
@@ -53,11 +58,12 @@ function Navbar() {
               }}
             >
               Products
-            </a>
+            </Link>
           </li>
           <li className="nav-hide-mobile">
-            <a
-              href="#features"
+            <Link
+              to="/#features"
+              onClick={handleLinkClick}
               style={{
                 fontSize: 14,
                 fontWeight: 500,
@@ -67,11 +73,12 @@ function Navbar() {
               }}
             >
               Why Native
-            </a>
+            </Link>
           </li>
           <li className="nav-hide-mobile">
-            <a
-              href="#contact"
+            <Link
+              to="/team"
+              onClick={handleLinkClick}
               style={{
                 fontSize: 14,
                 fontWeight: 500,
@@ -81,11 +88,12 @@ function Navbar() {
               }}
             >
               Company
-            </a>
+            </Link>
           </li>
           <li className="nav-hide-mobile">
             <Link
               to="/partner-hub"
+              onClick={handleLinkClick}
               style={{
                 fontSize: 14,
                 fontWeight: 500,
