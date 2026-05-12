@@ -232,10 +232,10 @@ export default function PartnerHub() {
             className="mt-12"
           >
             <div className="relative w-full overflow-hidden mx-auto" onMouseEnter={(e) => {
-              const track = e.currentTarget.querySelector('.partner-carousel-track');
+              const track = e.currentTarget.querySelector('.partner-carousel-track') as HTMLElement;
               if (track) track.style.animationPlayState = 'paused';
             }} onMouseLeave={(e) => {
-              const track = e.currentTarget.querySelector('.partner-carousel-track');
+              const track = e.currentTarget.querySelector('.partner-carousel-track') as HTMLElement;
               if (track) track.style.animationPlayState = 'running';
             }}>
               {/* Fade edges */}
@@ -331,17 +331,17 @@ export default function PartnerHub() {
       </section>
 
       {/* Partnership Application Form */}
-      <section id="partner-form" className="py-16 px-6 bg-white scroll-mt-20">
+      <section id="partner-form" className="py-20 px-6 bg-[#f8fafc] scroll-mt-20">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 items-stretch">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-0 items-stretch bg-white rounded-3xl shadow-[0_24px_60px_-12px_rgba(0,0,0,0.09)] border border-slate-100"
+          >
             {/* Left Info Section - Green Background */}
-            <motion.div
-              initial={{ opacity: 0, x: -24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="bg-[#43AF57] rounded-t-3xl lg:rounded-l-3xl lg:rounded-tr-none p-8 flex flex-col justify-between text-white"
-            >
+            <div className="bg-[#43AF57] rounded-t-3xl lg:rounded-l-3xl lg:rounded-tr-none p-6 md:p-8 flex flex-col justify-between text-white">
               <div>
                 <h2 className="text-3xl md:text-4xl font-extrabold font-display leading-tight mb-2">
                   Become a Partner
@@ -371,16 +371,10 @@ export default function PartnerHub() {
                   ))}
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Right Form Section */}
-            <motion.div
-              initial={{ opacity: 0, x: 24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="bg-white rounded-b-3xl lg:rounded-r-3xl lg:rounded-bl-none p-8"
-            >
+            <div className="bg-white rounded-b-3xl lg:rounded-r-3xl lg:rounded-bl-none p-6 md:p-8">
               {submitted ? (
                 <div className="flex items-center justify-center">
                   <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-8 text-center">
@@ -398,7 +392,7 @@ export default function PartnerHub() {
                   </div>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit} className="space-y-2.5">
                   {/* Error Banner */}
                   {submitError && (
                     <div className="p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3">
@@ -422,7 +416,7 @@ export default function PartnerHub() {
                           fullName: e.target.value,
                         })
                       }
-                      className={`w-full px-4 py-2 rounded-lg border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
+                      className={`w-full px-4 py-1 rounded-lg border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
                         errors.fullName
                           ? "border-red-500 focus:ring-red-500"
                           : "border-slate-200 focus:ring-emerald-500"
@@ -446,7 +440,7 @@ export default function PartnerHub() {
                       onChange={(e) =>
                         setFormData({ ...formData, company: e.target.value })
                       }
-                      className={`w-full px-4 py-2 rounded-lg border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
+                      className={`w-full px-4 py-1 rounded-lg border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
                         errors.company
                           ? "border-red-500 focus:ring-red-500"
                           : "border-slate-200 focus:ring-emerald-500"
@@ -470,7 +464,7 @@ export default function PartnerHub() {
                       onChange={(e) =>
                         setFormData({ ...formData, email: e.target.value })
                       }
-                      className={`w-full px-4 py-2 rounded-lg border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
+                      className={`w-full px-4 py-1 rounded-lg border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
                         errors.email
                           ? "border-red-500 focus:ring-red-500"
                           : "border-slate-200 focus:ring-emerald-500"
@@ -499,7 +493,7 @@ export default function PartnerHub() {
                         );
                         setFormData({ ...formData, phone: value });
                       }}
-                      className={`w-full px-4 py-2 rounded-lg border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
+                      className={`w-full px-4 py-1 rounded-lg border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
                         errors.phone
                           ? "border-red-500 focus:ring-red-500"
                           : "border-slate-200 focus:ring-emerald-500"
@@ -617,7 +611,7 @@ export default function PartnerHub() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-[#43AF57] text-white px-6 py-3 rounded-lg font-semibold text-base hover:bg-emerald-600 disabled:bg-slate-400 disabled:cursor-not-allowed transition-colors shadow-md flex items-center justify-center gap-2 group"
+                    className="w-full bg-[#43AF57] text-white px-6 py-2 rounded-lg font-semibold text-base hover:bg-emerald-600 disabled:bg-slate-400 disabled:cursor-not-allowed transition-colors shadow-md flex items-center justify-center gap-2 group"
                   >
                     {isSubmitting ? "Submitting..." : "Submit Application"}{" "}
                     {!isSubmitting && (
@@ -631,8 +625,8 @@ export default function PartnerHub() {
                   <RecaptchaBadge />
                 </form>
               )}
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
