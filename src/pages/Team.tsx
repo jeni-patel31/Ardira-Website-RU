@@ -101,9 +101,9 @@ export default function About() {
     >
 
       {/* Hero */}
-      <section className="pt-20 pb-20 bg-linear-to-br from-[#f0fdf4] via-white to-[#ecfdf5] relative overflow-hidden">
+      <section className="pt-20 pb-20 bg-linear-to-br from-[#f0fdf4] via-white to-[#ecfdf5] relative overflow-hidden" style={{ paddingLeft: "48px", paddingRight: "48px" }}>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_-5%,rgba(34,197,94,0.12),transparent)] pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div style={{ maxWidth: "var(--max-width)", margin: "0 auto", position: "relative", zIndex: 10 }}>
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: -12 }}
@@ -163,14 +163,15 @@ export default function About() {
       </section>
 
       {/* Mission */}
-      <section className="py-24 bg-[#f8fafc]">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -24 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
+      <section className="py-24 bg-[#f8fafc]" style={{ paddingLeft: "48px", paddingRight: "48px" }}>
+        <div style={{ maxWidth: "var(--max-width)", margin: "0 auto" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "64px", alignItems: "center" }}>
+            <motion.div
+              initial={{ opacity: 0, x: -24 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
             <div className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 text-[#43AF57] text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-widest mb-5">
               Our Mission
             </div>
@@ -212,12 +213,13 @@ export default function About() {
               ))}
             </div>
           </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Team */}
-      <section className="py-16 sm:py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <section className="py-20" style={{ paddingLeft: "48px", paddingRight: "48px" }}>
+        <div style={{ maxWidth: "var(--max-width)", margin: "0 auto" }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -267,14 +269,14 @@ export default function About() {
       </section>
 
       {/* Advisory Board */}
-      <section className="py-16 sm:py-20 md:py-28 border-t border-slate-100">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+      <section className="py-16 border-t border-slate-100" style={{ paddingLeft: "48px", paddingRight: "48px" }}>
+        <div style={{ maxWidth: "var(--max-width)", margin: "0 auto" }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
             <h2 className="text-4xl md:text-5xl font-extrabold font-display text-[#0f172a] mb-4">
               Our Advisory Board
@@ -285,7 +287,7 @@ export default function About() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {advisoryBoard.map((member, i) => (
               <motion.div
                 key={member.name}

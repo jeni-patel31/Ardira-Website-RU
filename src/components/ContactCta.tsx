@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { ArrowRight, Sparkles } from "lucide-react";
 
 interface ContactCtaProps {
@@ -16,6 +16,7 @@ export default function ContactCta({
   buttonLink = "/contact",
 }: ContactCtaProps) {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   const handleButtonClick = (e: React.MouseEvent<HTMLAnchorElement | HTMLDivElement>) => {
     if (!buttonLink) return;
@@ -24,10 +25,19 @@ export default function ContactCta({
     if (buttonLink.includes("#")) {
       e.preventDefault();
       const [path, hash] = buttonLink.split("#");
-      const targetPath = path || "/";
+      const targetPath = path || pathname;
       
-      // Navigate to the target path with hash
-      navigate(`${targetPath}#${hash}`);
+      // If target path is the current page, use smooth scroll; otherwise navigate
+      if (targetPath === pathname) {
+        const element = document.getElementById(hash);
+        if (element) {
+          const offset = 80;
+          const elementPosition = element.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top: elementPosition, behavior: "smooth" });
+        }
+      } else {
+        navigate(`${targetPath}#${hash}`);
+      }
     }
   };
   return (
