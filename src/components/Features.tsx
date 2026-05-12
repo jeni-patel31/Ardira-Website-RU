@@ -17,10 +17,37 @@ function Features() {
       </div>
       <div className="features-grid-cols" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24, marginBottom: 60 }}>
         {features.map((f, i) => (
-          <div key={i} className="feature-card" style={{ background: "#fff", padding: 32, borderRadius: 12, border: "1.5px solid var(--border-color)", transition: "var(--transition)", textAlign: "center", cursor: "default" }}>
-            <div style={{ width: 56, height: 56, margin: "0 auto 20px", padding: 12, background: "var(--primary-green-light)", borderRadius: 12, border: "1.5px solid var(--primary-green)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--primary-green)" }}>{f.icon}</div>
-            <h3 style={{ fontSize: 18, color: "var(--navy)", marginBottom: 12 }}>{f.title}</h3>
-            <p style={{ fontSize: 14 }}>{f.description}</p>
+          <div 
+            key={i} 
+            className="feature-card" 
+            style={{ 
+              background: "#fff", 
+              padding: 32, 
+              borderRadius: 16, 
+              border: "1.5px solid var(--border-color)",
+              transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+              textAlign: "center", 
+              cursor: "default",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.04)",
+              position: "relative",
+              overflow: "hidden",
+            }}
+            onMouseEnter={(e) => {
+              const card = e.currentTarget as HTMLElement;
+              card.style.transform = "translateY(-8px)";
+              card.style.boxShadow = "0 16px 32px rgba(0,0,0,0.12)";
+              card.style.borderColor = "var(--primary-green)";
+            }}
+            onMouseLeave={(e) => {
+              const card = e.currentTarget as HTMLElement;
+              card.style.transform = "translateY(0)";
+              card.style.boxShadow = "0 4px 12px rgba(0,0,0,0.04)";
+              card.style.borderColor = "var(--border-color)";
+            }}
+          >
+            <div style={{ width: 56, height: 56, margin: "0 auto 20px", padding: 12, background: "var(--primary-green-light)", borderRadius: 12, border: "1.5px solid var(--primary-green)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--primary-green)", transition: "all 0.3s ease" }}>{f.icon}</div>
+            <h3 style={{ fontSize: 18, color: "var(--navy)", marginBottom: 12, transition: "color 0.3s ease" }}>{f.title}</h3>
+            <p style={{ fontSize: 14, color: "var(--text-secondary)", lineHeight: 1.6 }}>{f.description}</p>
           </div>
         ))}
       </div>
