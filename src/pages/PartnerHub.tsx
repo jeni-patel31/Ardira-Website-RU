@@ -331,7 +331,7 @@ export default function PartnerHub() {
       </section>
 
       {/* Partnership Application Form */}
-      <section id="partner-form" className="py-10 px-6 bg-white">
+      <section id="partner-form" className="py-16 px-6 bg-white scroll-mt-20">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 items-stretch">
             {/* Left Info Section - Green Background */}
@@ -379,7 +379,7 @@ export default function PartnerHub() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="bg-white rounded-b-3xl lg:rounded-r-3xl lg:rounded-bl-none p-6"
+              className="bg-white rounded-b-3xl lg:rounded-r-3xl lg:rounded-bl-none p-8"
             >
               {submitted ? (
                 <div className="flex items-center justify-center">
