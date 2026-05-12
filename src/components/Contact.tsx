@@ -55,11 +55,10 @@ function Contact() {
         borderTop: "1px solid var(--border-color)",
       }}
     >
+      <div style={{ maxWidth: "var(--max-width)", margin: "0 auto" }}>
       <div
         className="contact-grid"
         style={{
-          maxWidth: 1100,
-          margin: "0 auto",
           display: "grid",
           gridTemplateColumns: "1fr 1.2fr",
           gap: 56,
@@ -489,6 +488,7 @@ function Contact() {
             . We will never share your data.
           </p>
         </form>
+      </div>
       </div>
     </section>
   );

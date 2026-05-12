@@ -18,11 +18,11 @@ function TrustedSection() {
     >
       <p
         style={{
-          fontSize: 11.5,
-          fontWeight: 600,
-          letterSpacing: "0.1em",
+          fontSize: 12,
+          fontWeight: 800,
+          letterSpacing: "0.15em",
           textTransform: "uppercase" as const,
-          color: "var(--text-muted)",
+          color: "var(--primary-green)",
           marginBottom: 36,
         }}
       >

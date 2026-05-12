@@ -12,7 +12,7 @@ function Footer() {
       style={{
         background: "var(--navy)",
         color: "rgba(255,255,255,0.85)",
-        padding: "60px 40px 32px",
+        padding: "60px 48px 32px",
         borderTop: "1px solid rgba(255,255,255,0.08)",
       }}
     >
@@ -33,8 +33,7 @@ function Footer() {
               alt="Ardira"
               style={{ height: 40, width: "auto", display: "block" }}
             />
-          </div>
-          <p
+          </div>          <p
             style={{
               fontSize: 13.5,
               fontWeight: 300,
@@ -77,15 +76,17 @@ function Footer() {
           </h4>
           <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
             {[
-              "SurveyVista",
-              "FormVista",
-              "ComplianceVista",
-              "AgentVista",
-              "RelationshipVista",
+              { name: "SurveyVista", link: "https://surveyvista.com/" },
+              { name: "FormVista", link: "https://surveyvista.com/products/form-vista-business-forms/" },
+              { name: "ComplianceVista", link: "https://compliancevista.com" },
+              { name: "AgentVista", link: "https://agentsvista.com" },
+              { name: "RelationshipVista", link: "https://relationshipvista.com" },
             ].map((p) => (
-              <li key={p} style={{ marginBottom: 12 }}>
+              <li key={p.name} style={{ marginBottom: 12 }}>
                 <a
-                  href="#"
+                  href={p.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="footer-col"
                   style={{
                     fontSize: 13.5,
@@ -94,7 +95,7 @@ function Footer() {
                     transition: "var(--transition)",
                   }}
                 >
-                  {p}
+                  {p.name}
                 </a>
               </li>
             ))}
@@ -152,7 +153,7 @@ function Footer() {
             ))}
           </ul>
         </div>
-        <div className="footer-col">
+        <div className="footer-col" style={{ justifySelf: "end" }}>
           <h4
             style={{
               fontSize: 11,
