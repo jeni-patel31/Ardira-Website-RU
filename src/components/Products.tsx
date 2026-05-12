@@ -148,11 +148,55 @@ function Products() {
   const meta = productMeta[activeTab];
 
   return (
-    <section id="products" style={{ padding: "100px 40px", background: "#fff" }}>
-      <div style={{ textAlign: "center", maxWidth: 800, margin: "0 auto 80px", animation: "fadeIn 0.8s ease" }}>
-        <span style={{ display: "block", fontSize: 12, fontWeight: 800, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "var(--primary-green)", marginBottom: 20 }}>Our Products</span>
-        <h2 style={{ color: "var(--navy)", marginBottom: 24, fontSize: "clamp(28px, 4vw, 48px)", fontWeight: 800, lineHeight: 1.2 }}>One suite. Five <span style={{ color: "var(--primary-green)" }}>native</span> apps.</h2>
-        <p style={{ maxWidth: 700, margin: "0 auto", fontSize: 16, color: "var(--text-secondary)", lineHeight: 1.6 }}>Every Ardira product is built entirely on the Salesforce platform — no middleware, no integrations, no data leaving your org.</p>
+    <section
+      id="products"
+      style={{ padding: "80px 40px 60px", background: "#fff" }}
+    >
+      <div
+        style={{
+          textAlign: "center",
+          maxWidth: 800,
+          margin: "0 auto 50px",
+          animation: "fadeIn 0.8s ease",
+        }}
+      >
+        <span
+          style={{
+            display: "block",
+            fontSize: 12,
+            fontWeight: 800,
+            letterSpacing: "0.15em",
+            textTransform: "uppercase" as const,
+            color: "var(--primary-green)",
+            marginBottom: 20,
+          }}
+        >
+          Our Products
+        </span>
+        <h2
+          style={{
+            color: "var(--navy)",
+            marginBottom: 24,
+            fontSize: "clamp(28px, 4vw, 48px)",
+            fontWeight: 800,
+            lineHeight: 1.2,
+          }}
+        >
+          One suite. Five{" "}
+          <span style={{ color: "var(--primary-green)" }}>native</span> apps.
+        </h2>
+        <p
+          style={{
+            maxWidth: 700,
+            margin: "0 auto",
+            fontSize: 16,
+            color: "var(--text-secondary)",
+            lineHeight: 1.6,
+          }}
+        >
+          Every Ardira product is built entirely on the Salesforce platform — no
+          middleware, no integrations, no data leaving your org.
+        </p>
       </div>
       <div
         className="product-tabs-grid"
@@ -185,7 +229,7 @@ function Products() {
                 display: "flex",
                 alignItems: "center",
                 gap: 12,
-                padding: "18px 16px",
+                padding: "14px 16px",
                 background: "transparent",
                 border: "none",
                 borderBottom:
@@ -242,7 +286,7 @@ function Products() {
         <div
           style={{
             background: "#fff",
-            padding: "30px 60px 40px",
+            padding: "24px 40px 30px",
             display: "flex",
             flexDirection: "column",
           }}
@@ -259,7 +303,7 @@ function Products() {
             {/* Logo Header */}
             <div
               style={{
-                marginBottom: 24,
+                marginBottom: 20,
                 paddingBottom: 16,
                 borderBottom: "1px solid rgba(0,0,0,0.06)",
                 display: "flex",
@@ -270,7 +314,7 @@ function Products() {
                 src={cur.image}
                 alt={meta.name}
                 style={{
-                  height: 65,
+                  height: 55,
                   width: "auto",
                   maxWidth: "100%",
                   objectFit: "contain",
@@ -283,14 +327,14 @@ function Products() {
               style={{
                 display: "grid",
                 gridTemplateColumns: "1.2fr 1fr",
-                gap: 60,
+                gap: 50,
                 alignItems: "start",
               }}
             >
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <h3
                   style={{
-                    fontSize: 26,
+                    fontSize: 24,
                     fontWeight: 800,
                     color: "var(--navy)",
                     marginBottom: 16,
@@ -301,9 +345,9 @@ function Products() {
                 </h3>
                 <p
                   style={{
-                    marginBottom: 32,
-                    fontSize: 16,
-                    lineHeight: 1.7,
+                    marginBottom: 24,
+                    fontSize: 15,
+                    lineHeight: 1.6,
                     color: "var(--text-secondary)",
                   }}
                 >
@@ -342,7 +386,7 @@ function Products() {
                   padding: 0,
                   display: "flex",
                   flexDirection: "column",
-                  gap: 16,
+                  gap: 12,
                 }}
               >
                 {cur.features.map((f, i) => (
