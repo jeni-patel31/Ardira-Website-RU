@@ -3,7 +3,6 @@ import TrustedSection from "../components/TrustedSection";
 import Products from "../components/Products";
 import Stats from "../components/Stats";
 import Features from "../components/Features";
-import CTA from "../components/CTA";
 import Contact from "../components/Contact";
 
 function Home() {
@@ -14,7 +13,6 @@ function Home() {
       <Products />
       <Stats />
       <Features />
-      <CTA />
       <Contact />
     </>
   );

@@ -316,6 +316,7 @@ export default function About() {
         headline="Want to work with our team?"
         description="Reach out and let's explore how Ardira can help your business grow on Salesforce."
         buttonText="Get in Touch"
+        buttonLink="/#contact"
       />
     </div>
   );

@@ -5,8 +5,8 @@ export default function PrivacyPolicy() {
       data-testid="page-privacy"
     >
 
-      <main className="flex-grow pt-32 pb-32 max-w-7xl mx-auto w-full">
-        <div className="px-6">
+      <main style={{ padding: "80px 48px", width: "100%" }}>
+        <div style={{ maxWidth: "var(--max-width)", margin: "0 auto", width: "100%" }}>
           <h1 className="text-4xl md:text-5xl font-bold mb-12 text-[#43AF57]">
             Privacy Policy
           </h1>

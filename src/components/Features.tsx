@@ -9,13 +9,17 @@ const native = ["Instant data availability", "Deploy in hours, configure instant
 
 function Features() {
   return (
-    <section id="features" style={{ padding: "80px 40px", background: "var(--bg-light)", borderTop: "1px solid var(--border-color)" }}>
-      <div style={{ textAlign: "center", maxWidth: 700, margin: "0 auto 60px", animation: "fadeIn 0.8s ease" }}>
-        <span style={{ display: "block", fontSize: 11.5, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" as const, color: "var(--primary-green)", marginBottom: 12 }}>Why Native Matters</span>
-        <h2 style={{ color: "var(--navy)", marginBottom: 16 }}>The best integration<br />is <span style={{ color: "var(--primary-green)" }}>no integration.</span></h2>
-        <p style={{ maxWidth: 600, margin: "0 auto" }}>Every non-native tool in your Salesforce stack is a confession that your intelligence lives in exile — separate from where your team actually works.</p>
+    <section id="features" style={{ padding: "80px 48px", background: "var(--bg-light)", borderTop: "1px solid var(--border-color)", display: "flex", flexDirection: "column", alignItems: "center" }}>
+      <div style={{ width: "100%", maxWidth: "var(--max-width)", margin: "0 auto", textAlign: "center" }}>
+        <span style={{ display: "block", fontSize: 12, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" as const, color: "var(--primary-green)", marginBottom: 16 }}>Why Native Matters</span>
+        <h2 style={{ fontSize: 52, fontWeight: 800, color: "var(--navy)", marginBottom: 20, lineHeight: 1.2, fontFamily: "var(--font-display, sans-serif)" }}
+        >
+          The best integration<br />is <span style={{ color: "var(--primary-green)" }}>no integration.</span>
+        </h2>
+        <p style={{ fontSize: 16, color: "#64748b", lineHeight: 1.7, margin: "0 auto 60px", maxWidth: 700 }}>Every non-native tool in your Salesforce stack is a confession that your customer intelligence lives in exile — separate from where your team actually works.</p>
       </div>
-      <div className="features-grid-cols" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24, marginBottom: 60 }}>
+      <div style={{ width: "100%", maxWidth: "var(--max-width)", margin: "0 auto" }}>
+        <div className="features-grid-cols" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24, marginBottom: 60 }}>
         {features.map((f, i) => (
           <div 
             key={i} 
@@ -51,24 +55,27 @@ function Features() {
           </div>
         ))}
       </div>
-      <div className="comparison-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 1, border: "1.5px solid var(--border-color)", borderRadius: 12, overflow: "hidden", boxShadow: "var(--shadow-sm)", maxWidth: 800, margin: "0 auto" }}>
-        <div style={{ background: "#fff", padding: "36px 32px", borderRight: "1.5px solid var(--border-color)" }}>
-          <h4 style={{ fontSize: 16, fontWeight: 700, marginBottom: 24, paddingBottom: 16, borderBottom: "1px solid var(--border-color)", color: "var(--text-primary)" }}>Non-Native Tools</h4>
-          {nonNative.map((t, i) => (
-            <div key={i} style={{ display: "flex", gap: 12, padding: "12px 0", borderBottom: i < nonNative.length - 1 ? "1px solid var(--border-color)" : "none", fontSize: 14, color: "var(--text-secondary)" }}>
-              <span style={{ fontSize: 18, fontWeight: 700, color: "#dc2626", width: 20, textAlign: "center", flexShrink: 0 }}>✕</span>
-              <div>{t}</div>
-            </div>
-          ))}
-        </div>
-        <div className="native-col" style={{ background: "linear-gradient(160deg, var(--primary-green-light) 0%, rgba(255,255,255,0) 60%)", padding: "36px 32px", borderLeft: "3px solid var(--primary-green)" }}>
-          <h4 style={{ fontSize: 16, fontWeight: 700, marginBottom: 24, paddingBottom: 16, borderBottom: "1px solid var(--border-color)", color: "var(--primary-green-dark)" }}>Ardira Native Apps</h4>
-          {native.map((t, i) => (
-            <div key={i} style={{ display: "flex", gap: 12, padding: "12px 0", borderBottom: i < native.length - 1 ? "1px solid var(--border-color)" : "none", fontSize: 14, color: "var(--text-secondary)" }}>
-              <span style={{ fontSize: 18, fontWeight: 700, color: "var(--primary-green)", width: 20, textAlign: "center", flexShrink: 0 }}>✓</span>
-              <div>{t}</div>
-            </div>
-          ))}
+      </div>
+      <div style={{ width: "100%", maxWidth: "var(--max-width)", margin: "0 auto" }}>
+        <div className="comparison-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 1, border: "1.5px solid var(--border-color)", borderRadius: 12, overflow: "hidden", boxShadow: "var(--shadow-sm)" }}>
+          <div style={{ background: "#fff", padding: "36px 32px", borderRight: "1.5px solid var(--border-color)" }}>
+            <h4 style={{ fontSize: 16, fontWeight: 700, marginBottom: 24, paddingBottom: 16, borderBottom: "1px solid var(--border-color)", color: "var(--text-primary)" }}>Non-Native Tools</h4>
+            {nonNative.map((t, i) => (
+              <div key={i} style={{ display: "flex", gap: 12, padding: "12px 0", borderBottom: i < nonNative.length - 1 ? "1px solid var(--border-color)" : "none", fontSize: 14, color: "var(--text-secondary)" }}>
+                <span style={{ fontSize: 18, fontWeight: 700, color: "#dc2626", width: 20, textAlign: "center", flexShrink: 0 }}>✕</span>
+                <div>{t}</div>
+              </div>
+            ))}
+          </div>
+          <div className="native-col" style={{ background: "linear-gradient(160deg, var(--primary-green-light) 0%, rgba(255,255,255,0) 60%)", padding: "36px 32px", borderLeft: "3px solid var(--primary-green)" }}>
+            <h4 style={{ fontSize: 16, fontWeight: 700, marginBottom: 24, paddingBottom: 16, borderBottom: "1px solid var(--border-color)", color: "var(--primary-green-dark)" }}>Ardira Native Apps</h4>
+            {native.map((t, i) => (
+              <div key={i} style={{ display: "flex", gap: 12, padding: "12px 0", borderBottom: i < native.length - 1 ? "1px solid var(--border-color)" : "none", fontSize: 14, color: "var(--text-secondary)" }}>
+                <span style={{ fontSize: 18, fontWeight: 700, color: "var(--primary-green)", width: 20, textAlign: "center", flexShrink: 0 }}>✓</span>
+                <div>{t}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

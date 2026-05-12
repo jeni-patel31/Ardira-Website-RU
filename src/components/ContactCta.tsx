@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Link } from "wouter";
+import { Link, useNavigate } from "react-router-dom";
 import { ArrowRight, Sparkles } from "lucide-react";
 
 interface ContactCtaProps {
@@ -15,6 +15,21 @@ export default function ContactCta({
   buttonText = "Get a Free Consultation",
   buttonLink = "/contact",
 }: ContactCtaProps) {
+  const navigate = useNavigate();
+
+  const handleButtonClick = (e: React.MouseEvent<HTMLAnchorElement | HTMLDivElement>) => {
+    if (!buttonLink) return;
+
+    // Handle hash links (e.g., "/#contact" or "#contact")
+    if (buttonLink.includes("#")) {
+      e.preventDefault();
+      const [path, hash] = buttonLink.split("#");
+      const targetPath = path || "/";
+      
+      // Navigate to the target path with hash
+      navigate(`${targetPath}#${hash}`);
+    }
+  };
   return (
     <section className="py-28 px-6 relative overflow-hidden">
       {/* Background with reversed hero gradient */}
@@ -74,24 +89,10 @@ export default function ContactCta({
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
             className="inline-block"
           >
-            {buttonLink?.startsWith("#") ? (
+            {buttonLink?.startsWith("#") || buttonLink?.includes("#") ? (
               <a
                 href={buttonLink}
-                onClick={(e) => {
-                  e.preventDefault();
-                  const element = document.querySelector(buttonLink);
-                  if (element) {
-                    const offset = 80;
-                    const elementPosition =
-                      element.getBoundingClientRect().top +
-                      window.scrollY -
-                      offset;
-                    window.scrollTo({
-                      top: elementPosition,
-                      behavior: "smooth",
-                    });
-                  }
-                }}
+                onClick={handleButtonClick}
                 className="inline-flex items-center gap-3 bg-[#43AF57] text-white px-10 py-4 rounded-xl font-bold text-base hover:bg-[#15803d] transition-all shadow-md group"
               >
                 {buttonText}
@@ -102,7 +103,7 @@ export default function ContactCta({
               </a>
             ) : (
               <Link
-                href={buttonLink}
+                to={buttonLink}
                 className="inline-flex items-center gap-3 bg-[#43AF57] text-white px-10 py-4 rounded-xl font-bold text-base hover:bg-[#15803d] transition-all shadow-md group"
               >
                 {buttonText}
