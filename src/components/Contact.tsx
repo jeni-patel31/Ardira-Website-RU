@@ -176,8 +176,8 @@ function Contact() {
               >
                 <div
                   style={{
-                    width: 40,
-                    height: 40,
+                    width: 28,
+                    height: 28,
                     flexShrink: 0,
                     marginTop: 4,
                     color: "var(--primary-green)",
@@ -221,6 +221,7 @@ function Contact() {
               borderRadius: 12,
               overflow: "hidden",
               border: "1px solid var(--border-color)",
+              minHeight: 400,
             }}
           >
             <iframe
@@ -232,6 +233,7 @@ function Contact() {
                 flexGrow: 1,
                 width: "100%",
                 height: "100%",
+                minHeight: 400,
               }}
               allowFullScreen
               loading="lazy"
@@ -247,9 +249,11 @@ function Contact() {
             borderRadius: 12,
             padding: 32,
             boxShadow: "var(--shadow-sm)",
-            height: "100%",
             display: "flex",
             flexDirection: "column",
+            alignSelf: "flex-start",
+            alignItems: "stretch",
+            gap: 0,
           }}
         >
           <h3
@@ -417,7 +421,6 @@ function Contact() {
               flexDirection: "column",
               gap: 8,
               marginBottom: 16,
-              flexGrow: 1,
             }}
           >
             <label
@@ -437,8 +440,9 @@ function Contact() {
               onChange={handleChange}
               style={{
                 ...inputStyle,
-                resize: "vertical" as const,
-                flexGrow: 1,
+                resize: "none" as const,
+                minHeight: 100,
+                maxHeight: 140,
               }}
             />
           </div>
