@@ -3,20 +3,22 @@ const imageModules = import.meta.glob<{ default: string }>(
   { eager: true },
 );
 
-const partners = Object.values(imageModules).map((mod) => mod.default);
+const allPartners = Object.values(imageModules).map((mod) => mod.default);
+const partners = Array.from(new Set(allPartners)); // Remove duplicates
 
 function TrustedSection() {
   return (
     <section
       style={{
-        padding: "56px 40px",
+        padding: "56px 48px",
         background: "var(--bg-light)",
         borderTop: "1px solid var(--border-color)",
         borderBottom: "1px solid var(--border-color)",
         textAlign: "center",
       }}
     >
-      <p
+      <div style={{ maxWidth: "var(--max-width)", margin: "0 auto" }}>
+        <p
         style={{
           fontSize: 12,
           fontWeight: 800,
@@ -66,6 +68,7 @@ function TrustedSection() {
             ),
           )}
         </div>
+      </div>
       </div>
     </section>
   );

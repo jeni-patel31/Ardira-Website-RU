@@ -207,8 +207,8 @@ export default function PartnerHub() {
       </section>
 
       {/* Our Trusted Partners - Carousel */}
-      <section className="py-24 px-6 bg-gradient-to-br from-[#f0fdf4] via-white to-[#ecfdf5] border-t border-slate-100">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-24 bg-gradient-to-br from-[#f0fdf4] via-white to-[#ecfdf5] border-t border-slate-100" style={{ paddingLeft: "48px", paddingRight: "48px" }}>
+        <div style={{ maxWidth: "var(--max-width)", margin: "0 auto" }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -231,12 +231,18 @@ export default function PartnerHub() {
             transition={{ duration: 0.6 }}
             className="mt-12"
           >
-            <div className="relative w-full overflow-hidden mx-auto">
+            <div className="relative w-full overflow-hidden mx-auto" onMouseEnter={(e) => {
+              const track = e.currentTarget.querySelector('.partner-carousel-track');
+              if (track) track.style.animationPlayState = 'paused';
+            }} onMouseLeave={(e) => {
+              const track = e.currentTarget.querySelector('.partner-carousel-track');
+              if (track) track.style.animationPlayState = 'running';
+            }}>
               {/* Fade edges */}
               <div className="absolute left-0 top-0 bottom-0 w-32 md:w-48 bg-gradient-to-r from-[#f0fdf4] to-transparent z-10 pointer-events-none" />
               <div className="absolute right-0 top-0 bottom-0 w-32 md:w-48 bg-gradient-to-l from-[#f0fdf4] to-transparent z-10 pointer-events-none" />
               <div
-                className="flex items-center animate-marquee py-4 w-max"
+                className="partner-carousel-track flex items-center animate-marquee py-4 w-max"
                 style={{ animationDuration: "40s" }}
               >
                 {[
