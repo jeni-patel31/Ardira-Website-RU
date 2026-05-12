@@ -91,7 +91,7 @@ function Contact() {
               color: "var(--navy)",
               marginBottom: 20,
               textAlign: "left",
-              fontSize: "clamp(36px, 5vw, 48px)",
+              fontSize: "clamp(32px, 4.5vw, 40px)",
               fontWeight: 800,
               lineHeight: 1.15,
               letterSpacing: "-0.02em",
@@ -103,11 +103,11 @@ function Contact() {
               your Salesforce org.
             </span>
           </h2>
-          <p style={{ marginBottom: 32, textAlign: "left", fontSize: 15 }}>
+          <p style={{ marginBottom: 24, textAlign: "left", fontSize: 15 }}>
             Contact our team to schedule a demo, learn more about our products,
             or simply ask a question.
           </p>
-          <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
             {[
               {
                 icon: (
@@ -214,14 +214,14 @@ function Contact() {
 
           <div
             style={{
-              marginTop: 40,
+              marginTop: 24,
               flexGrow: 1,
               display: "flex",
               flexDirection: "column",
               borderRadius: 12,
               overflow: "hidden",
               border: "1px solid var(--border-color)",
-              minHeight: 400,
+              minHeight: 200,
             }}
           >
             <iframe
@@ -233,7 +233,7 @@ function Contact() {
                 flexGrow: 1,
                 width: "100%",
                 height: "100%",
-                minHeight: 400,
+                minHeight: 200,
               }}
               allowFullScreen
               loading="lazy"
@@ -253,6 +253,7 @@ function Contact() {
             flexDirection: "column",
             alignSelf: "flex-start",
             alignItems: "stretch",
+            marginTop: 32,
             gap: 0,
           }}
         >

@@ -106,9 +106,10 @@ function Navbar() {
             </Link>
           </li>
           <li>
-            <a
-              href="#contact"
+            <Link
+              to="/#contact"
               className="btn-demo"
+              onClick={handleLinkClick}
               style={{
                 fontSize: 14,
                 fontWeight: 600,
@@ -124,7 +125,7 @@ function Navbar() {
               }}
             >
               Book Demo
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
