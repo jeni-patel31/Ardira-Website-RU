@@ -7,7 +7,7 @@ function Hero() {
         position: "relative",
         overflow: "hidden",
         padding: "60px 20px 60px",
-        background: "linear-gradient(180deg, #f0fdf4 0%, #ecfdf5 100%)",
+        background: "linear-gradient(135deg, #f0fdf4 0%, white 50%, #ecfdf5 100%)",
         textAlign: "center",
         minHeight: "auto",
         display: "flex",
@@ -15,6 +15,15 @@ function Hero() {
         justifyContent: "center",
       }}
     >
+      {/* Radial gradient overlay */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: "radial-gradient(ellipse 70% 50% at 50% -5%, rgba(34,197,94,0.12), transparent)",
+          pointerEvents: "none",
+        }}
+      />
       <div
         style={{
           position: "relative",
