@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 
-const SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY || "6Ldcu-csAAAAAIUKBr28I8jkkB55dRfUtzp3M2Dh";
+const SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY;
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "POST") {

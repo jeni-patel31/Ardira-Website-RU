@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 
-const SITE_KEY = "6Ldcu-csAAAAAGOoW_G65L-LszBX3FYzkvQ5aZgj";
+const SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY || "";
 
 declare global {
   interface Window {
