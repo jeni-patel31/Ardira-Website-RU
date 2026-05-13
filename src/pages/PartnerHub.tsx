@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import SEO from "../components/SEO";
+import StructuredData from "../components/StructuredData";
 import {
   CheckCircle,
   Send,
@@ -21,6 +23,7 @@ import {
 } from "@/components/ui/select";
 import ContactCta from "@/components/ContactCta";
 import { RecaptchaBadge } from "@/components/RecaptchaBadge";
+import { useRecaptcha } from "@/hooks/useRecaptcha";
 
 import eightSquadLogo from "@/assets/TrustedPartner/8squadlogo.webp";
 import accentureLogo from "@/assets/TrustedPartner/accenturelogo.webp";
@@ -72,6 +75,7 @@ const trustedPartners = [
 ];
 
 export default function PartnerHub() {
+  const executeRecaptcha = useRecaptcha();
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -127,10 +131,18 @@ export default function PartnerHub() {
     setSubmitError(null);
 
     try {
+      // Get reCAPTCHA token
+      let recaptchaToken = "";
+      try {
+        recaptchaToken = await executeRecaptcha("partner_form");
+      } catch {
+        throw new Error("reCAPTCHA verification failed. Please try again.");
+      }
+
       const response = await fetch("/api/partner", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, recaptchaToken }),
       });
 
       let result: any = {};
@@ -163,6 +175,15 @@ export default function PartnerHub() {
       className="min-h-screen bg-gradient-to-br from-[#f0fdf4] via-white to-[#ecfdf5] text-[#0f172a] font-sans"
       data-testid="page-partners"
     >
+      <SEO
+        title="Partner Hub | Ardira"
+        description="Join the Ardira Partner Hub. Collaborate with us to deliver 100% native Salesforce solutions to your clients."
+        keywords="Salesforce partner program, Ardira partners, reseller program, referral partner"
+        ogTitle="Ardira Partner Hub"
+        ogDescription="Partner with Ardira to deliver native Salesforce solutions and grow your business."
+        ogUrl="https://ardira.com/partner-hub"
+      />
+      <StructuredData type="WebPage" name="Ardira Partner Hub" description="Join the Ardira Partner Hub." url="https://ardira.com/partner-hub" />
 
       {/* Why Partner */}
       <section className="relative py-24 px-6 bg-gradient-to-br from-[#f0fdf4] via-white to-[#ecfdf5]">

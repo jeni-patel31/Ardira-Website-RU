@@ -1,5 +1,7 @@
 import { useState, ChangeEvent, FormEvent } from "react";
 import { Link } from "react-router-dom";
+import { useRecaptcha } from "@/hooks/useRecaptcha";
+import { RecaptchaBadge } from "@/components/RecaptchaBadge";
 
 const inputStyle: React.CSSProperties = {
   fontFamily: "var(--font-family)",
@@ -15,6 +17,9 @@ const inputStyle: React.CSSProperties = {
 };
 
 function Contact() {
+  const executeRecaptcha = useRecaptcha();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -30,9 +35,40 @@ function Contact() {
   ) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (formData.name && formData.email) {
+    if (!formData.name || !formData.email) return;
+
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    try {
+      // Get reCAPTCHA token
+      let recaptchaToken = "";
+      try {
+        recaptchaToken = await executeRecaptcha("contact_form");
+      } catch {
+        throw new Error("reCAPTCHA verification failed. Please try again.");
+      }
+
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...formData, recaptchaToken }),
+      });
+
+      let result: any = {};
+      const contentType = response.headers.get("content-type");
+      if (contentType && contentType.indexOf("application/json") !== -1) {
+        result = await response.json();
+      } else if (!response.ok) {
+        throw new Error(`Server error (Status ${response.status})`);
+      }
+
+      if (!response.ok) {
+        throw new Error(result.error || "Failed to send message");
+      }
+
       setSubmitted(true);
       setFormData({
         name: "",
@@ -42,7 +78,16 @@ function Contact() {
         product: "",
         message: "",
       });
-      setTimeout(() => setSubmitted(false), 3000);
+      setTimeout(() => setSubmitted(false), 5000);
+    } catch (error) {
+      console.error("Contact form submission error:", error);
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : "Failed to send. Please try again.",
+      );
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -447,8 +492,24 @@ function Contact() {
               }}
             />
           </div>
+          {submitError && (
+            <div
+              style={{
+                padding: "12px 16px",
+                background: "#fef2f2",
+                border: "1px solid #fecaca",
+                borderRadius: 8,
+                fontSize: 13,
+                color: "#dc2626",
+                marginBottom: 8,
+              }}
+            >
+              {submitError}
+            </div>
+          )}
           <button
             type="submit"
+            disabled={isSubmitting}
             className="btn-primary"
             style={{
               width: "100%",
@@ -462,15 +523,15 @@ function Contact() {
               fontWeight: 600,
               padding: "13px 34px",
               borderRadius: 8,
-              background: "var(--primary-green)",
+              background: isSubmitting ? "#94a3b8" : "var(--primary-green)",
               color: "#fff",
               boxShadow: "0 4px 14px rgba(57,180,74,0.3)",
               border: "2px solid transparent",
-              cursor: "pointer",
+              cursor: isSubmitting ? "not-allowed" : "pointer",
               transition: "var(--transition)",
             }}
           >
-            {submitted ? "✓ Message Sent!" : "Send Message"}
+            {submitted ? "✓ Message Sent!" : isSubmitting ? "Sending..." : "Send Message"}
           </button>
           <p
             style={{
@@ -492,6 +553,7 @@ function Contact() {
             </Link>
             . We will never share your data.
           </p>
+          <RecaptchaBadge />
         </form>
       </div>
       </div>

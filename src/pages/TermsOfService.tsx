@@ -1,19 +1,32 @@
+import SEO from "../components/SEO";
+import StructuredData from "../components/StructuredData";
+
 export default function Terms() {
   return (
-    <div
-      className="min-h-screen bg-white text-[#0f172a] font-sans flex flex-col"
-      data-testid="page-terms"
-    >
-
-      <main style={{ padding: "80px 48px", width: "100%" }}>
-        <div style={{ maxWidth: "var(--max-width)", margin: "0 auto", width: "100%" }}>
-          <h1 className="text-4xl md:text-5xl font-bold mb-12 text-[#43AF57]">
+    <div className="min-h-screen bg-white text-[#0f172a] font-sans flex flex-col">
+      <SEO
+        title="Terms of Service | Ardira"
+        description="Read the Terms of Service for Ardira, outlining the rules and guidelines for using our website and products."
+        keywords="terms of service, terms of use, Ardira terms"
+        ogTitle="Ardira Terms of Service"
+        ogDescription="Terms and conditions for using Ardira's website and services."
+        ogUrl="https://ardira.com/terms-of-service"
+      />
+      <StructuredData type="WebPage" name="Terms of Service" description="Ardira's Terms of Service." url="https://ardira.com/terms-of-service" />
+      <main className="flex-grow w-full" style={{ padding: "0 48px" }}>
+        <div style={{
+          maxWidth: "var(--max-width)",
+          margin: "0 auto",
+          paddingTop: 48,
+          paddingBottom: 48
+        }}>
+          <h1 className="text-3xl md:text-4xl font-bold font-display mb-10 text-[#43AF57]">
             Terms of Use
           </h1>
 
-          <div className="space-y-8 text-slate-700 leading-relaxed text-base font-normal max-w-4xl">
+          <div className="space-y-8 text-slate-600 leading-relaxed text-sm md:text-base font-normal">
           <section>
-            <h2 className="text-2xl font-bold text-[#0f172a] mb-4">
+            <h2 className="text-xl md:text-2xl font-semibold text-[#0f172a] mb-4">
               Ardira Terms and Conditions
             </h2>
             <p className="mb-4">

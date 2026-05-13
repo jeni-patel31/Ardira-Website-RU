@@ -290,7 +290,7 @@ function Footer() {
             Privacy Policy
           </Link>
           <Link
-            to="/terms"
+            to="/terms-of-service"
             style={{
               fontSize: 12.5,
               color: "rgba(255,255,255,0.35)",

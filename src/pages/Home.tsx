@@ -4,10 +4,23 @@ import Products from "../components/Products";
 import Stats from "../components/Stats";
 import Features from "../components/Features";
 import Contact from "../components/Contact";
+import SEO from "../components/SEO";
+import StructuredData from "../components/StructuredData";
 
 function Home() {
   return (
     <>
+      <SEO
+        title="Ardira | 100% Native Salesforce Applications"
+        description="Ardira builds 100% Salesforce-native applications with no integrations, ensuring data security and native performance on the Salesforce platform."
+        keywords="Salesforce native apps, Salesforce applications, SurveyVista, RelationshipVista, native Salesforce"
+        ogTitle="Ardira — 100% Native Salesforce Applications"
+        ogDescription="Enterprise-grade, 100% native Salesforce products. No integrations. No data leaks."
+        ogUrl="https://ardira.com"
+      />
+      <StructuredData type="Organization" />
+      <StructuredData type="WebSite" />
+
       <Hero />
       <TrustedSection />
       <Products />
