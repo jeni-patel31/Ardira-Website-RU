@@ -29,6 +29,10 @@ function ScrollToTop() {
   return null;
 }
 
+if (typeof window !== 'undefined' && 'scrollRestoration' in window.history) {
+  window.history.scrollRestoration = 'manual';
+}
+
 function App() {
   return (
     <Router>
