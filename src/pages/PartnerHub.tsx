@@ -140,7 +140,7 @@ export default function PartnerHub() {
         throw new Error("reCAPTCHA verification failed. Please try again.");
       }
 
-      const response = await fetch("/api/partner", {
+      const response = await fetch("/api/partner.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...formData, recaptchaToken }),
