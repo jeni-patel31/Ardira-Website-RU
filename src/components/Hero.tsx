@@ -197,7 +197,7 @@ function Hero() {
                 strokeLinecap="round"
               />
             </svg>
-            <span style={{ fontSize: 15 }}>400+ organizations worldwide</span>
+            <span style={{ fontSize: 15 }}>450+ organizations worldwide</span>
           </div>
           <div
             className="trust-sep"

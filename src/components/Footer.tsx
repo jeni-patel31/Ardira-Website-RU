@@ -35,7 +35,8 @@ function Footer() {
                 style={{ height: 40, width: "auto", display: "block" }}
               />
             </Link>
-          </div>          <p
+          </div>{" "}
+          <p
             style={{
               fontSize: 13.5,
               fontWeight: 300,
@@ -45,7 +46,8 @@ function Footer() {
             }}
           >
             Building 100% Salesforce-native applications that turn your CRM into
-            an intelligence and action engine.
+            an intelligence and action engine. No integrations. No data leaving
+            your org.
           </p>
           <div
             style={{
@@ -280,7 +282,8 @@ function Footer() {
         <p
           style={{ fontSize: 12.5, color: "rgba(255,255,255,0.35)", margin: 0 }}
         >
-          &copy; 2026 Ardira Corporation. All rights reserved.
+          &copy; 2026 Ardira Corporation. All rights reserved. Salesforce and
+          AppExchange are trademarks of Salesforce, Inc.
         </p>
         <div
           className="footer-links footer-links-col"
