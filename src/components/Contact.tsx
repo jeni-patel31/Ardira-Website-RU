@@ -288,66 +288,79 @@ function Contact() {
         {submitted ? (
           <div
             style={{
-              background: "#ecfdf5",
-              border: "1px solid #a7f3d0",
-              borderRadius: 16,
-              padding: "48px 32px",
+              background: "var(--bg-light)",
+              border: "1.5px solid var(--border-color)",
+              borderRadius: 12,
+              padding: 32,
+              boxShadow: "var(--shadow-sm)",
               display: "flex",
               flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
               alignSelf: "flex-start",
+              alignItems: "stretch",
               marginTop: 32,
               width: "100%",
-              textAlign: "center",
-              boxShadow: "0 10px 25px -5px rgba(16, 185, 129, 0.05)",
             }}
           >
             <div
               style={{
-                display: "inline-flex",
-                padding: 16,
-                borderRadius: "50%",
-                background: "#d1fae5",
-                marginBottom: 20,
+                background: "#ecfdf5",
+                border: "1px solid #a7f3d0",
+                borderRadius: 16,
+                padding: "48px 32px",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "100%",
+                textAlign: "center",
               }}
             >
-              <svg
-                width="32"
-                height="32"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#10b981"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+              <div
+                style={{
+                  display: "inline-flex",
+                  padding: 16,
+                  borderRadius: "50%",
+                  background: "#d1fae5",
+                  marginBottom: 20,
+                }}
               >
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                <polyline points="22 4 12 14.01 9 11.01" />
-              </svg>
+                <svg
+                  width="32"
+                  height="32"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#10b981"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                  <polyline points="22 4 12 14.01 9 11.01" />
+                </svg>
+              </div>
+              <h3
+                style={{
+                  fontSize: 22,
+                  fontWeight: 800,
+                  color: "#0f172a",
+                  marginBottom: 12,
+                  letterSpacing: "-0.01em",
+                }}
+              >
+                Message Sent Successfully!
+              </h3>
+              <p
+                style={{
+                  fontSize: 14,
+                  color: "#64748b",
+                  lineHeight: 1.6,
+                  maxWidth: 400,
+                  margin: "0 auto",
+                }}
+              >
+                Thank you for getting in touch. One of our representatives will review your message and reach out to you shortly.
+              </p>
             </div>
-            <h3
-              style={{
-                fontSize: 24,
-                fontWeight: 800,
-                color: "#0f172a",
-                marginBottom: 12,
-                letterSpacing: "-0.01em",
-              }}
-            >
-              Message Sent Successfully!
-            </h3>
-            <p
-              style={{
-                fontSize: 15,
-                color: "#64748b",
-                lineHeight: 1.6,
-                maxWidth: 400,
-                margin: "0 auto",
-              }}
-            >
-              Thank you for getting in touch. One of our representatives will review your message and reach out to you shortly.
-            </p>
           </div>
         ) : (
           <form
