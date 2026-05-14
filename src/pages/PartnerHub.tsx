@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import SEO from "../components/SEO";
 import StructuredData from "../components/StructuredData";
 import {
@@ -623,9 +624,9 @@ export default function PartnerHub() {
 
                   <p className="text-xs text-slate-400 pt-0.5">
                     By submitting this form, you agree to our{" "}
-                    <a href="/privacy-policy" className="text-[#43AF57] hover:underline">
+                    <Link to="/privacy-policy" className="text-[#43AF57] hover:underline">
                       privacy policy
-                    </a>
+                    </Link>
                     .
                   </p>
 

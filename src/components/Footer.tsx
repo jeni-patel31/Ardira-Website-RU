@@ -28,11 +28,13 @@ function Footer() {
       >
         <div className="footer-col" style={{ paddingRight: "40px" }}>
           <div style={{ marginBottom: 16 }}>
-            <img
-              src={ArdiraFooterLogo}
-              alt="Ardira"
-              style={{ height: 40, width: "auto", display: "block" }}
-            />
+            <Link to="/" onClick={handleLinkClick}>
+              <img
+                src={ArdiraFooterLogo}
+                alt="Ardira"
+                style={{ height: 40, width: "auto", display: "block" }}
+              />
+            </Link>
           </div>          <p
             style={{
               fontSize: 13.5,
@@ -138,6 +140,8 @@ function Footer() {
                 ) : (
                   <a
                     href={c.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="footer-col"
                     style={{
                       fontSize: 13.5,
