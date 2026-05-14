@@ -7,6 +7,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import PartnerHub from "./pages/PartnerHub";
 import Team from "./pages/Team";
+import NotFound from "./pages/NotFound";
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -45,6 +46,7 @@ function App() {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/partner-hub" element={<PartnerHub />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
       </div>
