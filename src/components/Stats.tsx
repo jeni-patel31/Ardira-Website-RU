@@ -19,7 +19,7 @@ const stats = [
 
 function Stats() {
   return (
-    <section style={{ width: "100%", padding: "60px 48px", background: "#fff", display: "flex", justifyContent: "center", alignItems: "center", minHeight: "auto" }}>
+    <section className="responsive-section" style={{ width: "100%", paddingTop: 60, paddingBottom: 60, background: "#fff", display: "flex", justifyContent: "center", alignItems: "center", minHeight: "auto" }}>
       <div className="stats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 24, maxWidth: "var(--max-width)", width: "100%", margin: "0 auto" }}>
         {stats.map((s, i) => (
           <div 

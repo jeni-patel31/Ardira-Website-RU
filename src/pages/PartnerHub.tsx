@@ -187,7 +187,7 @@ export default function PartnerHub() {
       <StructuredData type="WebPage" name="Ardira Partner Hub" description="Join the Ardira Partner Hub." url="https://ardira.com/partner-hub" />
 
       {/* Why Partner */}
-      <section className="relative py-24 px-6 bg-gradient-to-br from-[#f0fdf4] via-white to-[#ecfdf5]">
+      <section className="responsive-section relative py-24 bg-gradient-to-br from-[#f0fdf4] via-white to-[#ecfdf5]">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_55%_at_50%_-5%,rgba(34,197,94,0.12),transparent)] pointer-events-none" />
         <div className="max-w-6xl mx-auto relative z-10">
           <motion.div
@@ -229,7 +229,7 @@ export default function PartnerHub() {
       </section>
 
       {/* Our Trusted Partners - Carousel */}
-      <section className="py-24 bg-gradient-to-br from-[#f0fdf4] via-white to-[#ecfdf5] border-t border-slate-100" style={{ paddingLeft: "48px", paddingRight: "48px" }}>
+      <section className="responsive-section py-24 bg-gradient-to-br from-[#f0fdf4] via-white to-[#ecfdf5] border-t border-slate-100">
         <div style={{ maxWidth: "var(--max-width)", margin: "0 auto" }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -293,7 +293,7 @@ export default function PartnerHub() {
      
 
       {/* How It Works */}
-      <section className="py-28 px-6 bg-gradient-to-br from-[#f0fdf4] via-white to-[#ecfdf5]">
+      <section className="responsive-section py-28 bg-gradient-to-br from-[#f0fdf4] via-white to-[#ecfdf5]">
         <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -353,7 +353,7 @@ export default function PartnerHub() {
       </section>
 
       {/* Partnership Application Form */}
-      <section id="partner-form" className="py-20 px-6 bg-[#f8fafc] scroll-mt-20">
+      <section id="partner-form" className="responsive-section py-20 bg-[#f8fafc] scroll-mt-20">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -438,7 +438,7 @@ export default function PartnerHub() {
                           fullName: e.target.value,
                         })
                       }
-                      className={`w-full px-4 py-1 rounded-lg border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
+                      className={`w-full px-4 py-1.5 rounded-xl border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
                         errors.fullName
                           ? "border-red-500 focus:ring-red-500"
                           : "border-slate-200 focus:ring-emerald-500"
@@ -462,7 +462,7 @@ export default function PartnerHub() {
                       onChange={(e) =>
                         setFormData({ ...formData, company: e.target.value })
                       }
-                      className={`w-full px-4 py-1 rounded-lg border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
+                      className={`w-full px-4 py-1.5 rounded-xl border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
                         errors.company
                           ? "border-red-500 focus:ring-red-500"
                           : "border-slate-200 focus:ring-emerald-500"
@@ -486,7 +486,7 @@ export default function PartnerHub() {
                       onChange={(e) =>
                         setFormData({ ...formData, email: e.target.value })
                       }
-                      className={`w-full px-4 py-1 rounded-lg border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
+                      className={`w-full px-4 py-1.5 rounded-xl border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
                         errors.email
                           ? "border-red-500 focus:ring-red-500"
                           : "border-slate-200 focus:ring-emerald-500"
@@ -515,7 +515,7 @@ export default function PartnerHub() {
                         );
                         setFormData({ ...formData, phone: value });
                       }}
-                      className={`w-full px-4 py-1 rounded-lg border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
+                      className={`w-full px-4 py-1.5 rounded-xl border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
                         errors.phone
                           ? "border-red-500 focus:ring-red-500"
                           : "border-slate-200 focus:ring-emerald-500"
@@ -608,7 +608,7 @@ export default function PartnerHub() {
                       onChange={(e) =>
                         setFormData({ ...formData, message: e.target.value })
                       }
-                      className={`w-full px-4 py-1.5 rounded-lg border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all resize-none ${
+                      className={`w-full px-4 py-2 rounded-xl border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all resize-none ${
                         errors.message
                           ? "border-red-500 focus:ring-red-500"
                           : "border-slate-200 focus:ring-emerald-500"

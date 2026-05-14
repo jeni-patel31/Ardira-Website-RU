@@ -41,7 +41,7 @@ export default function ContactCta({
     }
   };
   return (
-    <section className="py-28 px-6 relative overflow-hidden">
+    <section className="responsive-section py-28 relative overflow-hidden">
       {/* Background with reversed hero gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-white via-white to-[#f0fdf4]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_40%_at_50%_110%,rgba(34,197,94,0.12),transparent)] pointer-events-none" />

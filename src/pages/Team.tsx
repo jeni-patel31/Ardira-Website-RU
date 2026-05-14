@@ -112,7 +112,7 @@ export default function About() {
       <StructuredData type="Organization" />
 
       {/* Hero */}
-      <section className="pt-20 pb-20 bg-linear-to-br from-[#f0fdf4] via-white to-[#ecfdf5] relative overflow-hidden" style={{ paddingLeft: "48px", paddingRight: "48px" }}>
+      <section className="responsive-section pt-20 pb-20 bg-linear-to-br from-[#f0fdf4] via-white to-[#ecfdf5] relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_-5%,rgba(34,197,94,0.12),transparent)] pointer-events-none" />
         <div style={{ maxWidth: "var(--max-width)", margin: "0 auto", position: "relative", zIndex: 10 }}>
           {/* Badge */}
@@ -174,7 +174,7 @@ export default function About() {
       </section>
 
       {/* Mission */}
-      <section className="py-24 bg-[#f8fafc]" style={{ paddingLeft: "48px", paddingRight: "48px" }}>
+      <section className="responsive-section py-24 bg-[#f8fafc]">
         <div style={{ maxWidth: "var(--max-width)", margin: "0 auto" }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "64px", alignItems: "center" }}>
             <motion.div
@@ -229,7 +229,7 @@ export default function About() {
       </section>
 
       {/* Team */}
-      <section className="py-20" style={{ paddingLeft: "48px", paddingRight: "48px" }}>
+      <section className="responsive-section py-20">
         <div style={{ maxWidth: "var(--max-width)", margin: "0 auto" }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -280,7 +280,7 @@ export default function About() {
       </section>
 
       {/* Advisory Board */}
-      <section className="py-16 border-t border-slate-100" style={{ paddingLeft: "48px", paddingRight: "48px" }}>
+      <section className="responsive-section py-16 border-t border-slate-100">
         <div style={{ maxWidth: "var(--max-width)", margin: "0 auto" }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}

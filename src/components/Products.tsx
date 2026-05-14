@@ -5,6 +5,7 @@ import fvImageLogo from "@assets/ProductLogo/FormVistaLogo.webp";
 import cvImageLogo from "@assets/ProductLogo/ComplainceVistaLogo.webp";
 import avImageLogo from "@assets/ProductLogo/AgentVistaLogo.webp";
 import rvImageLogo from "@assets/ProductLogo/RelationshipVistaLogo.webp";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import svLogo from "@assets/ProductsIcon/SVLogo.webp";
 import fvLogo from "@assets/ProductsIcon/FVLogo.webp";
 import cvLogo from "@assets/ProductsIcon/CVLogo.webp";
@@ -160,13 +161,25 @@ function Products() {
     setActiveTab(key);
     setAutoIdx(productKeys.indexOf(key));
   };
+
+  const handlePrev = () => {
+    const prevIdx = (autoIdx - 1 + productKeys.length) % productKeys.length;
+    handleTab(productKeys[prevIdx]);
+  };
+
+  const handleNext = () => {
+    const nextIdx = (autoIdx + 1) % productKeys.length;
+    handleTab(productKeys[nextIdx]);
+  };
+
   const cur = products[activeTab];
   const meta = productMeta[activeTab];
 
   return (
     <section
       id="products"
-      style={{ padding: "80px 40px 60px", background: "#fff" }}
+      className="responsive-section"
+      style={{ paddingTop: 80, paddingBottom: 60, background: "#fff" }}
     >
       <div style={{ maxWidth: "var(--max-width)", margin: "0 auto" }}>
         <div
@@ -260,41 +273,50 @@ function Products() {
                   flex: 1,
                 }}
               >
-                <img
-                  src={productMeta[key].icon}
-                  alt={productMeta[key].name}
-                  style={{
-                    width: 36,
-                    height: 36,
-                    objectFit: "contain",
-                    flexShrink: 0,
-                  }}
-                />
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <div
-                    className="tab-title"
+                <div className="carousel-nav-btn" style={{ left: 10 }} onClick={(e) => { e.stopPropagation(); handlePrev(); }}>
+                  <ChevronLeft size={20} />
+                </div>
+                <div className="carousel-nav-btn" style={{ right: 10 }} onClick={(e) => { e.stopPropagation(); handleNext(); }}>
+                  <ChevronRight size={20} />
+                </div>
+                
+                <div style={{ display: "flex", alignItems: "center", gap: 12, margin: "0 auto" }}>
+                  <img
+                    src={productMeta[key].icon}
+                    alt={productMeta[key].name}
                     style={{
-                      fontSize: 13,
-                      fontWeight: 700,
-                      color: "var(--text-primary)",
-                      marginBottom: 2,
-                      whiteSpace: "nowrap",
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
+                      width: 36,
+                      height: 36,
+                      objectFit: "contain",
+                      flexShrink: 0,
                     }}
-                  >
-                    {productMeta[key].name}
-                  </div>
-                  <div
-                    style={{
-                      fontSize: 11,
-                      color: "var(--text-muted)",
-                      whiteSpace: "nowrap",
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
-                    }}
-                  >
-                    {productMeta[key].subtitle}
+                  />
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div
+                      className="tab-title"
+                      style={{
+                        fontSize: 13,
+                        fontWeight: 700,
+                        color: "var(--text-primary)",
+                        marginBottom: 2,
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                      }}
+                    >
+                      {productMeta[key].name}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: 11,
+                        color: "var(--text-muted)",
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                      }}
+                    >
+                      {productMeta[key].subtitle}
+                    </div>
                   </div>
                 </div>
               </button>
@@ -340,6 +362,7 @@ function Products() {
 
               {/* Content Split */}
               <div
+                className="product-content-grid"
                 style={{
                   display: "grid",
                   gridTemplateColumns: "1.2fr 1fr",
@@ -400,6 +423,7 @@ function Products() {
                 </ul>
               </div>
               <div
+                className="product-actions-row"
                 style={{
                   display: "flex",
                   alignItems: "center",
@@ -434,6 +458,7 @@ function Products() {
                   Visit {meta.name} →
                 </a>
                 <div
+                  className="native-badge"
                   style={{
                     display: "inline-flex",
                     alignItems: "center",

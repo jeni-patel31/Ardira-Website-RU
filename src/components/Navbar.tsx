@@ -1,9 +1,16 @@
+import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import ArdiraLogo from "@assets/ArdiraLogo.webp";
+import { Menu, X } from "lucide-react";
 
 function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const href = e.currentTarget.getAttribute("href");
@@ -24,10 +31,12 @@ function Navbar() {
     } else {
       window.scrollTo(0, 0);
     }
+    setIsMenuOpen(false);
   };
 
   return (
     <nav
+      className="responsive-nav"
       style={{
         position: "sticky",
         top: 0,
@@ -35,7 +44,6 @@ function Navbar() {
         background: "rgba(255,255,255,0.97)",
         backdropFilter: "blur(12px)",
         borderBottom: "1px solid var(--border-color)",
-        padding: "0 48px",
         height: 70,
       }}
     >
@@ -147,7 +155,24 @@ function Navbar() {
               Book Demo
             </Link>
           </li>
+          <li className="hamburger-btn">
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              style={{ background: "none", border: "none", cursor: "pointer", display: "flex", alignItems: "center", color: "var(--navy)" }}
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </li>
         </ul>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      <div className={`mobile-menu-overlay${isMenuOpen ? " open" : ""}`}>
+        <Link to="/#products" className="mobile-nav-link" onClick={handleLinkClick}>Products</Link>
+        <Link to="/#features" className="mobile-nav-link" onClick={handleLinkClick}>Why Native</Link>
+        <Link to="/team" className="mobile-nav-link" onClick={handleLinkClick}>Company</Link>
+        <Link to="/partner-hub" className="mobile-nav-link" onClick={handleLinkClick}>Partner Hub</Link>
+        <Link to="/#contact" className="mobile-nav-link" onClick={handleLinkClick} style={{ color: "var(--primary-green)" }}>Book Demo</Link>
       </div>
     </nav>
   );

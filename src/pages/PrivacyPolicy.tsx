@@ -13,7 +13,7 @@ export default function PrivacyPolicy() {
         ogUrl="https://ardira.com/privacy-policy"
       />
       <StructuredData type="WebPage" name="Privacy Policy" description="Ardira's Privacy Policy." url="https://ardira.com/privacy-policy" />
-      <main className="flex-grow w-full" style={{ padding: "0 48px" }}>
+      <main className="flex-grow w-full responsive-section">
         <div style={{
           maxWidth: "var(--max-width)",
           margin: "0 auto",

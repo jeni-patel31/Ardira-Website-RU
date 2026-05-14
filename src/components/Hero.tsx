@@ -3,10 +3,12 @@ import AppExchangeImg from "@assets/AppExchange.webp";
 function Hero() {
   return (
     <section
+      className="responsive-section"
       style={{
         position: "relative",
         overflow: "hidden",
-        padding: "60px 20px 60px",
+        paddingTop: 60,
+        paddingBottom: 60,
         background: "linear-gradient(135deg, #f0fdf4 0%, white 50%, #ecfdf5 100%)",
         textAlign: "center",
         minHeight: "auto",

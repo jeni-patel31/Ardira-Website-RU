@@ -16,7 +16,7 @@ const inputStyle: React.CSSProperties = {
   fontSize: 14,
   padding: "12px 14px",
   border: "1.5px solid var(--border-color)",
-  borderRadius: 8,
+  borderRadius: 12,
   background: "#fff",
   color: "var(--text-primary)",
   outline: "none",
@@ -101,8 +101,10 @@ function Contact() {
   return (
     <section
       id="contact"
+      className="responsive-section"
       style={{
-        padding: "80px 40px",
+        paddingTop: 80,
+        paddingBottom: 80,
         background: "#fff",
         borderTop: "1px solid var(--border-color)",
       }}
@@ -469,12 +471,15 @@ function Contact() {
                       color: "var(--text-primary)",
                     }}
                   >
-                    Phone
+                    Phone <span style={{ color: "#ef4444" }}>*</span>
                   </label>
                   <input
                     className="form-input"
                     name="phone"
                     type="tel"
+                    required
+                    pattern="[0-9+()\-\s]{7,}"
+                    title="Please enter a valid phone number (at least 7 digits)."
                     placeholder="+1 (000) 000-0000"
                     value={formData.phone}
                     onChange={handleChange}
@@ -521,21 +526,32 @@ function Contact() {
                 >
                   Product of Interest
                 </label>
-                <select
-                  className="form-select"
-                  name="product"
+                <Select
                   value={formData.product}
-                  onChange={handleChange}
-                  style={inputStyle}
+                  onValueChange={(val) => setFormData(prev => ({ ...prev, product: val }))}
                 >
-                  <option value="">Select a product...</option>
-                  <option value="surveyvista">SurveyVista</option>
-                  <option value="formvista">FormVista</option>
-                  <option value="compliancevista">ComplianceVista</option>
-                  <option value="agentvista">AgentVista</option>
-                  <option value="relationshipvista">RelationshipVista</option>
-                  <option value="general">All Products/General enquiry</option>
-                </select>
+                  <SelectTrigger 
+                    className="form-select-trigger"
+                    style={{
+                      ...inputStyle,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      height: "auto",
+                      padding: "12px 14px",
+                    }}
+                  >
+                    <SelectValue placeholder="Select a product..." />
+                  </SelectTrigger>
+                  <SelectContent className="form-select-content">
+                    <SelectItem value="surveyvista">SurveyVista</SelectItem>
+                    <SelectItem value="formvista">FormVista</SelectItem>
+                    <SelectItem value="compliancevista">ComplianceVista</SelectItem>
+                    <SelectItem value="agentvista">AgentVista</SelectItem>
+                    <SelectItem value="relationshipvista">RelationshipVista</SelectItem>
+                    <SelectItem value="general">All Products/General enquiry</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
               <div
                 style={{

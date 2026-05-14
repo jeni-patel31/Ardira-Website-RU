@@ -9,10 +9,12 @@ function Footer() {
 
   return (
     <footer
+      className="responsive-section"
       style={{
         background: "var(--navy)",
         color: "rgba(255,255,255,0.85)",
-        padding: "60px 48px 32px",
+        paddingTop: 60,
+        paddingBottom: 32,
         borderTop: "1px solid rgba(255,255,255,0.08)",
       }}
     >
@@ -291,6 +293,7 @@ function Footer() {
         >
           <Link
             to="/privacy-policy"
+            onClick={handleLinkClick}
             style={{
               fontSize: 12.5,
               color: "rgba(255,255,255,0.35)",
@@ -302,6 +305,7 @@ function Footer() {
           </Link>
           <Link
             to="/terms-of-service"
+            onClick={handleLinkClick}
             style={{
               fontSize: 12.5,
               color: "rgba(255,255,255,0.35)",

@@ -103,8 +103,10 @@ function Features() {
   return (
     <section
       id="features"
+      className="responsive-section"
       style={{
-        padding: "80px 48px",
+        paddingTop: 80,
+        paddingBottom: 80,
         background: "var(--bg-light)",
         borderTop: "1px solid var(--border-color)",
         display: "flex",

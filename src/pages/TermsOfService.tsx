@@ -13,7 +13,7 @@ export default function Terms() {
         ogUrl="https://ardira.com/terms-of-service"
       />
       <StructuredData type="WebPage" name="Terms of Service" description="Ardira's Terms of Service." url="https://ardira.com/terms-of-service" />
-      <main className="flex-grow w-full" style={{ padding: "0 48px" }}>
+      <main className="flex-grow w-full responsive-section">
         <div style={{
           maxWidth: "var(--max-width)",
           margin: "0 auto",

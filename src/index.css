@@ -402,8 +402,29 @@ html {
   font-weight: 600;
 }
 
-/* Responsive */
+/* Responsive Global Classes */
+.responsive-section {
+  padding-left: 48px !important;
+  padding-right: 48px !important;
+}
+.responsive-nav {
+  padding-left: 48px !important;
+  padding-right: 48px !important;
+}
+
 @media (max-width: 1024px) {
+  .responsive-section {
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+  }
+  .responsive-nav {
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+  }
+  .product-content-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
   .product-tabs-grid {
     grid-template-columns: 1fr !important;
   }
@@ -421,6 +442,16 @@ html {
   .tab-btn.active {
     box-shadow: inset 0 -3px 0 var(--primary-green);
   }
+  .tabs-list-row .tab-btn:not(.active) {
+    display: none !important;
+  }
+  .tabs-list-row .tab-btn.active {
+    display: flex !important;
+    width: 100% !important;
+    justify-content: center !important;
+    position: relative !important;
+    border-right: none !important;
+  }
   .contact-grid {
     grid-template-columns: 1fr !important;
   }
@@ -434,12 +465,60 @@ html {
     grid-template-columns: 1fr !important;
   }
 }
+
+/* Mobile Menu */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 70px);
+  background: white;
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  gap: 24px;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+}
+.mobile-menu-overlay.open {
+  transform: translateX(0);
+}
+.mobile-nav-link {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--navy);
+  text-decoration: none;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-color);
+}
+.hamburger-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--navy);
+}
+
 @media (max-width: 900px) {
   .nav-hide-mobile {
     display: none !important;
   }
+  .hamburger-btn {
+    display: block !important;
+  }
 }
+
 @media (max-width: 768px) {
+  .responsive-section {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .responsive-nav {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
   .hero-buttons-col {
     flex-direction: column;
     width: 100%;
@@ -461,20 +540,85 @@ html {
     grid-template-columns: 1fr !important;
   }
   .footer-grid {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: 1fr 1fr !important;
+    text-align: center;
+    gap: 56px 20px !important;
+  }
+  .footer-grid > div:first-child img {
+    margin: 0 auto;
+    height: 32px !important;
+  }
+  .footer-grid > div:first-child,
+  .footer-grid > div:last-child {
+    grid-column: span 2;
+  }
+  .footer-col {
+    padding-right: 0 !important;
+    justify-self: center !important;
+    align-items: center !important;
+    display: flex;
+    flex-direction: column;
+  }
+  .footer-col ul {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
   }
   .footer-bottom-col {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
   }
   .footer-links-col {
     flex-direction: column;
     gap: 12px;
+    align-items: center;
+  }
+  /* Product panel actions fix */
+  .product-actions-row {
+    flex-direction: column !important;
+    gap: 16px !important;
+    align-items: center !important;
+    text-align: center;
+  }
+  .product-actions-row .btn-primary {
+    width: 100%;
+    padding: 12px 20px !important;
+    font-size: 14px !important;
+  }
+  .product-actions-row .native-badge {
+    padding: 6px 12px !important;
+    font-size: 12px !important;
   }
   .stats-grid {
     gap: 24px !important;
   }
 }
+
+/* Product Carousel Mobile Arrows */
+.carousel-nav-btn {
+  display: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+  z-index: 5;
+  cursor: pointer;
+  color: var(--primary-green);
+}
+@media (max-width: 1024px) {
+  .carousel-nav-btn {
+    display: flex;
+  }
+}
+
 @media (max-width: 480px) {
   .stats-grid {
     grid-template-columns: 1fr !important;
