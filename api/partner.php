@@ -201,14 +201,14 @@ function sendMail($to, $cc, $subject, $body, $smtpUser, $smtpPass, $replyToEmail
         return "PHPMailer library is not loaded. Make sure composer dependencies are installed.";
     }
 
-    $mail = new PHPMailer\PHPMailer\PHPMailer(true);
+    $mail = new PHPMailer(true);
     try {
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
         $mail->Username   = $smtpUser;
         $mail->Password   = str_replace(' ', '', $smtpPass); 
-        $mail->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port       = 587;
 
         $mail->setFrom($smtpUser, 'Ardira Partnerships');
