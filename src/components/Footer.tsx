@@ -76,17 +76,21 @@ function Footer() {
           </h4>
           <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
             {[
-              { name: "SurveyVista", link: "https://surveyvista.com/" },
-              { name: "FormVista", link: "https://surveyvista.com/products/form-vista-business-forms/" },
-              { name: "ComplianceVista", link: "https://compliancevista.com" },
-              { name: "AgentVista", link: "https://agentsvista.com" },
-              { name: "RelationshipVista", link: "https://relationshipvista.com" },
+              { name: "SurveyVista", key: "surveyvista" },
+              { name: "FormVista", key: "formvista" },
+              { name: "ComplianceVista", key: "compliancevista" },
+              { name: "AgentVista", key: "agentvista" },
+              { name: "RelationshipVista", key: "relationshipvista" },
             ].map((p) => (
               <li key={p.name} style={{ marginBottom: 12 }}>
-                <a
-                  href={p.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  to={`/?product=${p.key}#products`}
+                  onClick={() => {
+                    const element = document.getElementById("products");
+                    if (element) {
+                      element.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }}
                   className="footer-col"
                   style={{
                     fontSize: 13.5,
@@ -96,7 +100,7 @@ function Footer() {
                   }}
                 >
                   {p.name}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

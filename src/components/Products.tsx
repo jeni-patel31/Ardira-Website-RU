@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import svImageLogo from "@assets/ProductLogo/SurveyVistaLogo.webp";
 import fvImageLogo from "@assets/ProductLogo/FormVistaLogo.webp";
 import cvImageLogo from "@assets/ProductLogo/ComplainceVistaLogo.webp";
@@ -131,8 +132,18 @@ const productMeta: Record<
 const productKeys = Object.keys(products) as ProductKey[];
 
 function Products() {
+  const location = useLocation();
   const [activeTab, setActiveTab] = useState<ProductKey>("surveyvista");
   const [autoIdx, setAutoIdx] = useState(0);
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const productParam = params.get("product") as ProductKey | null;
+    if (productParam && productKeys.includes(productParam)) {
+      setActiveTab(productParam);
+      setAutoIdx(productKeys.indexOf(productParam));
+    }
+  }, [location.search]);
 
   useEffect(() => {
     const timer = setInterval(() => {
