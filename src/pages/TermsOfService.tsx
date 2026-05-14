@@ -64,17 +64,23 @@ export default function Terms() {
               conditions applicable to our products and services.
             </p>
             <p className="mb-4">
-              We do not warrant the accuracy, completeness, or usefulness of
-              this information at any particular time. Any reliance you place on
-              such information is strictly at your own risk. The Company
-              disclaims all liability and responsibility arising from any
-              reliance placed on such content by you or any other visitor to our
-              Website, or by anyone who may be informed of any of its contents.
-              Any information you provide or that is collected by the Company
-              through the Website shall be handled in accordance with the
-              Website's Privacy Policy, which is hereby incorporated by
-              reference.
-            </p>
+                We do not warrant the accuracy, completeness, or usefulness of
+                this information at any particular time. Any reliance you place
+                on such information is strictly at your own risk. The Company
+                disclaims all liability and responsibility arising from any
+                reliance placed on such content by you or any other visitor to
+                our Website, or by anyone who may be informed of any of its
+                contents. Any information you provide or that is collected by
+                the Company through the Website shall be handled in accordance
+                with the Website's{" "}
+                <a
+                  href="/privacy-policy"
+                  className="text-emerald-600 hover:text-emerald-700 underline"
+                >
+                  Privacy Policy
+                </a>
+                , which is hereby incorporated by reference.
+              </p>
           </section>
 
           <section>

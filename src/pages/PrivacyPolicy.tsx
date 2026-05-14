@@ -26,18 +26,45 @@ export default function PrivacyPolicy() {
           <section>
             <h2 className="text-xl md:text-2xl font-semibold text-[#0f172a] mb-4">Privacy Notice</h2>
             <p className="mb-4">
-              The website located at <a
-                href="https://ardira.com"
-                className="text-emerald-600 hover:text-emerald-700 underline"
-              >
-                ardira.com
-              </a>, (the "Website") is published, owned, and operated by Ardira Corporation, its affiliates and related entities ("Ardira," "the Company," "we," "us," and "our"). Ardira respects your privacy and is committed to protecting your privacy through our compliance with this website privacy policy (the "Policy"). This Policy should be read in conjunction with our website Terms of Use, into which this Policy is incorporated by reference.
-            </p>
+                The website located at{" "}
+                <a
+                  href="https://ardira.com"
+                  className="text-emerald-600 hover:text-emerald-700 underline"
+                >
+                  ardira.com
+                </a>
+                , (the "Website") is published, owned, and operated by Ardira
+                Corporation, its affiliates and related entities ("Ardira," "the
+                Company," "we," "us," and "our"). Ardira respects your privacy
+                and is committed to protecting your privacy through our
+                compliance with this website privacy policy (the "Policy"). This
+                Policy should be read in conjunction with our website{" "}
+                <a
+                  href="/terms-of-use"
+                  className="text-emerald-600 hover:text-emerald-700 underline"
+                >
+                  Terms of Use
+                </a>
+                , into which this Policy is incorporated by reference.
+              </p>
             <p className="font-semibold text-slate-800 mb-2">This Policy describes:</p>
             <ul className="list-disc pl-6 space-y-2 mb-4">
-              <li>The types of information we collect from you or that you may provide when you visit our website available at: ardira.com ("our Website").</li>
-              <li>Our practices for collecting, using, maintaining, protecting, and disclosing that information.</li>
-            </ul>
+                <li>
+                  The types of information we collect from you or that you may
+                  provide when you visit our website available at:{" "}
+                  <a
+                    href="https://ardira.com"
+                    className="text-emerald-600 hover:text-emerald-700 underline"
+                  >
+                    ardira.com
+                  </a>{" "}
+                  ("our Website").
+                </li>
+                <li>
+                  Our practices for collecting, using, maintaining, protecting,
+                  and disclosing that information.
+                </li>
+              </ul>
             <p className="mb-4">
               Please read this Policy carefully to understand our practices regarding your information and how we will treat it. If you do not agree with our policies and practices, then please do not use our Website. By using our Website, you agree to the terms of this Policy. This Policy may change from time to time (see below, "Changes to this Policy"). Your continued use of our Website after we make changes is deemed to be acceptance of those changes, so please check the Policy periodically for updates.
             </p>
