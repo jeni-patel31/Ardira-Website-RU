@@ -78,7 +78,6 @@ function Contact() {
         product: "",
         message: "",
       });
-      setTimeout(() => setSubmitted(false), 5000);
     } catch (error) {
       console.error("Contact form submission error:", error);
       setSubmitError(
@@ -286,275 +285,341 @@ function Contact() {
             ></iframe>
           </div>
         </div>
-        <form
-          onSubmit={handleSubmit}
-          style={{
-            background: "var(--bg-light)",
-            border: "1.5px solid var(--border-color)",
-            borderRadius: 12,
-            padding: 32,
-            boxShadow: "var(--shadow-sm)",
-            display: "flex",
-            flexDirection: "column",
-            alignSelf: "flex-start",
-            alignItems: "stretch",
-            marginTop: 32,
-            gap: 0,
-          }}
-        >
-          <h3
-            style={{
-              fontSize: 22,
-              fontWeight: 800,
-              color: "var(--navy)",
-              marginBottom: 4,
-              letterSpacing: "-0.01em",
-            }}
-          >
-            Fill out the form and we'll be in touch shortly!
-          </h3>
-          <p
-            style={{
-              fontSize: 14,
-              fontWeight: 400,
-              color: "var(--text-secondary)",
-              marginBottom: 24,
-            }}
-          >
-            Fields marked with <span style={{ color: "#ef4444" }}>*</span> are
-            mandatory.
-          </p>
-          <div
-            className="form-row-grid"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: 16,
-              marginBottom: 16,
-            }}
-          >
-            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-              <label
-                style={{
-                  fontSize: 13,
-                  fontWeight: 600,
-                  color: "var(--text-primary)",
-                }}
-              >
-                Full Name <span style={{ color: "#ef4444" }}>*</span>
-              </label>
-              <input
-                className="form-input"
-                name="name"
-                type="text"
-                placeholder="Your name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                style={inputStyle}
-              />
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-              <label
-                style={{
-                  fontSize: 13,
-                  fontWeight: 600,
-                  color: "var(--text-primary)",
-                }}
-              >
-                Email <span style={{ color: "#ef4444" }}>*</span>
-              </label>
-              <input
-                className="form-input"
-                name="email"
-                type="email"
-                pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$"
-                title="Please enter a valid email address."
-                placeholder="your@email.com"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                style={inputStyle}
-              />
-            </div>
-          </div>
-          <div
-            className="form-row-grid"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: 16,
-              marginBottom: 16,
-            }}
-          >
-            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-              <label
-                style={{
-                  fontSize: 13,
-                  fontWeight: 600,
-                  color: "var(--text-primary)",
-                }}
-              >
-                Phone
-              </label>
-              <input
-                className="form-input"
-                name="phone"
-                type="tel"
-                placeholder="+1 (000) 000-0000"
-                value={formData.phone}
-                onChange={handleChange}
-                style={inputStyle}
-              />
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-              <label
-                style={{
-                  fontSize: 13,
-                  fontWeight: 600,
-                  color: "var(--text-primary)",
-                }}
-              >
-                Company
-              </label>
-              <input
-                className="form-input"
-                name="company"
-                type="text"
-                placeholder="Your company"
-                value={formData.company}
-                onChange={handleChange}
-                style={inputStyle}
-              />
-            </div>
-          </div>
+        {submitted ? (
           <div
             style={{
+              background: "#ecfdf5",
+              border: "1px solid #a7f3d0",
+              borderRadius: 16,
+              padding: "48px 32px",
               display: "flex",
               flexDirection: "column",
-              gap: 8,
-              marginBottom: 12,
-            }}
-          >
-            <label
-              style={{
-                fontSize: 13,
-                fontWeight: 600,
-                color: "var(--text-primary)",
-              }}
-            >
-              Product of Interest
-            </label>
-            <select
-              className="form-select"
-              name="product"
-              value={formData.product}
-              onChange={handleChange}
-              style={inputStyle}
-            >
-              <option value="">Select a product...</option>
-              <option value="surveyvista">SurveyVista</option>
-              <option value="formvista">FormVista</option>
-              <option value="compliancevista">ComplianceVista</option>
-              <option value="agentvista">AgentVista</option>
-              <option value="relationshipvista">RelationshipVista</option>
-              <option value="general">All Products/General enquiry</option>
-            </select>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: 8,
-              marginBottom: 16,
-            }}
-          >
-            <label
-              style={{
-                fontSize: 13,
-                fontWeight: 600,
-                color: "var(--text-primary)",
-              }}
-            >
-              Message
-            </label>
-            <textarea
-              className="form-textarea"
-              name="message"
-              placeholder="Tell us about your salesforce use case or what you're looking to achieve"
-              value={formData.message}
-              onChange={handleChange}
-              style={{
-                ...inputStyle,
-                resize: "none" as const,
-                minHeight: 100,
-                maxHeight: 140,
-              }}
-            />
-          </div>
-          {submitError && (
-            <div
-              style={{
-                padding: "12px 16px",
-                background: "#fef2f2",
-                border: "1px solid #fecaca",
-                borderRadius: 8,
-                fontSize: 13,
-                color: "#dc2626",
-                marginBottom: 8,
-              }}
-            >
-              {submitError}
-            </div>
-          )}
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="btn-primary"
-            style={{
-              width: "100%",
-              marginTop: 8,
-              display: "inline-flex",
               alignItems: "center",
               justifyContent: "center",
-              gap: 8,
-              fontFamily: "var(--font-family)",
-              fontSize: 15,
-              fontWeight: 600,
-              padding: "13px 34px",
-              borderRadius: 8,
-              background: isSubmitting ? "#94a3b8" : "var(--primary-green)",
-              color: "#fff",
-              boxShadow: "0 4px 14px rgba(57,180,74,0.3)",
-              border: "2px solid transparent",
-              cursor: isSubmitting ? "not-allowed" : "pointer",
-              transition: "var(--transition)",
-            }}
-          >
-            {submitted ? "✓ Message Sent!" : isSubmitting ? "Sending..." : "Send Message"}
-          </button>
-          <p
-            style={{
-              fontSize: 12,
-              color: "var(--text-muted)",
-              marginTop: 16,
+              alignSelf: "flex-start",
+              marginTop: 32,
+              width: "100%",
               textAlign: "center",
+              boxShadow: "0 10px 25px -5px rgba(16, 185, 129, 0.05)",
             }}
           >
-            We're committed to your{" "}
-            <Link
-              to="/privacy-policy"
+            <div
               style={{
-                color: "var(--primary-green)",
-                textDecoration: "underline",
+                display: "inline-flex",
+                padding: 16,
+                borderRadius: "50%",
+                background: "#d1fae5",
+                marginBottom: 20,
               }}
             >
-              privacy
-            </Link>
-            . We will never share your data.
-          </p>
-          <RecaptchaBadge />
-        </form>
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#10b981"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                <polyline points="22 4 12 14.01 9 11.01" />
+              </svg>
+            </div>
+            <h3
+              style={{
+                fontSize: 24,
+                fontWeight: 800,
+                color: "#0f172a",
+                marginBottom: 12,
+                letterSpacing: "-0.01em",
+              }}
+            >
+              Message Sent Successfully!
+            </h3>
+            <p
+              style={{
+                fontSize: 15,
+                color: "#64748b",
+                lineHeight: 1.6,
+                maxWidth: 400,
+                margin: "0 auto",
+              }}
+            >
+              Thank you for getting in touch. One of our representatives will review your message and reach out to you shortly.
+            </p>
+          </div>
+        ) : (
+          <form
+            onSubmit={handleSubmit}
+            style={{
+              background: "var(--bg-light)",
+              border: "1.5px solid var(--border-color)",
+              borderRadius: 12,
+              padding: 32,
+              boxShadow: "var(--shadow-sm)",
+              display: "flex",
+              flexDirection: "column",
+              alignSelf: "flex-start",
+              alignItems: "stretch",
+              marginTop: 32,
+              gap: 0,
+            }}
+          >
+            <h3
+              style={{
+                fontSize: 22,
+                fontWeight: 800,
+                color: "var(--navy)",
+                marginBottom: 4,
+                letterSpacing: "-0.01em",
+              }}
+            >
+              Fill out the form and we'll be in touch shortly!
+            </h3>
+            <p
+              style={{
+                fontSize: 14,
+                fontWeight: 400,
+                color: "var(--text-secondary)",
+                marginBottom: 24,
+              }}
+            >
+              Fields marked with <span style={{ color: "#ef4444" }}>*</span> are
+              mandatory.
+            </p>
+            <div
+              className="form-row-grid"
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: 16,
+                marginBottom: 16,
+              }}
+            >
+              <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                <label
+                  style={{
+                    fontSize: 13,
+                    fontWeight: 600,
+                    color: "var(--text-primary)",
+                  }}
+                >
+                  Full Name <span style={{ color: "#ef4444" }}>*</span>
+                </label>
+                <input
+                  className="form-input"
+                  name="name"
+                  type="text"
+                  placeholder="Your name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  style={inputStyle}
+                />
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                <label
+                  style={{
+                    fontSize: 13,
+                    fontWeight: 600,
+                    color: "var(--text-primary)",
+                  }}
+                >
+                  Email <span style={{ color: "#ef4444" }}>*</span>
+                </label>
+                <input
+                  className="form-input"
+                  name="email"
+                  type="email"
+                  pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$"
+                  title="Please enter a valid email address."
+                  placeholder="your@email.com"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  style={inputStyle}
+                />
+              </div>
+            </div>
+            <div
+              className="form-row-grid"
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: 16,
+                marginBottom: 16,
+              }}
+            >
+              <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                <label
+                  style={{
+                    fontSize: 13,
+                    fontWeight: 600,
+                    color: "var(--text-primary)",
+                  }}
+                >
+                  Phone
+                </label>
+                <input
+                  className="form-input"
+                  name="phone"
+                  type="tel"
+                  placeholder="+1 (000) 000-0000"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  style={inputStyle}
+                />
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                <label
+                  style={{
+                    fontSize: 13,
+                    fontWeight: 600,
+                    color: "var(--text-primary)",
+                  }}
+                >
+                  Company
+                </label>
+                <input
+                  className="form-input"
+                  name="company"
+                  type="text"
+                  placeholder="Your company"
+                  value={formData.company}
+                  onChange={handleChange}
+                  style={inputStyle}
+                />
+              </div>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 8,
+                marginBottom: 12,
+              }}
+            >
+              <label
+                style={{
+                  fontSize: 13,
+                  fontWeight: 600,
+                  color: "var(--text-primary)",
+                }}
+              >
+                Product of Interest
+              </label>
+              <select
+                className="form-select"
+                name="product"
+                value={formData.product}
+                onChange={handleChange}
+                style={inputStyle}
+              >
+                <option value="">Select a product...</option>
+                <option value="surveyvista">SurveyVista</option>
+                <option value="formvista">FormVista</option>
+                <option value="compliancevista">ComplianceVista</option>
+                <option value="agentvista">AgentVista</option>
+                <option value="relationshipvista">RelationshipVista</option>
+                <option value="general">All Products/General enquiry</option>
+              </select>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 8,
+                marginBottom: 16,
+              }}
+            >
+              <label
+                style={{
+                  fontSize: 13,
+                  fontWeight: 600,
+                  color: "var(--text-primary)",
+                }}
+              >
+                Message
+              </label>
+              <textarea
+                className="form-textarea"
+                name="message"
+                placeholder="Tell us about your salesforce use case or what you're looking to achieve"
+                value={formData.message}
+                onChange={handleChange}
+                style={{
+                  ...inputStyle,
+                  resize: "none" as const,
+                  minHeight: 100,
+                  maxHeight: 140,
+                }}
+              />
+            </div>
+            {submitError && (
+              <div
+                style={{
+                  padding: "12px 16px",
+                  background: "#fef2f2",
+                  border: "1px solid #fecaca",
+                  borderRadius: 8,
+                  fontSize: 13,
+                  color: "#dc2626",
+                  marginBottom: 8,
+                }}
+              >
+                {submitError}
+              </div>
+            )}
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="btn-primary"
+              style={{
+                width: "100%",
+                marginTop: 8,
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: 8,
+                fontFamily: "var(--font-family)",
+                fontSize: 15,
+                fontWeight: 600,
+                padding: "13px 34px",
+                borderRadius: 8,
+                background: isSubmitting ? "#94a3b8" : "var(--primary-green)",
+                color: "#fff",
+                boxShadow: "0 4px 14px rgba(57,180,74,0.3)",
+                border: "2px solid transparent",
+                cursor: isSubmitting ? "not-allowed" : "pointer",
+                transition: "var(--transition)",
+              }}
+            >
+              {isSubmitting ? "Sending..." : "Send Message"}
+            </button>
+            <p
+              style={{
+                fontSize: 12,
+                color: "var(--text-muted)",
+                marginTop: 16,
+                textAlign: "center",
+              }}
+            >
+              We're committed to your{" "}
+              <Link
+                to="/privacy-policy"
+                style={{
+                  color: "var(--primary-green)",
+                  textDecoration: "underline",
+                }}
+              >
+                privacy
+              </Link>
+              . We will never share your data.
+            </p>
+            <RecaptchaBadge />
+          </form>
+        )}
       </div>
       </div>
     </section>
