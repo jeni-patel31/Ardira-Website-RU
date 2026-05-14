@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -9,11 +9,44 @@ import PartnerHub from "./pages/PartnerHub";
 import Team from "./pages/Team";
 import NotFound from "./pages/NotFound";
 
+let isInitialAppLoad = true;
+
 function ScrollToTop() {
-  const { pathname, hash } = useLocation();
+  const { pathname, hash, state } = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (hash) {
+    let isReload = false;
+    if (isInitialAppLoad && typeof window !== "undefined" && window.performance) {
+      const navEntries = window.performance.getEntriesByType("navigation");
+      if (navEntries.length > 0) {
+        isReload = (navEntries[0] as PerformanceNavigationTiming).type === "reload";
+      } else {
+        isReload = window.performance.navigation.type === 1;
+      }
+    }
+
+    const wasReload = isReload && isInitialAppLoad;
+    isInitialAppLoad = false;
+
+    if (wasReload) {
+      if (window.location.pathname !== "/") {
+        navigate("/", { replace: true });
+      } else {
+        window.scrollTo(0, 0);
+      }
+      return;
+    }
+
+    const customState = state as { scrollTo?: string } | null;
+    if (customState?.scrollTo) {
+      setTimeout(() => {
+        const element = document.getElementById(customState.scrollTo!);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else if (hash) {
       // If there's a hash, find the element and scroll to it
       const element = document.getElementById(hash.replace('#', ''));
       if (element) {
@@ -25,7 +58,7 @@ function ScrollToTop() {
       // Otherwise scroll to top
       window.scrollTo(0, 0);
     }
-  }, [pathname, hash]);
+  }, [pathname, hash, state, navigate]);
 
   return null;
 }

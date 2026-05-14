@@ -3,6 +3,13 @@ import { Link } from "react-router-dom";
 import { useRecaptcha } from "@/hooks/useRecaptcha";
 import { RecaptchaBadge } from "@/components/RecaptchaBadge";
 import { CheckCircle } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const inputStyle: React.CSSProperties = {
   fontFamily: "var(--font-family)",
@@ -38,7 +45,7 @@ function Contact() {
   };
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!formData.name || !formData.email) return;
+    if (!formData.name || !formData.email || !formData.phone) return;
 
     setIsSubmitting(true);
     setSubmitError(null);
@@ -455,7 +462,7 @@ function Contact() {
                     color: "var(--text-primary)",
                   }}
                 >
-                  Phone
+                  Phone <span style={{ color: "#ef4444" }}>*</span>
                 </label>
                 <input
                   className="form-input"
@@ -464,6 +471,7 @@ function Contact() {
                   placeholder="+1 (000) 000-0000"
                   value={formData.phone}
                   onChange={handleChange}
+                  required
                   style={inputStyle}
                 />
               </div>
@@ -505,21 +513,33 @@ function Contact() {
               >
                 Product of Interest
               </label>
-              <select
-                className="form-select"
-                name="product"
+              <Select
                 value={formData.product}
-                onChange={handleChange}
-                style={inputStyle}
+                onValueChange={(value) =>
+                  setFormData((prev) => ({ ...prev, product: value }))
+                }
               >
-                <option value="">Select a product...</option>
-                <option value="surveyvista">SurveyVista</option>
-                <option value="formvista">FormVista</option>
-                <option value="compliancevista">ComplianceVista</option>
-                <option value="agentvista">AgentVista</option>
-                <option value="relationshipvista">RelationshipVista</option>
-                <option value="general">All Products/General enquiry</option>
-              </select>
+                <SelectTrigger
+                  className="form-select w-full"
+                  style={{
+                    ...inputStyle,
+                    height: "auto",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                  }}
+                >
+                  <SelectValue placeholder="Select a product..." />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="surveyvista">SurveyVista</SelectItem>
+                  <SelectItem value="formvista">FormVista</SelectItem>
+                  <SelectItem value="compliancevista">ComplianceVista</SelectItem>
+                  <SelectItem value="agentvista">AgentVista</SelectItem>
+                  <SelectItem value="relationshipvista">RelationshipVista</SelectItem>
+                  <SelectItem value="general">All Products/General enquiry</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
             <div
               style={{

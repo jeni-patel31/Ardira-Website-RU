@@ -1,29 +1,25 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import ArdiraLogo from "@assets/ArdiraLogo.webp";
 
 function Navbar() {
   const location = useLocation();
+  const navigate = useNavigate();
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const href = e.currentTarget.getAttribute("href");
     if (href && href.includes("#")) {
+      e.preventDefault();
       const hash = href.split("#")[1];
       const targetPath = href.split("#")[0] || "/";
 
       if (location.pathname === targetPath || (location.pathname === "/" && targetPath === "/")) {
-        e.preventDefault();
         const element = document.getElementById(hash);
         if (element) {
           element.scrollIntoView({ behavior: "smooth" });
         }
       } else {
-        // Let React Router navigate to the new page with hash
-        setTimeout(() => {
-          const element = document.getElementById(hash);
-          if (element) {
-            element.scrollIntoView({ behavior: "smooth" });
-          }
-        }, 100);
+        // Navigate cleanly to the target path without a hash in the URL string
+        navigate(targetPath, { state: { scrollTo: hash } });
       }
     } else {
       window.scrollTo(0, 0);
