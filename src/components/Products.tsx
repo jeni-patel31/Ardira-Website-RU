@@ -24,7 +24,7 @@ const products: Record<
 > = {
   surveyvista: {
     title:
-      "Turn every customer experience signal into results – inside Salesforce",
+      "Turn every customer experience signal into results – inside Salesforce.",
     description:
       "The 100% Salesforce-native Customer Intelligence & Action Platform. Every response writes directly to your CRM — AI triggers automated workflows instantly, preventing churn and surfacing revenue.",
     image: svImageLogo,
@@ -34,21 +34,21 @@ const products: Record<
       "Workflows fire on response receipt",
       "Enriches Salesforce records instantly",
       "5-star rated on AppExchange",
-      "Trusted by 400+ organizations",
+      "Trusted by 450+ organizations",
     ],
     link: "https://surveyvista.com/",
   },
   formvista: {
     title:
-      "Endless Applications: The 5-star rated Data Collection Solution You Need.",
+      "Endless Applications: The best data collection solution you need.",
     description:
-      "Native Salesforce business forms that write data directly into your CRM — no third-party tools, no integration overhead, no data leaving your org.",
+      "Native Salesforce business forms that write data directly into your CRM — no third-party tools, no integration overhead, no data leaving your org.Beautiful,branded forms connected to any Salesforce object.",
     image: fvImageLogo,
     features: [
       "Writes to any Salesforce object",
       "Branded, mobile-responsive design",
       "Conditional logic & smart branching",
-      "Pre-fill from Salesforce data",
+      "Pre-fill from Salesforce record data",
       "Workflow triggers on submission",
       "Zero integration tax",
     ],
@@ -56,9 +56,9 @@ const products: Record<
   },
   compliancevista: {
     title:
-      "Automate assessments, reduce risk, and ensure compliance inside Salesforce",
+      "Automate assessments, reduce risk, and ensure compliance inside Salesforce.",
     description:
-      "Native Salesforce assessments, risk scoring, and compliance workflows. Signals detected in real-time — alerts fire instantly, evidence preserved automatically.",
+      "Native Salesforce assessments, risk scoring, and compliance workflows. Signals detected in real-time — alerts fire instantly, evidence preserved automatically, regulators never catch you unprepared.",
     image: cvImageLogo,
     features: [
       "Real-time compliance risk detection",
@@ -71,9 +71,9 @@ const products: Record<
     link: "https://compliancevista.com",
   },
   agentvista: {
-    title: "AI-Powered Feedback Automation with SurveyVista & Agentforce",
+    title: "AI-Powered Feedback Automation with SurveyVista & Agentforce.",
     description:
-      "Deploy intelligent AI agents that operate natively within Salesforce — with full CRM context, executing automated actions, delivering results without ever leaving your secure org.",
+      "Deploy intelligent AI agents that operate natively within Salesforce — with full CRM context, executing automated actions, delivering results without ever leaving your secure org enviornment.",
     image: avImageLogo,
     features: [
       "AI agents with full CRM context",
@@ -86,13 +86,13 @@ const products: Record<
     link: "https://agentsvista.com",
   },
   relationshipvista: {
-    title: "Uncover and Analyze Your Salesforce Relationships",
+    title: "Uncover and Analyze Your Salesforce records relationships.",
     description:
       "Visualize, analyze and navigate complex Salesforce account relationships and hierarchies — natively. See parent-child structures and account networks without ever leaving your CRM.",
     image: rvImageLogo,
     features: [
       "Interactive hierarchy visualization",
-      "Any Salesforce object relationship",
+      "Any Salesforce object or relationship",
       "Click-through to records in context",
       "Configurable depth & display options",
       "No external tools or exports needed",
