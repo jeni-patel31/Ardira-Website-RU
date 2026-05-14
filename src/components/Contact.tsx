@@ -2,6 +2,7 @@ import { useState, ChangeEvent, FormEvent } from "react";
 import { Link } from "react-router-dom";
 import { useRecaptcha } from "@/hooks/useRecaptcha";
 import { RecaptchaBadge } from "@/components/RecaptchaBadge";
+import { CheckCircle } from "lucide-react";
 
 const inputStyle: React.CSSProperties = {
   fontFamily: "var(--font-family)",
@@ -294,11 +295,12 @@ function Contact() {
               padding: 32,
               boxShadow: "var(--shadow-sm)",
               display: "flex",
-              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
               alignSelf: "flex-start",
-              alignItems: "stretch",
               marginTop: 32,
               width: "100%",
+              minHeight: 350,
             }}
           >
             <div
@@ -306,13 +308,9 @@ function Contact() {
                 background: "#ecfdf5",
                 border: "1px solid #a7f3d0",
                 borderRadius: 16,
-                padding: "48px 32px",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                width: "100%",
+                padding: 32,
                 textAlign: "center",
+                width: "100%",
               }}
             >
               <div
@@ -321,30 +319,17 @@ function Contact() {
                   padding: 16,
                   borderRadius: "50%",
                   background: "#d1fae5",
-                  marginBottom: 20,
+                  marginBottom: 16,
                 }}
               >
-                <svg
-                  width="32"
-                  height="32"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="#10b981"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                  <polyline points="22 4 12 14.01 9 11.01" />
-                </svg>
+                <CheckCircle size={32} color="#43AF57" />
               </div>
               <h3
                 style={{
-                  fontSize: 22,
-                  fontWeight: 800,
+                  fontSize: 18,
+                  fontWeight: 700,
                   color: "#0f172a",
                   marginBottom: 12,
-                  letterSpacing: "-0.01em",
                 }}
               >
                 Message Sent Successfully!
@@ -353,9 +338,7 @@ function Contact() {
                 style={{
                   fontSize: 14,
                   color: "#64748b",
-                  lineHeight: 1.6,
-                  maxWidth: 400,
-                  margin: "0 auto",
+                  lineHeight: 1.5,
                 }}
               >
                 Thank you for getting in touch. One of our representatives will review your message and reach out to you shortly.
