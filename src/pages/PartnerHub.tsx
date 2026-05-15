@@ -109,8 +109,8 @@ export default function PartnerHub() {
     }
     if (!formData.phone.trim()) {
       newErrors.phone = "Phone Number is required";
-    } else if (!/^[0-9+()\-\s]+$/.test(formData.phone)) {
-      newErrors.phone = "Phone Number must contain only numbers";
+    } else if (!/^[0-9]{7,15}$/.test(formData.phone)) {
+      newErrors.phone = "Phone number must contain between 7 and 15 digits only";
     }
     if (!formData.country) {
       newErrors.country = "Country / Region is required";
@@ -478,11 +478,11 @@ export default function PartnerHub() {
                       <input
                         type="tel"
                         value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value.replace(/[^0-9+()\-\s]/g, "") })}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value.replace(/[^0-9]/g, "") })}
                         className={`w-full px-4 py-2.5 rounded-xl border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
                           errors.phone ? "border-red-500 focus:ring-red-500" : "border-slate-200 focus:ring-emerald-500"
                         }`}
-                        placeholder="Phone Number"
+                        placeholder="e.g., 1234567890"
                       />
                     </div>
                   </div>

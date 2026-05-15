@@ -41,11 +41,32 @@ function Contact() {
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
   ) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    const { name, value } = e.target;
+    if (name === "phone") {
+      // Restrict input to digits only
+      setFormData((prev) => ({ ...prev, [name]: value.replace(/[^0-9]/g, "") }));
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    }
   };
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.phone) return;
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email.trim())) {
+      setSubmitError("Please enter a valid email address.");
+      return;
+    }
+
+    // Phone validation (only digits, min 7 characters, max 15 characters)
+    const phoneRegex = /^[0-9]{7,15}$/;
+    if (!phoneRegex.test(formData.phone)) {
+      setSubmitError("Phone number must contain between 7 and 15 digits only.");
+      return;
+    }
 
     setIsSubmitting(true);
     setSubmitError(null);
@@ -439,7 +460,7 @@ function Contact() {
                     <input
                       name="phone"
                       type="tel"
-                      placeholder="+1 (000) 000-0000"
+                      placeholder="e.g., 1234567890"
                       value={formData.phone}
                       onChange={handleChange}
                       required
