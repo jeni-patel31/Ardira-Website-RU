@@ -280,17 +280,18 @@ function Products() {
                   <ChevronRight size={20} />
                 </div>
                 
-                <div style={{ display: "flex", alignItems: "center", gap: 12, margin: "0 auto" }}>
-                  <img
-                    src={productMeta[key].icon}
-                    alt={productMeta[key].name}
-                    style={{
-                      width: 36,
-                      height: 36,
-                      objectFit: "contain",
-                      flexShrink: 0,
-                    }}
-                  />
+                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                  <div style={{ width: 40, height: 40, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <img
+                      src={productMeta[key].icon}
+                      alt={productMeta[key].name}
+                      style={{
+                        maxWidth: "100%",
+                        maxHeight: "100%",
+                        objectFit: "contain",
+                      }}
+                    />
+                  </div>
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <div
                       className="tab-title"
