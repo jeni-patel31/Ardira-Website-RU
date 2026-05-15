@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Hero from "../components/Hero";
 import TrustedSection from "../components/TrustedSection";
 import Products from "../components/Products";
@@ -8,6 +10,27 @@ import SEO from "../components/SEO";
 import StructuredData from "../components/StructuredData";
 
 function Home() {
+  const location = useLocation();
+
+  useEffect(() => {
+    // Handle "Clean URL" navigation from location state
+    if (location.state && location.state.scrollTo) {
+      const hash = location.state.scrollTo;
+      const element = document.getElementById(hash);
+      if (element) {
+        // Delay slightly to ensure components are rendered
+        setTimeout(() => {
+          const offset = 70;
+          const elementPosition =
+            element.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top: elementPosition, behavior: "smooth" });
+        }, 100);
+      }
+      // Clear the state to prevent scrolling on refresh
+      window.history.replaceState({}, document.title);
+    }
+  }, [location]);
+
   return (
     <>
       <SEO

@@ -31,12 +31,13 @@ export default function ContactCta({
       if (targetPath === pathname) {
         const element = document.getElementById(hash);
         if (element) {
-          const offset = 80;
+          const offset = 70;
           const elementPosition = element.getBoundingClientRect().top + window.scrollY - offset;
           window.scrollTo({ top: elementPosition, behavior: "smooth" });
         }
       } else {
-        navigate(`${targetPath}#${hash}`);
+        // Clean URL navigation via state
+        navigate(targetPath, { state: { scrollTo: hash } });
       }
     }
   };

@@ -21,7 +21,13 @@ type ProductKey =
 
 const products: Record<
   ProductKey,
-  { title: string; description: string; image: string; features: string[]; link: string }
+  {
+    title: string;
+    description: string;
+    image: string;
+    features: string[];
+    link: string;
+  }
 > = {
   surveyvista: {
     title:
@@ -40,8 +46,7 @@ const products: Record<
     link: "https://surveyvista.com/",
   },
   formvista: {
-    title:
-      "Endless Applications: The best data collection solution you need.",
+    title: "Endless Applications: The best data collection solution you need.",
     description:
       "Native Salesforce business forms that write data directly into your CRM — no third-party tools, no integration overhead, no data leaving your org.Beautiful,branded forms connected to any Salesforce object.",
     image: fvImageLogo,
@@ -135,58 +140,54 @@ const productKeys = Object.keys(products) as ProductKey[];
 function Products() {
   const location = useLocation();
   const [activeTab, setActiveTab] = useState<ProductKey>("surveyvista");
-  const [autoIdx, setAutoIdx] = useState(0);
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const productParam = params.get("product") as ProductKey | null;
     if (productParam && productKeys.includes(productParam)) {
       setActiveTab(productParam);
-      setAutoIdx(productKeys.indexOf(productParam));
+      const trigger = document.getElementById("product");
+      if (trigger) {
+        trigger.scrollIntoView({ behavior: "smooth" });
+      }
     }
   }, [location.search]);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setAutoIdx((prev) => {
-        const next = (prev + 1) % productKeys.length;
-        setActiveTab(productKeys[next]);
-        return next;
-      });
-    }, 5000);
-    return () => clearInterval(timer);
-  }, []);
-
   const handleTab = (key: ProductKey) => {
     setActiveTab(key);
-    setAutoIdx(productKeys.indexOf(key));
-  };
-
-  const handlePrev = () => {
-    const prevIdx = (autoIdx - 1 + productKeys.length) % productKeys.length;
-    handleTab(productKeys[prevIdx]);
   };
 
   const handleNext = () => {
-    const nextIdx = (autoIdx + 1) % productKeys.length;
-    handleTab(productKeys[nextIdx]);
+    const currentIndex = productKeys.indexOf(activeTab);
+    const nextIndex = (currentIndex + 1) % productKeys.length;
+    setActiveTab(productKeys[nextIndex]);
   };
 
-  const cur = products[activeTab];
-  const meta = productMeta[activeTab];
+  const handlePrev = () => {
+    const currentIndex = productKeys.indexOf(activeTab);
+    const prevIndex =
+      (currentIndex - 1 + productKeys.length) % productKeys.length;
+    setActiveTab(productKeys[prevIndex]);
+  };
 
   return (
     <section
-      id="products"
+      id="product"
       className="responsive-section"
-      style={{ paddingTop: 80, paddingBottom: 60, background: "#fff" }}
+      style={{
+        paddingTop: 40,
+        paddingBottom: 50,
+        background: "linear-gradient(to bottom, #fff, #f8fdf9)",
+        scrollMarginTop: "70px",
+      }}
     >
-      <div style={{ maxWidth: "var(--max-width)", margin: "0 auto" }}>
+      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+        {/* Compact Header */}
         <div
           style={{
             textAlign: "center",
             maxWidth: 800,
-            margin: "0 auto 50px",
+            margin: "0 auto 24px",
             animation: "fadeIn 0.8s ease",
           }}
         >
@@ -196,9 +197,9 @@ function Products() {
               fontSize: 12,
               fontWeight: 800,
               letterSpacing: "0.15em",
-              textTransform: "uppercase" as const,
+              textTransform: "uppercase",
               color: "var(--primary-green)",
-              marginBottom: 20,
+              marginBottom: 12,
             }}
           >
             Our Products
@@ -206,10 +207,11 @@ function Products() {
           <h2
             style={{
               color: "var(--navy)",
-              marginBottom: 24,
-              fontSize: "clamp(28px, 4vw, 48px)",
+              marginBottom: 12,
+              fontSize: 52,
               fontWeight: 800,
               lineHeight: 1.2,
+              letterSpacing: "-0.02em",
             }}
           >
             One suite. Five{" "}
@@ -219,271 +221,352 @@ function Products() {
             style={{
               maxWidth: 700,
               margin: "0 auto",
-              fontSize: 16,
+              fontSize: 15,
               color: "var(--text-secondary)",
-              lineHeight: 1.6,
+              lineHeight: 1.5,
             }}
           >
             Every Ardira product is built entirely on the Salesforce platform —
             no middleware, no integrations, no data leaving your org.
           </p>
         </div>
-        <div
-          className="product-tabs-grid"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "200px 1fr",
-            gap: 1,
-            background: "var(--border-color)",
-            border: "1.5px solid var(--border-color)",
-            borderRadius: 12,
-            overflow: "hidden",
-            boxShadow: "var(--shadow-sm)",
-          }}
-        >
+
+        <div className="sticky-scroll-wrapper" style={{ position: "relative" }}>
           <div
-            className="tabs-list-row"
+            className="sticky-content-container"
             style={{
-              background: "var(--bg-light)",
-              display: "flex",
-              flexDirection: "column",
-              borderRight: "1.5px solid var(--border-color)",
-            }}
-          >
-            {productKeys.map((key, i) => (
-              <button
-                key={key}
-                className={`tab-btn${activeTab === key ? " active" : ""}`}
-                onClick={() => handleTab(key)}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 12,
-                  padding: "14px 16px",
-                  background: "transparent",
-                  border: "none",
-                  borderBottom:
-                    i < productKeys.length - 1
-                      ? "1px solid var(--border-color)"
-                      : "none",
-                  cursor: "pointer",
-                  transition: "var(--transition)",
-                  textAlign: "left",
-                  fontFamily: "var(--font-family)",
-                  flex: 1,
-                }}
-              >
-                <div className="carousel-nav-btn" style={{ left: 10 }} onClick={(e) => { e.stopPropagation(); handlePrev(); }}>
-                  <ChevronLeft size={20} />
-                </div>
-                <div className="carousel-nav-btn" style={{ right: 10 }} onClick={(e) => { e.stopPropagation(); handleNext(); }}>
-                  <ChevronRight size={20} />
-                </div>
-                
-                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                  <div style={{ width: 40, height: 40, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                    <img
-                      src={productMeta[key].icon}
-                      alt={productMeta[key].name}
-                      style={{
-                        maxWidth: "100%",
-                        maxHeight: "100%",
-                        objectFit: "contain",
-                      }}
-                    />
-                  </div>
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <div
-                      className="tab-title"
-                      style={{
-                        fontSize: 13,
-                        fontWeight: 700,
-                        color: "var(--text-primary)",
-                        marginBottom: 2,
-                        whiteSpace: "nowrap",
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
-                      }}
-                    >
-                      {productMeta[key].name}
-                    </div>
-                    <div
-                      style={{
-                        fontSize: 11,
-                        color: "var(--text-muted)",
-                        whiteSpace: "nowrap",
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
-                      }}
-                    >
-                      {productMeta[key].subtitle}
-                    </div>
-                  </div>
-                </div>
-              </button>
-            ))}
-          </div>
-          <div
-            style={{
-              background: "#fff",
-              padding: "24px 40px 30px",
-              display: "flex",
-              flexDirection: "column",
+              zIndex: 10,
             }}
           >
             <div
-              className="product-panel"
-              key={activeTab}
+              className="product-tabs-grid"
               style={{
-                display: "flex",
-                flexDirection: "column",
-                animation: "fadeIn 0.5s ease",
+                display: "grid",
+                gridTemplateColumns: "250px 1fr",
+                background: "#fff",
+                borderRadius: "20px",
+                border: "1px solid var(--border-color)",
+                boxShadow: "0 10px 40px rgba(0,0,0,0.04)",
+                overflow: "hidden",
+                position: "relative",
               }}
             >
-              {/* Logo Header */}
+              {/* Mobile Product Navigation Header (Arrows + Active Product) */}
               <div
+                className="mobile-only"
                 style={{
-                  marginBottom: 12,
-                  paddingBottom: 8,
-                  display: "flex",
-                  alignItems: "center",
-                }}
-              >
-                <img
-                  src={cur.image}
-                  alt={meta.name}
-                  style={{
-                    height: 55,
-                    width: "auto",
-                    maxWidth: "100%",
-                    objectFit: "contain",
-                  }}
-                />
-              </div>
-
-              {/* Content Split */}
-              <div
-                className="product-content-grid"
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1.2fr 1fr",
-                  gap: 50,
-                  alignItems: "start",
-                }}
-              >
-                <div style={{ display: "flex", flexDirection: "column" }}>
-                  <h3
-                    style={{
-                      fontSize: 24,
-                      fontWeight: 800,
-                      color: "var(--navy)",
-                      marginBottom: 10,
-                      lineHeight: 1.3,
-                    }}
-                  >
-                    {cur.title}
-                  </h3>
-                  <p
-                    style={{
-                      marginBottom: 16,
-                      fontSize: 15,
-                      lineHeight: 1.6,
-                      color: "var(--text-secondary)",
-                    }}
-                  >
-                    {cur.description}
-                  </p>
-                </div>
-
-                <ul
-                  className="feature-list"
-                  style={{
-                    listStyle: "none",
-                    margin: 0,
-                    padding: 0,
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: 12,
-                  }}
-                >
-                  {cur.features.map((f, i) => (
-                    <li
-                      key={i}
-                      style={{
-                        display: "flex",
-                        alignItems: "flex-start",
-                        gap: 14,
-                        fontSize: 15,
-                        color: "var(--text-secondary)",
-                        fontWeight: 500,
-                      }}
-                    >
-                      <span style={{ lineHeight: 1.5 }}>{f}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div
-                className="product-actions-row"
-                style={{
-                  display: "flex",
+                  display: "none", // Controlled by CSS but adding inline for safety
                   alignItems: "center",
                   justifyContent: "space-between",
-                  marginTop: 20,
-                  paddingTop: 16,
-                  borderTop: "1px solid rgba(0,0,0,0.04)",
+                  padding: "16px 20px",
+                  background: "var(--bg-light)",
+                  borderBottom: "1px solid var(--border-color)",
+                  width: "100%",
                 }}
               >
-                <a
-                  href={cur.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary"
+                <button
+                  onClick={handlePrev}
+                  className="carousel-nav-btn-inline"
                   style={{
-                    display: "inline-flex",
+                    background: "#fff",
+                    border: "1px solid var(--border-color)",
+                    borderRadius: "50%",
+                    width: 36,
+                    height: 36,
+                    display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    gap: 8,
-                    fontSize: 15,
-                    fontWeight: 600,
-                    padding: "13px 34px",
-                    borderRadius: 8,
-                    background: "var(--primary-green)",
-                    color: "#fff",
-                    boxShadow: "0 4px 14px rgba(57,180,74,0.3)",
-                    border: "2px solid transparent",
-                    textDecoration: "none",
-                    transition: "var(--transition)",
+                    cursor: "pointer",
+                    color: "var(--primary-green)",
+                    boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
                   }}
                 >
-                  Visit {meta.name} →
-                </a>
-                <div
-                  className="native-badge"
+                  <ChevronLeft size={20} />
+                </button>
+
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <img
+                    src={productMeta[activeTab].icon}
+                    alt=""
+                    style={{ width: 28, height: 28, objectFit: "contain" }}
+                  />
+                  <div style={{ display: "flex", flexDirection: "column" }}>
+                    <span
+                      style={{
+                        fontSize: 14,
+                        fontWeight: 700,
+                        color: "var(--navy)",
+                      }}
+                    >
+                      {productMeta[activeTab].name}
+                    </span>
+                    <span
+                      style={{
+                        fontSize: 11,
+                        color: "var(--text-muted)",
+                        marginTop: 2,
+                      }}
+                    >
+                      {productMeta[activeTab].subtitle}
+                    </span>
+                  </div>
+                </div>
+
+                <button
+                  onClick={handleNext}
+                  className="carousel-nav-btn-inline"
                   style={{
-                    display: "inline-flex",
+                    background: "#fff",
+                    border: "1px solid var(--border-color)",
+                    borderRadius: "50%",
+                    width: 36,
+                    height: 36,
+                    display: "flex",
                     alignItems: "center",
-                    gap: 8,
-                    padding: "8px 16px",
-                    background: "rgba(57,180,74,0.08)",
-                    border: "1px solid rgba(57,180,74,0.2)",
-                    borderRadius: 100,
-                    fontSize: 13,
-                    fontWeight: 700,
-                    color: "#2d753c",
-                    letterSpacing: "0.02em",
+                    justifyContent: "center",
+                    cursor: "pointer",
+                    color: "var(--primary-green)",
+                    boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
                   }}
                 >
-                  <span
+                  <ChevronRight size={20} />
+                </button>
+              </div>
+
+              {/* Sidebar (Desktop Only) */}
+              <div
+                className="desktop-sidebar"
+                style={{
+                  background: "var(--bg-light)",
+                  display: "flex",
+                  flexDirection: "column",
+                  borderRight: "1px solid var(--border-color)",
+                }}
+              >
+                {productKeys.map((key) => (
+                  <button
+                    key={key}
+                    className={`tab-btn${activeTab === key ? " active" : ""}`}
+                    onClick={() => handleTab(key)}
                     style={{
-                      width: 6,
-                      height: 6,
-                      borderRadius: "50%",
-                      background: "#43AF57",
-                      boxShadow: "0 0 4px rgba(67, 175, 87, 0.5)",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 12,
+                      padding: "16px 20px",
+                      background: activeTab === key ? "#fff" : "transparent",
+                      border: "none",
+                      borderBottom: "1px solid var(--border-color)",
+                      cursor: "pointer",
+                      transition: "var(--transition)",
+                      textAlign: "left",
+                      position: "relative",
+                      flex: 1,
+                    }}
+                  >
+                    {activeTab === key && (
+                      <div
+                        style={{
+                          position: "absolute",
+                          left: 0,
+                          top: 0,
+                          bottom: 0,
+                          width: 4,
+                          background: "var(--primary-green)",
+                        }}
+                      />
+                    )}
+                    <div
+                      style={{ display: "flex", alignItems: "center", gap: 12 }}
+                    >
+                      <img
+                        src={productMeta[key].icon}
+                        alt=""
+                        style={{ width: 32, height: 32, objectFit: "contain" }}
+                      />
+                      <div>
+                        <div
+                          style={{
+                            fontSize: 13,
+                            fontWeight: 700,
+                            color: "var(--navy)",
+                          }}
+                        >
+                          {productMeta[key].name}
+                        </div>
+                        <div
+                          style={{
+                            fontSize: 11,
+                            color: "var(--text-muted)",
+                            marginTop: 2,
+                          }}
+                        >
+                          {productMeta[key].subtitle}
+                        </div>
+                      </div>
+                    </div>
+                  </button>
+                ))}
+              </div>
+
+              {/* Content Area */}
+              <div
+                className="product-content-area"
+                style={{
+                  padding: "30px 40px",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <div
+                  key={activeTab}
+                  style={{ animation: "fadeIn 0.4s ease", flex: 1 }}
+                >
+                  <img
+                    src={products[activeTab].image}
+                    alt=""
+                    style={{
+                      height: 40,
+                      marginBottom: 16,
+                      objectFit: "contain",
                     }}
                   />
-                  100% Native
+                  <div
+                    className="product-content-grid"
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "1.2fr 1fr",
+                      gap: 30,
+                      alignItems: "center",
+                    }}
+                  >
+                    <div>
+                      <h3
+                        style={{
+                          fontSize: 20,
+                          fontWeight: 700,
+                          color: "var(--navy)",
+                          marginBottom: 12,
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        {products[activeTab].title}
+                      </h3>
+                      <p
+                        style={{
+                          fontSize: 14,
+                          color: "var(--text-secondary)",
+                          lineHeight: 1.5,
+                          marginBottom: 20,
+                        }}
+                      >
+                        {products[activeTab].description}
+                      </p>
+                      <a
+                        href={products[activeTab].link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-primary desktop-visit-btn"
+                        style={{
+                          display: "inline-flex",
+                          padding: "10px 20px",
+                          fontSize: 14,
+                          borderRadius: 8,
+                          background: "var(--primary-green)",
+                          color: "#fff",
+                          textDecoration: "none",
+                          fontWeight: 600,
+                          marginTop: 8,
+                        }}
+                      >
+                        Visit {productMeta[activeTab].name} →
+                      </a>
+                    </div>
+                    <div>
+                      <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                        {products[activeTab].features.map((f, i) => (
+                          <li
+                            key={i}
+                            style={{
+                              display: "flex",
+                              gap: 10,
+                              fontSize: 13,
+                              color: "var(--text-secondary)",
+                              marginBottom: 10,
+                            }}
+                          >
+                            <span
+                              style={{
+                                color: "var(--primary-green)",
+                                fontWeight: "bold",
+                              }}
+                            >
+                              ✓
+                            </span>
+                            {f}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                {/* Actions Row (Visit Button + Native Badge) */}
+                <div
+                  className="product-actions-row"
+                  style={{
+                    marginTop: "auto",
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    alignItems: "center",
+                    gap: 16,
+                    paddingTop: 20,
+                  }}
+                >
+                  <a
+                    href={products[activeTab].link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary mobile-visit-btn"
+                    style={{
+                      display: "none", // Controlled by CSS
+                      padding: "10px 20px",
+                      fontSize: 14,
+                      borderRadius: 8,
+                      background: "var(--primary-green)",
+                      color: "#fff",
+                      textDecoration: "none",
+                      fontWeight: 600,
+                      flex: 1,
+                      textAlign: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    Visit {productMeta[activeTab].name} →
+                  </a>
+                  <div
+                    className="native-badge"
+                    style={{
+                      padding: "4px 12px",
+                      borderRadius: 20,
+                      background: "#f0fdf4",
+                      color: "var(--primary-green)",
+                      fontSize: 11,
+                      fontWeight: 700,
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 6,
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    <span
+                      style={{
+                        width: 6,
+                        height: 6,
+                        borderRadius: "50%",
+                        background: "currentColor",
+                      }}
+                    />
+                    100% Native
+                  </div>
                 </div>
               </div>
             </div>

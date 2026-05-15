@@ -14,7 +14,7 @@ import {
 const inputStyle: React.CSSProperties = {
   fontFamily: "var(--font-family)",
   fontSize: 14,
-  padding: "12px 14px",
+  padding: "10px 14px",
   border: "1.5px solid var(--border-color)",
   borderRadius: 12,
   background: "#fff",
@@ -103,10 +103,12 @@ function Contact() {
       id="contact"
       className="responsive-section"
       style={{
-        paddingTop: 80,
-        paddingBottom: 80,
+        paddingTop: 40,
+        paddingBottom: 40,
         background: "#fff",
         borderTop: "1px solid var(--border-color)",
+        scrollMarginTop: "70px",
+        minHeight: "100vh", // Force footer below fold
       }}
     >
       <div style={{ maxWidth: "var(--max-width)", margin: "0 auto" }}>
@@ -115,7 +117,7 @@ function Contact() {
           style={{
             display: "grid",
             gridTemplateColumns: "1fr 1.2fr",
-            gap: 56,
+            gap: 40,
             alignItems: "stretch",
           }}
         >
@@ -130,12 +132,12 @@ function Contact() {
             <span
               style={{
                 display: "inline-block",
-                fontSize: 11.5,
+                fontSize: 11,
                 fontWeight: 700,
                 letterSpacing: "0.1em",
-                textTransform: "uppercase" as const,
+                textTransform: "uppercase",
                 color: "var(--primary-green)",
-                marginBottom: 16,
+                marginBottom: 12,
               }}
             >
               Get in Touch
@@ -143,9 +145,9 @@ function Contact() {
             <h2
               style={{
                 color: "var(--navy)",
-                marginBottom: 20,
+                marginBottom: 12,
                 textAlign: "left",
-                fontSize: "clamp(32px, 4.5vw, 40px)",
+                fontSize: "clamp(28px, 4vw, 36px)",
                 fontWeight: 800,
                 lineHeight: 1.15,
                 letterSpacing: "-0.02em",
@@ -157,11 +159,18 @@ function Contact() {
                 your Salesforce org.
               </span>
             </h2>
-            <p style={{ marginBottom: 24, textAlign: "left", fontSize: 15 }}>
+            <p
+              style={{
+                marginBottom: 16,
+                textAlign: "left",
+                fontSize: 14,
+                color: "var(--text-secondary)",
+              }}
+            >
               Contact our team to schedule a demo, learn more about our
               products, or simply ask a question. We respond promptly.
             </p>
-            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
               {[
                 {
                   icon: (
@@ -193,8 +202,10 @@ function Contact() {
                   value: (
                     <a
                       href="tel:+16697776838"
-                      className="info-value"
-                      style={{ color: "var(--primary-green)" }}
+                      style={{
+                        color: "var(--primary-green)",
+                        textDecoration: "none",
+                      }}
                     >
                       +1 (669) 777-6838
                     </a>
@@ -216,8 +227,10 @@ function Contact() {
                   value: (
                     <a
                       href="mailto:info@ardira.com"
-                      className="info-value"
-                      style={{ color: "var(--primary-green)" }}
+                      style={{
+                        color: "var(--primary-green)",
+                        textDecoration: "none",
+                      }}
                     >
                       info@ardira.com
                     </a>
@@ -226,14 +239,12 @@ function Contact() {
               ].map((item, i) => (
                 <div
                   key={i}
-                  style={{ display: "flex", gap: 16, alignItems: "flex-start" }}
+                  style={{ display: "flex", gap: 12, alignItems: "center" }}
                 >
                   <div
                     style={{
-                      width: 28,
-                      height: 28,
-                      flexShrink: 0,
-                      marginTop: 4,
+                      width: 24,
+                      height: 24,
                       color: "var(--primary-green)",
                     }}
                   >
@@ -242,23 +253,15 @@ function Contact() {
                   <div>
                     <div
                       style={{
-                        fontSize: 11,
-                        fontWeight: 600,
-                        letterSpacing: "0.08em",
-                        textTransform: "uppercase" as const,
+                        fontSize: 10,
+                        fontWeight: 700,
+                        textTransform: "uppercase",
                         color: "var(--text-muted)",
-                        marginBottom: 4,
                       }}
                     >
                       {item.label}
                     </div>
-                    <div
-                      style={{
-                        fontSize: 14,
-                        fontWeight: 500,
-                        color: "var(--text-primary)",
-                      }}
-                    >
+                    <div style={{ fontSize: 13, color: "var(--text-primary)" }}>
                       {item.value}
                     </div>
                   </div>
@@ -269,385 +272,322 @@ function Contact() {
             <div
               style={{
                 marginTop: 24,
-                flexGrow: 1,
-                display: "flex",
-                flexDirection: "column",
                 borderRadius: 12,
                 overflow: "hidden",
-                border: "1px solid var(--border-color)",
-                minHeight: 200,
+                border: "1.5px solid var(--border-color)",
+                flex: 1,
+                minHeight: 180,
               }}
             >
               <iframe
-                title="Ardira Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3170.828552174391!2d-121.9542036847253!3d37.36952877983637!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fcb0aeb354cd1%3A0xc3f1737be70d8a55!2s2040%20Martin%20Ave%2C%20Santa%20Clara%2C%20CA%2095050%2C%20USA!5e0!3m2!1sen!2s!4v1655073432070!5m2!1sen!2s"
-                style={{
-                  border: 0,
-                  display: "block",
-                  flexGrow: 1,
-                  width: "100%",
-                  height: "100%",
-                  minHeight: 200,
-                }}
+                title="Ardira Office Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3170.8351573030383!2d-121.9442!3d37.3713!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fc996944e99f9%3A0x6a0c0a34b2f6b8b0!2s2040+Martin+Ave%2C+Santa+Clara%2C+CA+95050!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
+              />
             </div>
           </div>
-          {submitted ? (
-            <div
-              style={{
-                background: "var(--bg-light)",
-                border: "1.5px solid var(--border-color)",
-                borderRadius: 12,
-                padding: 32,
-                boxShadow: "var(--shadow-sm)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                alignSelf: "flex-start",
-                marginTop: 32,
-                width: "100%",
-                minHeight: 350,
-              }}
-            >
+
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            {submitted ? (
               <div
                 style={{
-                  background: "#ecfdf5",
-                  border: "1px solid #a7f3d0",
-                  borderRadius: 16,
+                  background: "#f0fdf4",
+                  border: "1.5px solid #bbf7d0",
+                  borderRadius: 12,
                   padding: 32,
                   textAlign: "center",
-                  width: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  height: "100%",
                 }}
               >
-                <div
-                  style={{
-                    display: "inline-flex",
-                    padding: 16,
-                    borderRadius: "50%",
-                    background: "#d1fae5",
-                    marginBottom: 16,
-                  }}
-                >
-                  <CheckCircle size={32} color="#43AF57" />
-                </div>
+                <CheckCircle
+                  size={48}
+                  style={{ color: "var(--primary-green)", marginBottom: 16 }}
+                />
                 <h3
                   style={{
-                    fontSize: 18,
-                    fontWeight: 700,
-                    color: "#0f172a",
+                    fontSize: 24,
+                    fontWeight: 800,
+                    color: "var(--navy)",
                     marginBottom: 12,
                   }}
                 >
-                  Message Sent Successfully!
+                  Message Sent!
                 </h3>
-                <p
-                  style={{
-                    fontSize: 14,
-                    color: "#64748b",
-                    lineHeight: 1.5,
-                  }}
-                >
+                <p style={{ color: "#166534", lineHeight: 1.5 }}>
                   Thank you for getting in touch. One of our representatives
-                  will review your message and reach out to you shortly.
+                  will reach out to you shortly.
                 </p>
               </div>
-            </div>
-          ) : (
-            <form
-              onSubmit={handleSubmit}
-              style={{
-                background: "var(--bg-light)",
-                border: "1.5px solid var(--border-color)",
-                borderRadius: 12,
-                padding: 32,
-                boxShadow: "var(--shadow-sm)",
-                display: "flex",
-                flexDirection: "column",
-                alignSelf: "flex-start",
-                alignItems: "stretch",
-                marginTop: 32,
-                gap: 0,
-              }}
-            >
-              <h3
+            ) : (
+              <form
+                onSubmit={handleSubmit}
                 style={{
-                  fontSize: 22,
-                  fontWeight: 800,
-                  color: "var(--navy)",
-                  marginBottom: 4,
-                  letterSpacing: "-0.01em",
-                }}
-              >
-                Fill out the form and we'll be in touch shortly!
-              </h3>
-              <p
-                style={{
-                  fontSize: 14,
-                  fontWeight: 400,
-                  color: "var(--text-secondary)",
-                  marginBottom: 24,
-                }}
-              >
-                Fields marked with <span style={{ color: "#ef4444" }}>*</span>{" "}
-                are mandatory.
-              </p>
-              <div
-                className="form-row-grid"
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
-                  gap: 16,
-                  marginBottom: 16,
-                }}
-              >
-                <div
-                  style={{ display: "flex", flexDirection: "column", gap: 8 }}
-                >
-                  <label
-                    style={{
-                      fontSize: 13,
-                      fontWeight: 600,
-                      color: "var(--text-primary)",
-                    }}
-                  >
-                    Full Name <span style={{ color: "#ef4444" }}>*</span>
-                  </label>
-                  <input
-                    className="form-input"
-                    name="name"
-                    type="text"
-                    placeholder="Your name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    style={inputStyle}
-                  />
-                </div>
-                <div
-                  style={{ display: "flex", flexDirection: "column", gap: 8 }}
-                >
-                  <label
-                    style={{
-                      fontSize: 13,
-                      fontWeight: 600,
-                      color: "var(--text-primary)",
-                    }}
-                  >
-                    Email <span style={{ color: "#ef4444" }}>*</span>
-                  </label>
-                  <input
-                    className="form-input"
-                    name="email"
-                    type="email"
-                    pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$"
-                    title="Please enter a valid email address."
-                    placeholder="your@email.com"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    style={inputStyle}
-                  />
-                </div>
-              </div>
-              <div
-                className="form-row-grid"
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
-                  gap: 16,
-                  marginBottom: 16,
-                }}
-              >
-                <div
-                  style={{ display: "flex", flexDirection: "column", gap: 8 }}
-                >
-                  <label
-                    style={{
-                      fontSize: 13,
-                      fontWeight: 600,
-                      color: "var(--text-primary)",
-                    }}
-                  >
-                    Phone <span style={{ color: "#ef4444" }}>*</span>
-                  </label>
-                  <input
-                    className="form-input"
-                    name="phone"
-                    type="tel"
-                    required
-                    pattern="[0-9+()\-\s]{7,}"
-                    title="Please enter a valid phone number (at least 7 digits)."
-                    placeholder="+1 (000) 000-0000"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    style={inputStyle}
-                  />
-                </div>
-                <div
-                  style={{ display: "flex", flexDirection: "column", gap: 8 }}
-                >
-                  <label
-                    style={{
-                      fontSize: 13,
-                      fontWeight: 600,
-                      color: "var(--text-primary)",
-                    }}
-                  >
-                    Company
-                  </label>
-                  <input
-                    className="form-input"
-                    name="company"
-                    type="text"
-                    placeholder="Your company"
-                    value={formData.company}
-                    onChange={handleChange}
-                    style={inputStyle}
-                  />
-                </div>
-              </div>
-              <div
-                style={{
+                  background: "var(--bg-light)",
+                  border: "1.5px solid var(--border-color)",
+                  borderRadius: 12,
+                  padding: "24px 28px",
+                  boxShadow: "var(--shadow-sm)",
                   display: "flex",
                   flexDirection: "column",
-                  gap: 8,
-                  marginBottom: 12,
+                  gap: 12,
                 }}
               >
-                <label
-                  style={{
-                    fontSize: 13,
-                    fontWeight: 600,
-                    color: "var(--text-primary)",
-                  }}
-                >
-                  Product of Interest
-                </label>
-                <Select
-                  value={formData.product}
-                  onValueChange={(val) => setFormData(prev => ({ ...prev, product: val }))}
-                >
-                  <SelectTrigger 
-                    className="form-select-trigger"
+                <div>
+                  <h3
                     style={{
-                      ...inputStyle,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      height: "auto",
-                      padding: "12px 14px",
+                      fontSize: 18,
+                      fontWeight: 800,
+                      color: "var(--navy)",
+                      marginBottom: 4,
                     }}
                   >
-                    <SelectValue placeholder="Select a product..." />
-                  </SelectTrigger>
-                  <SelectContent className="form-select-content">
-                    <SelectItem value="surveyvista">SurveyVista</SelectItem>
-                    <SelectItem value="formvista">FormVista</SelectItem>
-                    <SelectItem value="compliancevista">ComplianceVista</SelectItem>
-                    <SelectItem value="agentvista">AgentVista</SelectItem>
-                    <SelectItem value="relationshipvista">RelationshipVista</SelectItem>
-                    <SelectItem value="general">All Products/General enquiry</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 8,
-                  marginBottom: 16,
-                }}
-              >
-                <label
-                  style={{
-                    fontSize: 13,
-                    fontWeight: 600,
-                    color: "var(--text-primary)",
-                  }}
-                >
-                  Message
-                </label>
-                <textarea
-                  className="form-textarea"
-                  name="message"
-                  placeholder="Tell us about your salesforce use case or what you're looking to achieve..."
-                  value={formData.message}
-                  onChange={handleChange}
-                  style={{
-                    ...inputStyle,
-                    resize: "none" as const,
-                    minHeight: 100,
-                    maxHeight: 140,
-                  }}
-                />
-              </div>
-              {submitError && (
+                    Fill out the form and we'll be in touch shortly!
+                  </h3>
+                  <p
+                    style={{
+                      fontSize: 13,
+                      color: "var(--text-secondary)",
+                      marginBottom: 16,
+                    }}
+                  >
+                    Fields marked with{" "}
+                    <span style={{ color: "#ef4444" }}>*</span> are mandatory.
+                  </p>
+                </div>
+
                 <div
                   style={{
-                    padding: "12px 16px",
-                    background: "#fef2f2",
-                    border: "1px solid #fecaca",
-                    borderRadius: 8,
-                    fontSize: 13,
-                    color: "#dc2626",
-                    marginBottom: 8,
+                    display: "grid",
+                    gridTemplateColumns: "1fr 1fr",
+                    gap: 12,
                   }}
                 >
-                  {submitError}
+                  <div
+                    style={{ display: "flex", flexDirection: "column", gap: 4 }}
+                  >
+                    <label
+                      style={{
+                        fontSize: 12,
+                        fontWeight: 600,
+                        color: "var(--text-primary)",
+                      }}
+                    >
+                      Full Name <span style={{ color: "#ef4444" }}>*</span>
+                    </label>
+                    <input
+                      name="name"
+                      type="text"
+                      placeholder="Your name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      style={inputStyle}
+                    />
+                  </div>
+                  <div
+                    style={{ display: "flex", flexDirection: "column", gap: 4 }}
+                  >
+                    <label
+                      style={{
+                        fontSize: 12,
+                        fontWeight: 600,
+                        color: "var(--text-primary)",
+                      }}
+                    >
+                      Email <span style={{ color: "#ef4444" }}>*</span>
+                    </label>
+                    <input
+                      name="email"
+                      type="email"
+                      placeholder="your@email.com"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      style={inputStyle}
+                    />
+                  </div>
                 </div>
-              )}
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="btn-primary"
-                style={{
-                  width: "100%",
-                  marginTop: 8,
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: 8,
-                  fontFamily: "var(--font-family)",
-                  fontSize: 15,
-                  fontWeight: 600,
-                  padding: "13px 34px",
-                  borderRadius: 8,
-                  background: isSubmitting ? "#94a3b8" : "var(--primary-green)",
-                  color: "#fff",
-                  boxShadow: "0 4px 14px rgba(57,180,74,0.3)",
-                  border: "2px solid transparent",
-                  cursor: isSubmitting ? "not-allowed" : "pointer",
-                  transition: "var(--transition)",
-                }}
-              >
-                {isSubmitting ? "Sending..." : "Send Message"}
-              </button>
-              <p
-                style={{
-                  fontSize: 12,
-                  color: "var(--text-muted)",
-                  marginTop: 16,
-                  textAlign: "center",
-                }}
-              >
-                We're committed to your{" "}
-                <Link
-                  to="/privacy-policy"
+
+                <div
                   style={{
-                    color: "var(--primary-green)",
-                    textDecoration: "underline",
+                    display: "grid",
+                    gridTemplateColumns: "1fr 1fr",
+                    gap: 12,
                   }}
                 >
-                  privacy
-                </Link>
-                . We will never share your data with third parties.
-              </p>
-              <RecaptchaBadge />
-            </form>
-          )}
+                  <div
+                    style={{ display: "flex", flexDirection: "column", gap: 4 }}
+                  >
+                    <label
+                      style={{
+                        fontSize: 12,
+                        fontWeight: 600,
+                        color: "var(--text-primary)",
+                      }}
+                    >
+                      Phone <span style={{ color: "#ef4444" }}>*</span>
+                    </label>
+                    <input
+                      name="phone"
+                      type="tel"
+                      placeholder="+1 (000) 000-0000"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      required
+                      style={inputStyle}
+                    />
+                  </div>
+                  <div
+                    style={{ display: "flex", flexDirection: "column", gap: 4 }}
+                  >
+                    <label
+                      style={{
+                        fontSize: 12,
+                        fontWeight: 600,
+                        color: "var(--text-primary)",
+                      }}
+                    >
+                      Company
+                    </label>
+                    <input
+                      name="company"
+                      type="text"
+                      placeholder="Your company"
+                      value={formData.company}
+                      onChange={handleChange}
+                      style={inputStyle}
+                    />
+                  </div>
+                </div>
+
+                <div
+                  style={{ display: "flex", flexDirection: "column", gap: 4 }}
+                >
+                  <label
+                    style={{
+                      fontSize: 12,
+                      fontWeight: 600,
+                      color: "var(--text-primary)",
+                    }}
+                  >
+                    Product of Interest
+                  </label>
+                  <Select
+                    value={formData.product}
+                    onValueChange={(val) =>
+                      setFormData((prev) => ({ ...prev, product: val }))
+                    }
+                  >
+                    <SelectTrigger style={{ ...inputStyle, height: 42 }}>
+                      <SelectValue placeholder="Select a product..." />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="surveyvista">SurveyVista</SelectItem>
+                      <SelectItem value="formvista">FormVista</SelectItem>
+                      <SelectItem value="compliancevista">
+                        ComplianceVista
+                      </SelectItem>
+                      <SelectItem value="agentvista">AgentVista</SelectItem>
+                      <SelectItem value="relationshipvista">
+                        RelationshipVista
+                      </SelectItem>
+                      <SelectItem value="general">
+                        All Products/General enquiry
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div
+                  style={{ display: "flex", flexDirection: "column", gap: 4 }}
+                >
+                  <label
+                    style={{
+                      fontSize: 12,
+                      fontWeight: 600,
+                      color: "var(--text-primary)",
+                    }}
+                  >
+                    Message
+                  </label>
+                  <textarea
+                    name="message"
+                    placeholder="How can we help?"
+                    value={formData.message}
+                    onChange={handleChange}
+                    style={{ ...inputStyle, resize: "none", minHeight: 70 }}
+                  />
+                </div>
+
+                {submitError && (
+                  <div
+                    style={{
+                      padding: "8px 12px",
+                      background: "#fef2f2",
+                      border: "1px solid #fecaca",
+                      borderRadius: 8,
+                      fontSize: 12,
+                      color: "#dc2626",
+                    }}
+                  >
+                    {submitError}
+                  </div>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="btn-primary"
+                  style={{
+                    padding: "12px",
+                    fontSize: 15,
+                    fontWeight: 700,
+                    borderRadius: 10,
+                    width: "100%",
+                    background: isSubmitting
+                      ? "#94a3b8"
+                      : "var(--primary-green)",
+                    color: "#fff",
+                    border: "none",
+                    cursor: isSubmitting ? "not-allowed" : "pointer",
+                    marginTop: 4,
+                  }}
+                >
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                </button>
+                <p
+                  style={{
+                    fontSize: 11,
+                    color: "var(--text-muted)",
+                    textAlign: "center",
+                    marginTop: 4,
+                  }}
+                >
+                  We're committed to your{" "}
+                  <Link
+                    to="/privacy-policy"
+                    style={{
+                      color: "var(--primary-green)",
+                      textDecoration: "none",
+                    }}
+                  >
+                    privacy
+                  </Link>
+                  . We will never share your data with third parties.
+                </p>
+                <RecaptchaBadge />
+              </form>
+            )}
+          </div>
         </div>
       </div>
     </section>

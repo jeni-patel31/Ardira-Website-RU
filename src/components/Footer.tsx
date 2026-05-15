@@ -90,13 +90,8 @@ function Footer() {
             ].map((p) => (
               <li key={p.name} style={{ marginBottom: 12 }}>
                 <Link
-                  to={`/?product=${p.key}#products`}
-                  onClick={() => {
-                    const element = document.getElementById("products");
-                    if (element) {
-                      element.scrollIntoView({ behavior: "smooth" });
-                    }
-                  }}
+                  to={`/?product=${p.key}`}
+                  state={{ scrollTo: "product" }}
                   className="footer-col"
                   style={{
                     fontSize: 13.5,

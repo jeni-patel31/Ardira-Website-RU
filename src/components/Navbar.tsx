@@ -19,10 +19,16 @@ function Navbar() {
       const hash = href.split("#")[1];
       const targetPath = href.split("#")[0] || "/";
 
-      if (location.pathname === targetPath || (location.pathname === "/" && targetPath === "/")) {
+      if (
+        location.pathname === targetPath ||
+        (location.pathname === "/" && targetPath === "/")
+      ) {
         const element = document.getElementById(hash);
         if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
+          const offset = 70;
+          const elementPosition =
+            element.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top: elementPosition, behavior: "smooth" });
         }
       } else {
         // Navigate cleanly to the target path without a hash in the URL string
@@ -75,7 +81,7 @@ function Navbar() {
         >
           <li className="nav-hide-mobile">
             <Link
-              to="/#products"
+              to="/#product"
               onClick={handleLinkClick}
               style={{
                 fontSize: 14,
@@ -90,7 +96,7 @@ function Navbar() {
           </li>
           <li className="nav-hide-mobile">
             <Link
-              to="/#features"
+              to="/#why-native"
               onClick={handleLinkClick}
               style={{
                 fontSize: 14,
@@ -158,7 +164,14 @@ function Navbar() {
           <li className="hamburger-btn">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              style={{ background: "none", border: "none", cursor: "pointer", display: "flex", alignItems: "center", color: "var(--navy)" }}
+              style={{
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                color: "var(--navy)",
+              }}
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -168,11 +181,38 @@ function Navbar() {
 
       {/* Mobile Menu Overlay */}
       <div className={`mobile-menu-overlay${isMenuOpen ? " open" : ""}`}>
-        <Link to="/#products" className="mobile-nav-link" onClick={handleLinkClick}>Products</Link>
-        <Link to="/#features" className="mobile-nav-link" onClick={handleLinkClick}>Why Native</Link>
-        <Link to="/team" className="mobile-nav-link" onClick={handleLinkClick}>Company</Link>
-        <Link to="/partner-hub" className="mobile-nav-link" onClick={handleLinkClick}>Partner Hub</Link>
-        <Link to="/#contact" className="mobile-nav-link" onClick={handleLinkClick} style={{ color: "var(--primary-green)" }}>Book Demo</Link>
+        <Link
+          to="/#product"
+          className="mobile-nav-link"
+          onClick={handleLinkClick}
+        >
+          Products
+        </Link>
+        <Link
+          to="/#why-native"
+          className="mobile-nav-link"
+          onClick={handleLinkClick}
+        >
+          Why Native
+        </Link>
+        <Link to="/team" className="mobile-nav-link" onClick={handleLinkClick}>
+          Company
+        </Link>
+        <Link
+          to="/partner-hub"
+          className="mobile-nav-link"
+          onClick={handleLinkClick}
+        >
+          Partner Hub
+        </Link>
+        <Link
+          to="/#contact"
+          className="mobile-nav-link"
+          onClick={handleLinkClick}
+          style={{ color: "var(--primary-green)" }}
+        >
+          Book Demo
+        </Link>
       </div>
     </nav>
   );

@@ -102,16 +102,17 @@ const native = [
 function Features() {
   return (
     <section
-      id="features"
+      id="why-native"
       className="responsive-section"
       style={{
-        paddingTop: 80,
-        paddingBottom: 80,
+        paddingTop: 40,
+        paddingBottom: 40,
         background: "var(--bg-light)",
         borderTop: "1px solid var(--border-color)",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        scrollMarginTop: "70px",
       }}
     >
       <div
@@ -177,7 +178,7 @@ function Features() {
             display: "grid",
             gridTemplateColumns: "repeat(3, 1fr)",
             gap: 24,
-            marginBottom: 60,
+            marginBottom: 0,
           }}
         >
           {features.map((f, i) => (
@@ -255,7 +256,7 @@ function Features() {
         style={{
           width: "100%",
           maxWidth: "var(--max-width)",
-          margin: "0 auto",
+          margin: "60px auto 0",
         }}
       >
         <div

@@ -1,6 +1,31 @@
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import AppExchangeImg from "@assets/AppExchange.webp";
 
 function Hero() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const href = e.currentTarget.getAttribute("href");
+    if (href && href.includes("#")) {
+      e.preventDefault();
+      const hash = href.split("#")[1];
+      const targetPath = href.split("#")[0] || "/";
+
+      if (location.pathname === targetPath || (location.pathname === "/" && targetPath === "/")) {
+        const element = document.getElementById(hash);
+        if (element) {
+          const offset = 70;
+          const elementPosition = element.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top: elementPosition, behavior: "smooth" });
+        }
+      } else {
+        // Navigate cleanly to the target path
+        navigate(targetPath, { state: { scrollTo: hash } });
+      }
+    }
+  };
+
   return (
     <section
       className="responsive-section"
@@ -111,9 +136,10 @@ function Hero() {
             animation: "fadeInDown 0.8s ease 0.3s backwards",
           }}
         >
-          <a
-            href="#products"
+          <Link
+            to="/#product"
             className="btn"
+            onClick={handleLinkClick}
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -133,10 +159,11 @@ function Hero() {
             }}
           >
             Explore our products →
-          </a>
-          <a
-            href="#features"
+          </Link>
+          <Link
+            to="/#why-native"
             className="btn"
+            onClick={handleLinkClick}
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -155,7 +182,7 @@ function Hero() {
             }}
           >
             Why native matters
-          </a>
+          </Link>
         </div>
         <div
           className="trust-indicators-col"

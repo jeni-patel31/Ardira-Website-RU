@@ -187,7 +187,7 @@ export default function PartnerHub() {
       <StructuredData type="WebPage" name="Ardira Partner Hub" description="Join the Ardira Partner Hub." url="https://ardira.com/partner-hub" />
 
       {/* Why Partner */}
-      <section className="responsive-section relative py-24 bg-gradient-to-br from-[#f0fdf4] via-white to-[#ecfdf5]">
+      <section className="responsive-section relative py-20 bg-gradient-to-br from-[#f0fdf4] via-white to-[#ecfdf5]">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_55%_at_50%_-5%,rgba(34,197,94,0.12),transparent)] pointer-events-none" />
         <div className="max-w-6xl mx-auto relative z-10">
           <motion.div
@@ -195,17 +195,17 @@ export default function PartnerHub() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#43AF57] mb-4">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#43AF57] mb-3">
               Why Partner With Us
             </p>
-            <h2 className="text-4xl md:text-5xl font-bold font-display text-[#0f172a] leading-tight max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold font-display text-[#0f172a] leading-tight max-w-2xl mx-auto">
               Built for Mutual Success
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {whyPartner.map((item, i) => (
               <motion.div
                 key={item.title}
@@ -213,15 +213,15 @@ export default function PartnerHub() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="bg-white border-2 border-[#e0f2e9] rounded-2xl p-8 hover:border-[#43AF57] hover:shadow-md transition-all group"
+                className="bg-white border-2 border-[#e0f2e9] rounded-2xl p-6 hover:border-[#43AF57] hover:shadow-md transition-all group"
               >
-                <div className="inline-flex p-3 rounded-xl bg-[#f0fdf4] mb-6 group-hover:bg-[#e8fbf0] transition-colors">
-                  <item.icon size={24} className="text-[#43AF57]" />
+                <div className="inline-flex p-2.5 rounded-xl bg-[#f0fdf4] mb-4 group-hover:bg-[#e8fbf0] transition-colors">
+                  <item.icon size={22} className="text-[#43AF57]" />
                 </div>
-                <h3 className="text-xl font-bold font-display text-[#0f172a] mb-4">
+                <h3 className="text-lg font-bold font-display text-[#0f172a] mb-2">
                   {item.title}
                 </h3>
-                <p className="text-slate-600 leading-relaxed text-base">{item.desc}</p>
+                <p className="text-slate-600 leading-relaxed text-sm">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -229,19 +229,19 @@ export default function PartnerHub() {
       </section>
 
       {/* Our Trusted Partners - Carousel */}
-      <section className="responsive-section py-24 bg-gradient-to-br from-[#f0fdf4] via-white to-[#ecfdf5] border-t border-slate-100">
+      <section className="responsive-section py-16 bg-gradient-to-br from-[#f0fdf4] via-white to-[#ecfdf5] border-t border-slate-100">
         <div style={{ maxWidth: "var(--max-width)", margin: "0 auto" }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#43AF57] mb-4">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#43AF57] mb-3">
               Our Global Partners
             </p>
-            <h2 className="text-3xl md:text-4xl font-semibold font-display text-[#0f172a] leading-tight max-w-2xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-semibold font-display text-[#0f172a] leading-tight max-w-2xl mx-auto">
               Trusted by Industry Leaders
             </h2>
           </motion.div>
@@ -251,7 +251,7 @@ export default function PartnerHub() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mt-12"
+            className="mt-8"
           >
             <div className="relative w-full overflow-hidden mx-auto" onMouseEnter={(e) => {
               const track = e.currentTarget.querySelector('.partner-carousel-track') as HTMLElement;
@@ -260,7 +260,6 @@ export default function PartnerHub() {
               const track = e.currentTarget.querySelector('.partner-carousel-track') as HTMLElement;
               if (track) track.style.animationPlayState = 'running';
             }}>
-              {/* Fade edges */}
               <div className="absolute left-0 top-0 bottom-0 w-32 md:w-48 bg-gradient-to-r from-[#f0fdf4] to-transparent z-10 pointer-events-none" />
               <div className="absolute right-0 top-0 bottom-0 w-32 md:w-48 bg-gradient-to-l from-[#f0fdf4] to-transparent z-10 pointer-events-none" />
               <div
@@ -275,12 +274,12 @@ export default function PartnerHub() {
                 ].map((p, i) => (
                   <div
                     key={`${p.name}-${i}`}
-                    className="flex items-center justify-center mx-10 md:mx-14 flex-shrink-0 h-14 md:h-16"
+                    className="flex items-center justify-center mx-10 md:mx-14 flex-shrink-0 h-12 md:h-14"
                   >
                     <img loading="lazy"
                       src={p.logo}
                       alt={p.name}
-                      className="max-h-full max-w-[140px] object-contain opacity-70 hover:opacity-100 transition-opacity"
+                      className="max-h-full max-w-[120px] object-contain opacity-70 hover:opacity-100 transition-opacity"
                     />
                   </div>
                 ))}
@@ -290,22 +289,20 @@ export default function PartnerHub() {
         </div>
       </section>
 
-     
-
       {/* How It Works */}
-      <section className="responsive-section py-28 bg-gradient-to-br from-[#f0fdf4] via-white to-[#ecfdf5]">
+      <section className="responsive-section py-20 bg-gradient-to-br from-[#f0fdf4] via-white to-[#ecfdf5]">
         <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#43AF57] mb-4">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#43AF57] mb-3">
               How It Works
             </p>
-            <h2 className="text-3xl md:text-4xl font-semibold font-display text-[#0f172a] leading-tight max-w-2xl mx-auto">
+            <h2 className="text-2xl md:text-3xl font-semibold font-display text-[#0f172a] leading-tight max-w-2xl mx-auto">
               Getting Started Is Simple
             </h2>
           </motion.div>
@@ -315,19 +312,19 @@ export default function PartnerHub() {
               {
                 step: "01",
                 title: "Apply",
-                desc: "Fill out the partner application form below. Tell us about your business and how you'd like to partner.",
+                desc: "Fill out the partner application form below. Tell us about your business.",
                 icon: ClipboardCheck,
               },
               {
                 step: "02",
                 title: "Onboard",
-                desc: "Our partner team will review your application and set you up with training, resources, and a dedicated partner manager.",
+                desc: "Our partner team will review your application and set you up with training.",
                 icon: Users,
               },
               {
                 step: "03",
                 title: "Grow Together",
-                desc: "Start referring, reselling, or integrating. Access joint GTM resources, shared leads, and co-marketing support.",
+                desc: "Start referring, reselling, or integrating. Access joint GTM resources.",
                 icon: Rocket,
               },
             ].map((item, i) => (
@@ -339,13 +336,13 @@ export default function PartnerHub() {
                 transition={{ duration: 0.4, delay: i * 0.1 }}
                 className="text-center"
               >
-                <div className="text-5xl font-extrabold font-display text-emerald-100 mb-4 flex justify-center">
-                  <item.icon size={48} className="text-[#43AF57]" />
+                <div className="text-4xl font-extrabold font-display text-emerald-100 mb-4 flex justify-center">
+                  <item.icon size={40} className="text-[#43AF57]" />
                 </div>
-                <h3 className="text-xl font-bold font-display text-[#0f172a] mb-3">
+                <h3 className="text-lg font-bold font-display text-[#0f172a] mb-2">
                   {item.title}
                 </h3>
-                <p className="text-slate-500 leading-relaxed">{item.desc}</p>
+                <p className="text-slate-500 leading-relaxed text-sm">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -353,31 +350,34 @@ export default function PartnerHub() {
       </section>
 
       {/* Partnership Application Form */}
-      <section id="partner-form" className="responsive-section py-20 bg-[#f8fafc] scroll-mt-20">
-        <div className="max-w-6xl mx-auto">
+      <section 
+        id="partner-form" 
+        className="responsive-section bg-[#f8fafc] scroll-mt-20 py-8 md:py-12"
+      >
+        <div className="max-w-6xl mx-auto w-full">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-0 items-stretch bg-white rounded-3xl shadow-[0_24px_60px_-12px_rgba(0,0,0,0.09)] border border-slate-100"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-0 items-stretch bg-white rounded-3xl shadow-[0_24px_60px_-12px_rgba(0,0,0,0.09)] border border-slate-100 overflow-hidden"
           >
             {/* Left Info Section - Green Background */}
-            <div className="bg-[#43AF57] rounded-t-3xl lg:rounded-l-3xl lg:rounded-tr-none p-6 md:p-8 flex flex-col justify-between text-white">
+            <div className="bg-[#43AF57] p-6 md:p-8 flex flex-col justify-center text-white">
               <div>
-                <h2 className="text-3xl md:text-4xl font-extrabold font-display leading-tight mb-2">
+                <h2 className="text-2xl md:text-3xl font-extrabold font-display leading-tight mb-2">
                   Become a Partner
                 </h2>
-                <p className="text-lg text-green-50 mb-8 leading-relaxed">
+                <p className="text-base text-green-50 mb-6 leading-relaxed">
                   Grow Faster with Ardira
                 </p>
 
-                <p className="text-lg leading-relaxed text-green-50 mb-8 pb-8">
+                <p className="text-base leading-relaxed text-green-50 mb-8">
                   Apply to join our partner network and unlock new opportunities
                   to scale your business with Salesforce-native solutions
                 </p>
 
-                <div className="space-y-4">
+                <div className="space-y-3">
                   {[
                     "Exclusive partner-only resources and GTM support",
                     "Competitive revenue sharing and referral incentives",
@@ -385,10 +385,10 @@ export default function PartnerHub() {
                   ].map((item, i) => (
                     <div key={i} className="flex items-start gap-3">
                       <CheckCircle
-                        size={18}
+                        size={16}
                         className="text-white shrink-0 mt-0.5"
                       />
-                      <span className="text-sm leading-relaxed">{item}</span>
+                      <span className="text-xs leading-relaxed">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -396,9 +396,9 @@ export default function PartnerHub() {
             </div>
 
             {/* Right Form Section */}
-            <div className="bg-white rounded-b-3xl lg:rounded-r-3xl lg:rounded-bl-none p-6 md:p-8">
+            <div className="bg-white p-6 md:p-8">
               {submitted ? (
-                <div className="flex items-center justify-center">
+                <div className="flex items-center justify-center h-full">
                   <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-8 text-center">
                     <div className="inline-flex p-4 rounded-full bg-emerald-100 mb-4">
                       <CheckCircle size={32} className="text-[#43AF57]" />
@@ -408,221 +408,142 @@ export default function PartnerHub() {
                     </h3>
                     <p className="text-sm text-slate-500">
                       Thank you for your interest. Our partnerships team will
-                      review your application and reach out within 2 business
-                      days.
+                      reach out within 2 business days.
                     </p>
                   </div>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-2.5">
+                <form onSubmit={handleSubmit} className="space-y-4">
                   {/* Error Banner */}
                   {submitError && (
-                    <div className="p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3">
+                    <div className="p-3 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3">
                       <AlertCircle
-                        size={18}
+                        size={16}
                         className="text-red-600 shrink-0 mt-0.5"
                       />
                       <p className="text-sm text-red-700">{submitError}</p>
                     </div>
                   )}
-                  <div>
-                    <label className="block text-sm font-semibold text-[#0f172a] mb-1">
-                      Full Name <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      value={formData.fullName}
-                      onChange={(e) =>
-                        setFormData({
-                          ...formData,
-                          fullName: e.target.value,
-                        })
-                      }
-                      className={`w-full px-4 py-1.5 rounded-xl border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
-                        errors.fullName
-                          ? "border-red-500 focus:ring-red-500"
-                          : "border-slate-200 focus:ring-emerald-500"
-                      }`}
-                      placeholder="Full Name"
-                    />
-                    {errors.fullName && (
-                      <p className="text-red-500 text-xs mt-1">
-                        {errors.fullName}
-                      </p>
-                    )}
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-[#0f172a] mb-1">
-                      Company Name <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      value={formData.company}
-                      onChange={(e) =>
-                        setFormData({ ...formData, company: e.target.value })
-                      }
-                      className={`w-full px-4 py-1.5 rounded-xl border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
-                        errors.company
-                          ? "border-red-500 focus:ring-red-500"
-                          : "border-slate-200 focus:ring-emerald-500"
-                      }`}
-                      placeholder="Company Name"
-                    />
-                    {errors.company && (
-                      <p className="text-red-500 text-xs mt-1">
-                        {errors.company}
-                      </p>
-                    )}
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-[#0f172a] mb-1">
-                      Business Email <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) =>
-                        setFormData({ ...formData, email: e.target.value })
-                      }
-                      className={`w-full px-4 py-1.5 rounded-xl border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
-                        errors.email
-                          ? "border-red-500 focus:ring-red-500"
-                          : "border-slate-200 focus:ring-emerald-500"
-                      }`}
-                      placeholder="Business Email"
-                    />
-                    {errors.email && (
-                      <p className="text-red-500 text-xs mt-1">
-                        {errors.email}
-                      </p>
-                    )}
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-[#0f172a] mb-1">
-                      Phone Number <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="tel"
-                      value={formData.phone}
-                      onChange={(e) => {
-                        // Only allow numbers and basic phone characters
-                        const value = e.target.value.replace(
-                          /[^0-9+()\-\s]/g,
-                          "",
-                        );
-                        setFormData({ ...formData, phone: value });
-                      }}
-                      className={`w-full px-4 py-1.5 rounded-xl border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
-                        errors.phone
-                          ? "border-red-500 focus:ring-red-500"
-                          : "border-slate-200 focus:ring-emerald-500"
-                      }`}
-                      placeholder="Phone Number"
-                    />
-                    {errors.phone && (
-                      <p className="text-red-500 text-xs mt-1">
-                        {errors.phone}
-                      </p>
-                    )}
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-semibold text-[#0f172a] mb-1">
+                      <label className="block text-sm font-semibold text-[#0f172a] mb-1.5">
+                        Full Name <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        value={formData.fullName}
+                        onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                        className={`w-full px-4 py-2.5 rounded-xl border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
+                          errors.fullName ? "border-red-500 focus:ring-red-500" : "border-slate-200 focus:ring-emerald-500"
+                        }`}
+                        placeholder="Full Name"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-[#0f172a] mb-1.5">
+                        Company Name <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        value={formData.company}
+                        onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                        className={`w-full px-4 py-2.5 rounded-xl border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
+                          errors.company ? "border-red-500 focus:ring-red-500" : "border-slate-200 focus:ring-emerald-500"
+                        }`}
+                        placeholder="Company Name"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-semibold text-[#0f172a] mb-1.5">
+                        Business Email <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="email"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className={`w-full px-4 py-2.5 rounded-xl border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
+                          errors.email ? "border-red-500 focus:ring-red-500" : "border-slate-200 focus:ring-emerald-500"
+                        }`}
+                        placeholder="Business Email"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-[#0f172a] mb-1.5">
+                        Phone Number <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="tel"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value.replace(/[^0-9+()\-\s]/g, "") })}
+                        className={`w-full px-4 py-2.5 rounded-xl border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
+                          errors.phone ? "border-red-500 focus:ring-red-500" : "border-slate-200 focus:ring-emerald-500"
+                        }`}
+                        placeholder="Phone Number"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-semibold text-[#0f172a] mb-1.5">
                         Country / Region <span className="text-red-500">*</span>
                       </label>
                       <Select
                         value={formData.country}
-                        onValueChange={(value) =>
-                          setFormData({ ...formData, country: value })
-                        }
+                        onValueChange={(value) => setFormData({ ...formData, country: value })}
                       >
-                        <SelectTrigger
-                          className={`w-full text-sm ${errors.country ? "border-red-500" : "border-slate-200"}`}
-                        >
+                        <SelectTrigger className={`w-full text-sm py-2 h-[42px] rounded-xl ${errors.country ? "border-red-500 ring-1 ring-red-500" : "border-slate-200"}`}>
                           <SelectValue placeholder="Select country" />
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent className="bg-white">
                           <SelectItem value="USA">USA</SelectItem>
                           <SelectItem value="Canada">Canada</SelectItem>
-                          <SelectItem value="United Kingdom">
-                            United Kingdom
-                          </SelectItem>
+                          <SelectItem value="United Kingdom">United Kingdom</SelectItem>
                           <SelectItem value="Australia">Australia</SelectItem>
-                          <SelectItem value="Germany">Germany</SelectItem>
-                          <SelectItem value="France">France</SelectItem>
-                          <SelectItem value="India">India</SelectItem>
-                          <SelectItem value="Singapore">Singapore</SelectItem>
-                          <SelectItem value="Japan">Japan</SelectItem>
-                          <SelectItem value="Brazil">Brazil</SelectItem>
-                          <SelectItem value="Mexico">Mexico</SelectItem>
                           <SelectItem value="Other">Other</SelectItem>
                         </SelectContent>
                       </Select>
-                      {errors.country && (
-                        <p className="text-red-500 text-xs mt-1">
-                          {errors.country}
-                        </p>
-                      )}
                     </div>
                     <div>
-                      <label className="block text-sm font-semibold text-[#0f172a] mb-1">
+                      <label className="block text-sm font-semibold text-[#0f172a] mb-1.5">
                         Partnership Type <span className="text-red-500">*</span>
                       </label>
                       <Select
                         value={formData.partnerType}
-                        onValueChange={(value) =>
-                          setFormData({ ...formData, partnerType: value })
-                        }
+                        onValueChange={(value) => setFormData({ ...formData, partnerType: value })}
                       >
-                        <SelectTrigger
-                          className={`w-full text-sm ${errors.partnerType ? "border-red-500" : "border-slate-200"}`}
-                        >
-                          <SelectValue placeholder="Select Partnership Type" />
+                        <SelectTrigger className={`w-full text-sm py-2 h-[42px] rounded-xl ${errors.partnerType ? "border-red-500 ring-1 ring-red-500" : "border-slate-200"}`}>
+                          <SelectValue placeholder="Partnership Type" />
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent className="bg-white">
                           <SelectItem value="Reseller">Reseller</SelectItem>
                           <SelectItem value="Referral">Referral</SelectItem>
                           <SelectItem value="Technology">Technology</SelectItem>
                         </SelectContent>
                       </Select>
-                      {errors.partnerType && (
-                        <p className="text-red-500 text-xs mt-1">
-                          {errors.partnerType}
-                        </p>
-                      )}
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold text-[#0f172a] mb-1">
-                      Tell us about your business{" "}
-                      <span className="text-red-500">*</span>
+                    <label className="block text-sm font-semibold text-[#0f172a] mb-1.5">
+                      Tell us about your business <span className="text-red-500">*</span>
                     </label>
                     <textarea
-                      rows={2}
+                      rows={4}
                       value={formData.message}
-                      onChange={(e) =>
-                        setFormData({ ...formData, message: e.target.value })
-                      }
-                      className={`w-full px-4 py-2 rounded-xl border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all resize-none ${
-                        errors.message
-                          ? "border-red-500 focus:ring-red-500"
-                          : "border-slate-200 focus:ring-emerald-500"
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      className={`w-full px-4 py-3 rounded-xl border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all resize-none ${
+                        errors.message ? "border-red-500 focus:ring-red-500" : "border-slate-200 focus:ring-emerald-500"
                       }`}
                       placeholder="Tell us about your business"
                     />
-                    {errors.message && (
-                      <p className="text-red-500 text-xs mt-1">
-                        {errors.message}
-                      </p>
-                    )}
                   </div>
 
-                  <p className="text-xs text-slate-400 pt-0.5">
+                  <p className="text-[11px] text-slate-500">
                     By submitting this form, you agree to our{" "}
                     <Link to="/privacy-policy" className="text-[#43AF57] hover:underline">
                       privacy policy
@@ -633,15 +554,10 @@ export default function PartnerHub() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-[#43AF57] text-white px-6 py-2 rounded-lg font-semibold text-base hover:bg-emerald-600 disabled:bg-slate-400 disabled:cursor-not-allowed transition-colors shadow-md flex items-center justify-center gap-2 group"
+                    className="w-full bg-[#43AF57] text-white px-6 py-3 rounded-xl font-bold text-sm hover:bg-emerald-600 disabled:bg-slate-400 disabled:cursor-not-allowed transition-colors shadow-md flex items-center justify-center gap-2 group mt-2"
                   >
-                    {isSubmitting ? "Submitting..." : "Submit Application"}{" "}
-                    {!isSubmitting && (
-                      <Send
-                        size={20}
-                        className="group-hover:translate-x-0.5 transition-transform"
-                      />
-                    )}
+                    {isSubmitting ? "Submitting..." : "Submit Application"}
+                    {!isSubmitting && <Send size={18} className="group-hover:translate-x-0.5 transition-transform" />}
                   </button>
 
                   <RecaptchaBadge />
