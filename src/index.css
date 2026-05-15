@@ -1,11 +1,5 @@
 @import "./fonts.css";
 @import "tailwindcss";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-html {
-  /* scroll-behavior: smooth; */ /* Disabled to prevent conflict with JS-based precise offsets */
-}
 
 /* reCAPTCHA Badge - Logo Only with Hover Tooltip */
 .grecaptcha-badge {
@@ -149,6 +143,7 @@ html {
     color: #0f172a;
     font-family: "Inter", sans-serif;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
   h1,
   h2,

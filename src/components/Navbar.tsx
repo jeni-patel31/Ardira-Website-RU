@@ -41,143 +41,145 @@ function Navbar() {
   };
 
   return (
-    <nav
-      className="responsive-nav"
-      style={{
-        position: "sticky",
-        top: 0,
-        zIndex: 100,
-        background: "rgba(255,255,255,0.97)",
-        backdropFilter: "blur(12px)",
-        borderBottom: "1px solid var(--border-color)",
-        height: 70,
-      }}
-    >
-      <div
+    <>
+      <nav
+        className="responsive-nav"
         style={{
-          maxWidth: "var(--max-width)",
-          margin: "0 auto",
-          height: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
+          position: "sticky",
+          top: 0,
+          zIndex: 100,
+          background: "rgba(255,255,255,0.97)",
+          backdropFilter: "blur(12px)",
+          borderBottom: "1px solid var(--border-color)",
+          height: 70,
         }}
       >
-        <Link to="/" onClick={handleLinkClick}>
-          <img
-            src={ArdiraLogo}
-            alt="Ardira"
-            style={{ height: 90, width: "auto", display: "block" }}
-          />
-        </Link>
-        <ul
-          className="nav-menu"
+        <div
           style={{
+            maxWidth: "var(--max-width)",
+            margin: "0 auto",
+            height: "100%",
             display: "flex",
             alignItems: "center",
-            listStyle: "none",
-            gap: 28,
+            justifyContent: "space-between",
           }}
         >
-          <li className="nav-hide-mobile">
-            <Link
-              to="/#product"
-              onClick={handleLinkClick}
-              style={{
-                fontSize: 14,
-                fontWeight: 500,
-                color: "var(--text-secondary)",
-                whiteSpace: "nowrap",
-                textDecoration: "none",
-              }}
-            >
-              Products
-            </Link>
-          </li>
-          <li className="nav-hide-mobile">
-            <Link
-              to="/#why-native"
-              onClick={handleLinkClick}
-              style={{
-                fontSize: 14,
-                fontWeight: 500,
-                color: "var(--text-secondary)",
-                whiteSpace: "nowrap",
-                textDecoration: "none",
-              }}
-            >
-              Why Native
-            </Link>
-          </li>
-          <li className="nav-hide-mobile">
-            <Link
-              to="/team"
-              onClick={handleLinkClick}
-              style={{
-                fontSize: 14,
-                fontWeight: 500,
-                color: "var(--text-secondary)",
-                whiteSpace: "nowrap",
-                textDecoration: "none",
-              }}
-            >
-              Company
-            </Link>
-          </li>
-          <li className="nav-hide-mobile">
-            <Link
-              to="/partner-hub"
-              onClick={handleLinkClick}
-              style={{
-                fontSize: 14,
-                fontWeight: 500,
-                color: "var(--text-secondary)",
-                whiteSpace: "nowrap",
-                textDecoration: "none",
-              }}
-            >
-              Partner Hub
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/#contact"
-              className="btn-demo"
-              onClick={handleLinkClick}
-              style={{
-                fontSize: 14,
-                fontWeight: 600,
-                padding: "8px 20px",
-                background: "var(--primary-green)",
-                color: "#fff",
-                borderRadius: 7,
-                boxShadow: "0 3px 10px rgba(57,180,74,0.25)",
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                textDecoration: "none",
-              }}
-            >
-              Book Demo
-            </Link>
-          </li>
-          <li className="hamburger-btn">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              style={{
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                display: "flex",
-                alignItems: "center",
-                color: "var(--navy)",
-              }}
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </li>
-        </ul>
-      </div>
+          <Link to="/" onClick={handleLinkClick}>
+            <img
+              src={ArdiraLogo}
+              alt="Ardira"
+              style={{ height: 90, width: "auto", display: "block" }}
+            />
+          </Link>
+          <ul
+            className="nav-menu"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              listStyle: "none",
+              gap: 28,
+            }}
+          >
+            <li className="nav-hide-mobile">
+              <Link
+                to="/#product"
+                onClick={handleLinkClick}
+                style={{
+                  fontSize: 14,
+                  fontWeight: 500,
+                  color: "var(--text-secondary)",
+                  whiteSpace: "nowrap",
+                  textDecoration: "none",
+                }}
+              >
+                Products
+              </Link>
+            </li>
+            <li className="nav-hide-mobile">
+              <Link
+                to="/#why-native"
+                onClick={handleLinkClick}
+                style={{
+                  fontSize: 14,
+                  fontWeight: 500,
+                  color: "var(--text-secondary)",
+                  whiteSpace: "nowrap",
+                  textDecoration: "none",
+                }}
+              >
+                Why Native
+              </Link>
+            </li>
+            <li className="nav-hide-mobile">
+              <Link
+                to="/team"
+                onClick={handleLinkClick}
+                style={{
+                  fontSize: 14,
+                  fontWeight: 500,
+                  color: "var(--text-secondary)",
+                  whiteSpace: "nowrap",
+                  textDecoration: "none",
+                }}
+              >
+                Company
+              </Link>
+            </li>
+            <li className="nav-hide-mobile">
+              <Link
+                to="/partner-hub"
+                onClick={handleLinkClick}
+                style={{
+                  fontSize: 14,
+                  fontWeight: 500,
+                  color: "var(--text-secondary)",
+                  whiteSpace: "nowrap",
+                  textDecoration: "none",
+                }}
+              >
+                Partner Hub
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/#contact"
+                className="btn-demo"
+                onClick={handleLinkClick}
+                style={{
+                  fontSize: 14,
+                  fontWeight: 600,
+                  padding: "8px 20px",
+                  background: "var(--primary-green)",
+                  color: "#fff",
+                  borderRadius: 7,
+                  boxShadow: "0 3px 10px rgba(57,180,74,0.25)",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  textDecoration: "none",
+                }}
+              >
+                Book Demo
+              </Link>
+            </li>
+            <li className="hamburger-btn">
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                style={{
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  color: "var(--navy)",
+                }}
+              >
+                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </li>
+          </ul>
+        </div>
+      </nav>
 
       {/* Mobile Menu Overlay */}
       <div className={`mobile-menu-overlay${isMenuOpen ? " open" : ""}`}>
@@ -214,7 +216,7 @@ function Navbar() {
           Book Demo
         </Link>
       </div>
-    </nav>
+    </>
   );
 }
 
