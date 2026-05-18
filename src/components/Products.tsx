@@ -426,7 +426,7 @@ function Products() {
                     src={products[activeTab].image}
                     alt=""
                     style={{
-                      height: 40,
+                      height: activeTab === "relationshipvista" ? 65 : 40,
                       marginBottom: 16,
                       objectFit: "contain",
                     }}
