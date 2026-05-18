@@ -65,11 +65,11 @@ function Contact() {
     const newErrors: { [key: string]: string } = {};
 
     if (!formData.name.trim()) {
-      newErrors.name = "Full Name is required";
+      newErrors.name = "Please enter your Full Name.";
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
+      newErrors.email = "Please enter your Email.";
     } else {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(formData.email.trim())) {
@@ -78,7 +78,7 @@ function Contact() {
     }
 
     if (!formData.phone.trim()) {
-      newErrors.phone = "Phone number is required";
+      newErrors.phone = "Please enter your Phone Number.";
     } else {
       const phoneRegex = /^[0-9]{7,15}$/;
       if (!phoneRegex.test(formData.phone)) {
@@ -87,18 +87,27 @@ function Contact() {
     }
 
     if (!formData.company.trim()) {
-      newErrors.company = "Company Name is required";
+      newErrors.company = "Please enter your Company Name.";
     }
 
     if (!formData.product) {
-      newErrors.product = "Product of Interest is required";
+      newErrors.product = "Please select a Product of Interest.";
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = "Please enter your Message.";
     }
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
-      // Set the submit error banner to show the first error
-      const firstKey = Object.keys(newErrors)[0];
-      setSubmitError(newErrors[firstKey]);
+      // If more than one required field is not entered/valid, show generic message
+      if (Object.keys(newErrors).length > 1) {
+        setSubmitError("Please fill out all required fields.");
+      } else {
+        // Exactly one error: show the specific message!
+        const singleKey = Object.keys(newErrors)[0];
+        setSubmitError(newErrors[singleKey]);
+      }
       return;
     }
 
@@ -604,14 +613,21 @@ function Contact() {
                       color: "var(--text-primary)",
                     }}
                   >
-                    Message
+                    Message <span style={{ color: "#ef4444" }}>*</span>
                   </label>
                   <textarea
                     name="message"
                     placeholder="How can we help?"
                     value={formData.message}
                     onChange={handleChange}
-                    style={{ ...inputStyle, resize: "none", minHeight: 70 }}
+                    style={{
+                      ...inputStyle,
+                      resize: "none",
+                      minHeight: 70,
+                      border: errors.message
+                        ? "1.5px solid #ef4444"
+                        : "1.5px solid var(--border-color)",
+                    }}
                   />
                 </div>
 

@@ -97,33 +97,43 @@ export default function PartnerHub() {
 
     // Validate all required fields
     if (!formData.fullName.trim()) {
-      newErrors.fullName = "Full Name is required";
-    }
-    if (!formData.email.trim()) {
-      newErrors.email = "Business Email is required";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Invalid email address";
+      newErrors.fullName = "Please enter your Full Name.";
     }
     if (!formData.company.trim()) {
-      newErrors.company = "Company Name is required";
+      newErrors.company = "Please enter your Company Name.";
+    }
+    if (!formData.email.trim()) {
+      newErrors.email = "Please enter your Business Email.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Please enter a valid email address.";
     }
     if (!formData.phone.trim()) {
-      newErrors.phone = "Phone Number is required";
+      newErrors.phone = "Please enter your Phone Number.";
     } else if (!/^[0-9]{7,15}$/.test(formData.phone)) {
-      newErrors.phone = "Phone number must contain between 7 and 15 digits only";
+      newErrors.phone = "Phone number must contain between 7 and 15 digits only.";
     }
     if (!formData.country) {
-      newErrors.country = "Country / Region is required";
+      newErrors.country = "Please select your Country / Region.";
     }
     if (!formData.partnerType) {
-      newErrors.partnerType = "Partnership Type is required";
+      newErrors.partnerType = "Please select a Partnership Type.";
     }
-    if (formData.message.trim().length < 10) {
-      newErrors.message = "Message must be at least 10 characters";
+    if (!formData.message.trim()) {
+      newErrors.message = "Please enter your message.";
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = "Message must be at least 10 characters.";
     }
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
+      // If more than one required field is not entered/valid, show generic message
+      if (Object.keys(newErrors).length > 1) {
+        setSubmitError("Please fill out all required fields.");
+      } else {
+        // Exactly one error: show the specific message!
+        const singleKey = Object.keys(newErrors)[0];
+        setSubmitError(newErrors[singleKey]);
+      }
       return;
     }
 
@@ -414,17 +424,6 @@ export default function PartnerHub() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  {/* Error Banner */}
-                  {submitError && (
-                    <div className="p-3 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3">
-                      <AlertCircle
-                        size={16}
-                        className="text-red-600 shrink-0 mt-0.5"
-                      />
-                      <p className="text-sm text-red-700">{submitError}</p>
-                    </div>
-                  )}
-                  
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-semibold text-[#0f172a] mb-1.5">
@@ -433,7 +432,16 @@ export default function PartnerHub() {
                       <input
                         type="text"
                         value={formData.fullName}
-                        onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                        onChange={(e) => {
+                          setFormData({ ...formData, fullName: e.target.value });
+                          if (errors.fullName) {
+                            setErrors((prev) => {
+                              const copy = { ...prev };
+                              delete copy.fullName;
+                              return copy;
+                            });
+                          }
+                        }}
                         className={`w-full px-4 py-2.5 rounded-xl border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
                           errors.fullName ? "border-red-500 focus:ring-red-500" : "border-slate-200 focus:ring-emerald-500"
                         }`}
@@ -447,7 +455,16 @@ export default function PartnerHub() {
                       <input
                         type="text"
                         value={formData.company}
-                        onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                        onChange={(e) => {
+                          setFormData({ ...formData, company: e.target.value });
+                          if (errors.company) {
+                            setErrors((prev) => {
+                              const copy = { ...prev };
+                              delete copy.company;
+                              return copy;
+                            });
+                          }
+                        }}
                         className={`w-full px-4 py-2.5 rounded-xl border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
                           errors.company ? "border-red-500 focus:ring-red-500" : "border-slate-200 focus:ring-emerald-500"
                         }`}
@@ -464,7 +481,16 @@ export default function PartnerHub() {
                       <input
                         type="email"
                         value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        onChange={(e) => {
+                          setFormData({ ...formData, email: e.target.value });
+                          if (errors.email) {
+                            setErrors((prev) => {
+                              const copy = { ...prev };
+                              delete copy.email;
+                              return copy;
+                            });
+                          }
+                        }}
                         className={`w-full px-4 py-2.5 rounded-xl border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
                           errors.email ? "border-red-500 focus:ring-red-500" : "border-slate-200 focus:ring-emerald-500"
                         }`}
@@ -478,7 +504,16 @@ export default function PartnerHub() {
                       <input
                         type="tel"
                         value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value.replace(/[^0-9]/g, "") })}
+                        onChange={(e) => {
+                          setFormData({ ...formData, phone: e.target.value.replace(/[^0-9]/g, "") });
+                          if (errors.phone) {
+                            setErrors((prev) => {
+                              const copy = { ...prev };
+                              delete copy.phone;
+                              return copy;
+                            });
+                          }
+                        }}
                         className={`w-full px-4 py-2.5 rounded-xl border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
                           errors.phone ? "border-red-500 focus:ring-red-500" : "border-slate-200 focus:ring-emerald-500"
                         }`}
@@ -494,7 +529,16 @@ export default function PartnerHub() {
                       </label>
                       <Select
                         value={formData.country}
-                        onValueChange={(value) => setFormData({ ...formData, country: value })}
+                        onValueChange={(value) => {
+                          setFormData({ ...formData, country: value });
+                          if (errors.country) {
+                            setErrors((prev) => {
+                              const copy = { ...prev };
+                              delete copy.country;
+                              return copy;
+                            });
+                          }
+                        }}
                       >
                         <SelectTrigger className={`w-full text-sm py-2 h-[42px] rounded-xl ${errors.country ? "border-red-500 ring-1 ring-red-500" : "border-slate-200"}`}>
                           <SelectValue placeholder="Select country" />
@@ -514,7 +558,16 @@ export default function PartnerHub() {
                       </label>
                       <Select
                         value={formData.partnerType}
-                        onValueChange={(value) => setFormData({ ...formData, partnerType: value })}
+                        onValueChange={(value) => {
+                          setFormData({ ...formData, partnerType: value });
+                          if (errors.partnerType) {
+                            setErrors((prev) => {
+                              const copy = { ...prev };
+                              delete copy.partnerType;
+                              return copy;
+                            });
+                          }
+                        }}
                       >
                         <SelectTrigger className={`w-full text-sm py-2 h-[42px] rounded-xl ${errors.partnerType ? "border-red-500 ring-1 ring-red-500" : "border-slate-200"}`}>
                           <SelectValue placeholder="Partnership Type" />
@@ -535,7 +588,16 @@ export default function PartnerHub() {
                     <textarea
                       rows={4}
                       value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      onChange={(e) => {
+                        setFormData({ ...formData, message: e.target.value });
+                        if (errors.message) {
+                          setErrors((prev) => {
+                            const copy = { ...prev };
+                            delete copy.message;
+                            return copy;
+                          });
+                        }
+                      }}
                       className={`w-full px-4 py-3 rounded-xl border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all resize-none ${
                         errors.message ? "border-red-500 focus:ring-red-500" : "border-slate-200 focus:ring-emerald-500"
                       }`}
@@ -550,6 +612,16 @@ export default function PartnerHub() {
                     </Link>
                     .
                   </p>
+
+                  {submitError && (
+                    <div className="p-3 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3">
+                      <AlertCircle
+                        size={16}
+                        className="text-red-600 shrink-0 mt-0.5"
+                      />
+                      <p className="text-sm text-red-700">{submitError}</p>
+                    </div>
+                  )}
 
                   <button
                     type="submit"
