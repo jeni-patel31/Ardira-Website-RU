@@ -249,6 +249,7 @@ function Products() {
                 boxShadow: "0 10px 40px rgba(0,0,0,0.04)",
                 overflow: "hidden",
                 position: "relative",
+                height: 420,
               }}
             >
               {/* Mobile Product Navigation Header (Arrows + Active Product) */}
@@ -436,7 +437,7 @@ function Products() {
                       display: "grid",
                       gridTemplateColumns: "1.2fr 1fr",
                       gap: 30,
-                      alignItems: "center",
+                      alignItems: "start",
                     }}
                   >
                     <div>

@@ -95,7 +95,7 @@ function Contact() {
       }
 
       if (!response.ok) {
-        throw new Error(result.error || "Failed to send message");
+        throw new Error(result.message || result.error || "Failed to send message");
       }
 
       setSubmitted(true);
@@ -129,7 +129,6 @@ function Contact() {
         background: "#fff",
         borderTop: "1px solid var(--border-color)",
         scrollMarginTop: "70px",
-        minHeight: "100vh", // Force footer below fold
       }}
     >
       <div style={{ maxWidth: "var(--max-width)", margin: "0 auto" }}>

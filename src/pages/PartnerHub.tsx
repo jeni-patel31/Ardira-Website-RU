@@ -155,7 +155,7 @@ export default function PartnerHub() {
       }
 
       if (!response.ok) {
-        throw new Error(result.error || "Failed to submit application");
+        throw new Error(result.message || result.error || "Failed to submit application");
       }
 
       setSubmitted(true);
