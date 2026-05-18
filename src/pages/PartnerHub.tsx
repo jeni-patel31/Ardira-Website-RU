@@ -110,7 +110,8 @@ export default function PartnerHub() {
     if (!formData.phone.trim()) {
       newErrors.phone = "Please enter your Phone Number.";
     } else if (!/^[0-9]{7,15}$/.test(formData.phone)) {
-      newErrors.phone = "Phone number must contain between 7 and 15 digits only.";
+      newErrors.phone =
+        "Phone number must contain between 7 and 15 digits only.";
     }
     if (!formData.country) {
       newErrors.country = "Please select your Country / Region.";
@@ -161,11 +162,15 @@ export default function PartnerHub() {
       if (contentType && contentType.indexOf("application/json") !== -1) {
         result = await response.json();
       } else if (!response.ok) {
-        throw new Error(`Server execution failed (Status ${response.status}). If testing locally, ensure you are using Vercel Dev.`);
+        throw new Error(
+          `Server execution failed (Status ${response.status}). If testing locally, ensure you are using Vercel Dev.`,
+        );
       }
 
       if (!response.ok) {
-        throw new Error(result.message || result.error || "Failed to submit application");
+        throw new Error(
+          result.message || result.error || "Failed to submit application",
+        );
       }
 
       setSubmitted(true);
@@ -194,7 +199,12 @@ export default function PartnerHub() {
         ogDescription="Partner with Ardira to deliver native Salesforce solutions and grow your business."
         ogUrl="https://ardira.com/partner-hub"
       />
-      <StructuredData type="WebPage" name="Ardira Partner Hub" description="Join the Ardira Partner Hub." url="https://ardira.com/partner-hub" />
+      <StructuredData
+        type="WebPage"
+        name="Ardira Partner Hub"
+        description="Join the Ardira Partner Hub."
+        url="https://ardira.com/partner-hub"
+      />
 
       {/* Why Partner */}
       <section className="responsive-section relative py-20 bg-gradient-to-br from-[#f0fdf4] via-white to-[#ecfdf5]">
@@ -231,7 +241,9 @@ export default function PartnerHub() {
                 <h3 className="text-lg font-bold font-display text-[#0f172a] mb-2">
                   {item.title}
                 </h3>
-                <p className="text-slate-600 leading-relaxed text-sm">{item.desc}</p>
+                <p className="text-slate-600 leading-relaxed text-sm">
+                  {item.desc}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -263,13 +275,21 @@ export default function PartnerHub() {
             transition={{ duration: 0.6 }}
             className="mt-8"
           >
-            <div className="relative w-full overflow-hidden mx-auto" onMouseEnter={(e) => {
-              const track = e.currentTarget.querySelector('.partner-carousel-track') as HTMLElement;
-              if (track) track.style.animationPlayState = 'paused';
-            }} onMouseLeave={(e) => {
-              const track = e.currentTarget.querySelector('.partner-carousel-track') as HTMLElement;
-              if (track) track.style.animationPlayState = 'running';
-            }}>
+            <div
+              className="relative w-full overflow-hidden mx-auto"
+              onMouseEnter={(e) => {
+                const track = e.currentTarget.querySelector(
+                  ".partner-carousel-track",
+                ) as HTMLElement;
+                if (track) track.style.animationPlayState = "paused";
+              }}
+              onMouseLeave={(e) => {
+                const track = e.currentTarget.querySelector(
+                  ".partner-carousel-track",
+                ) as HTMLElement;
+                if (track) track.style.animationPlayState = "running";
+              }}
+            >
               <div className="absolute left-0 top-0 bottom-0 w-32 md:w-48 bg-gradient-to-r from-[#f0fdf4] to-transparent z-10 pointer-events-none" />
               <div className="absolute right-0 top-0 bottom-0 w-32 md:w-48 bg-gradient-to-l from-[#f0fdf4] to-transparent z-10 pointer-events-none" />
               <div
@@ -286,7 +306,8 @@ export default function PartnerHub() {
                     key={`${p.name}-${i}`}
                     className="flex items-center justify-center mx-10 md:mx-14 flex-shrink-0 h-12 md:h-14"
                   >
-                    <img loading="lazy"
+                    <img
+                      loading="lazy"
                       src={p.logo}
                       alt={p.name}
                       className="max-h-full max-w-[120px] object-contain opacity-70 hover:opacity-100 transition-opacity"
@@ -352,7 +373,9 @@ export default function PartnerHub() {
                 <h3 className="text-lg font-bold font-display text-[#0f172a] mb-2">
                   {item.title}
                 </h3>
-                <p className="text-slate-500 leading-relaxed text-sm">{item.desc}</p>
+                <p className="text-slate-500 leading-relaxed text-sm">
+                  {item.desc}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -360,8 +383,8 @@ export default function PartnerHub() {
       </section>
 
       {/* Partnership Application Form */}
-      <section 
-        id="partner-form" 
+      <section
+        id="partner-form"
         className="responsive-section bg-[#f8fafc] scroll-mt-20 py-8 md:py-12"
       >
         <div className="max-w-6xl mx-auto w-full">
@@ -433,7 +456,10 @@ export default function PartnerHub() {
                         type="text"
                         value={formData.fullName}
                         onChange={(e) => {
-                          setFormData({ ...formData, fullName: e.target.value });
+                          setFormData({
+                            ...formData,
+                            fullName: e.target.value,
+                          });
                           if (errors.fullName) {
                             setErrors((prev) => {
                               const copy = { ...prev };
@@ -443,7 +469,9 @@ export default function PartnerHub() {
                           }
                         }}
                         className={`w-full px-4 py-2.5 rounded-xl border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
-                          errors.fullName ? "border-red-500 focus:ring-red-500" : "border-slate-200 focus:ring-emerald-500"
+                          errors.fullName
+                            ? "border-red-500 focus:ring-red-500"
+                            : "border-slate-200 focus:ring-emerald-500"
                         }`}
                         placeholder="Full Name"
                       />
@@ -466,7 +494,9 @@ export default function PartnerHub() {
                           }
                         }}
                         className={`w-full px-4 py-2.5 rounded-xl border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
-                          errors.company ? "border-red-500 focus:ring-red-500" : "border-slate-200 focus:ring-emerald-500"
+                          errors.company
+                            ? "border-red-500 focus:ring-red-500"
+                            : "border-slate-200 focus:ring-emerald-500"
                         }`}
                         placeholder="Company Name"
                       />
@@ -492,7 +522,9 @@ export default function PartnerHub() {
                           }
                         }}
                         className={`w-full px-4 py-2.5 rounded-xl border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
-                          errors.email ? "border-red-500 focus:ring-red-500" : "border-slate-200 focus:ring-emerald-500"
+                          errors.email
+                            ? "border-red-500 focus:ring-red-500"
+                            : "border-slate-200 focus:ring-emerald-500"
                         }`}
                         placeholder="Business Email"
                       />
@@ -505,7 +537,10 @@ export default function PartnerHub() {
                         type="tel"
                         value={formData.phone}
                         onChange={(e) => {
-                          setFormData({ ...formData, phone: e.target.value.replace(/[^0-9]/g, "") });
+                          setFormData({
+                            ...formData,
+                            phone: e.target.value.replace(/[^0-9]/g, ""),
+                          });
                           if (errors.phone) {
                             setErrors((prev) => {
                               const copy = { ...prev };
@@ -515,7 +550,9 @@ export default function PartnerHub() {
                           }
                         }}
                         className={`w-full px-4 py-2.5 rounded-xl border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
-                          errors.phone ? "border-red-500 focus:ring-red-500" : "border-slate-200 focus:ring-emerald-500"
+                          errors.phone
+                            ? "border-red-500 focus:ring-red-500"
+                            : "border-slate-200 focus:ring-emerald-500"
                         }`}
                         placeholder="e.g., 1234567890"
                       />
@@ -540,13 +577,19 @@ export default function PartnerHub() {
                           }
                         }}
                       >
-                        <SelectTrigger className={`w-full text-sm py-2 h-[42px] rounded-xl ${errors.country ? "border-red-500 ring-1 ring-red-500" : "border-slate-200"}`}>
-                          <SelectValue placeholder="Select country" />
-                        </SelectTrigger>
+                        <div
+                          className={`w-full rounded-xl border overflow-hidden ${errors.country ? "border-red-500" : "border-slate-200"}`}
+                        >
+                          <SelectTrigger className="w-full py-2 h-[42px] rounded-xl bg-white focus:outline-none focus:ring-2 transition-all">
+                            <SelectValue placeholder="Select country" />
+                          </SelectTrigger>
+                        </div>
                         <SelectContent className="bg-white">
                           <SelectItem value="USA">USA</SelectItem>
                           <SelectItem value="Canada">Canada</SelectItem>
-                          <SelectItem value="United Kingdom">United Kingdom</SelectItem>
+                          <SelectItem value="United Kingdom">
+                            United Kingdom
+                          </SelectItem>
                           <SelectItem value="Australia">Australia</SelectItem>
                           <SelectItem value="Other">Other</SelectItem>
                         </SelectContent>
@@ -569,9 +612,13 @@ export default function PartnerHub() {
                           }
                         }}
                       >
-                        <SelectTrigger className={`w-full text-sm py-2 h-[42px] rounded-xl ${errors.partnerType ? "border-red-500 ring-1 ring-red-500" : "border-slate-200"}`}>
-                          <SelectValue placeholder="Partnership Type" />
-                        </SelectTrigger>
+                        <div
+                          className={`w-full rounded-xl border overflow-hidden ${errors.partnerType ? "border-red-500" : "border-slate-200"}`}
+                        >
+                          <SelectTrigger className="w-full py-2 h-[42px] rounded-xl bg-white focus:outline-none focus:ring-2 transition-all">
+                            <SelectValue placeholder="Partnership Type" />
+                          </SelectTrigger>
+                        </div>
                         <SelectContent className="bg-white">
                           <SelectItem value="Reseller">Reseller</SelectItem>
                           <SelectItem value="Referral">Referral</SelectItem>
@@ -583,7 +630,8 @@ export default function PartnerHub() {
 
                   <div>
                     <label className="block text-sm font-semibold text-[#0f172a] mb-1.5">
-                      Tell us about your business <span className="text-red-500">*</span>
+                      Tell us about your business{" "}
+                      <span className="text-red-500">*</span>
                     </label>
                     <textarea
                       rows={4}
@@ -599,20 +647,13 @@ export default function PartnerHub() {
                         }
                       }}
                       className={`w-full px-4 py-3 rounded-xl border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all resize-none ${
-                        errors.message ? "border-red-500 focus:ring-red-500" : "border-slate-200 focus:ring-emerald-500"
+                        errors.message
+                          ? "border-red-500 focus:ring-red-500"
+                          : "border-slate-200 focus:ring-emerald-500"
                       }`}
                       placeholder="Tell us about your business"
                     />
                   </div>
-
-                  <p className="text-[11px] text-slate-500">
-                    By submitting this form, you agree to our{" "}
-                    <Link to="/privacy-policy" className="text-[#43AF57] hover:underline">
-                      privacy policy
-                    </Link>
-                    .
-                  </p>
-
                   {submitError && (
                     <div className="p-3 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3">
                       <AlertCircle
@@ -629,8 +670,24 @@ export default function PartnerHub() {
                     className="w-full bg-[#43AF57] text-white px-6 py-3 rounded-xl font-bold text-sm hover:bg-emerald-600 disabled:bg-slate-400 disabled:cursor-not-allowed transition-colors shadow-md flex items-center justify-center gap-2 group mt-2"
                   >
                     {isSubmitting ? "Submitting..." : "Submit Application"}
-                    {!isSubmitting && <Send size={18} className="group-hover:translate-x-0.5 transition-transform" />}
+                    {!isSubmitting && (
+                      <Send
+                        size={18}
+                        className="group-hover:translate-x-0.5 transition-transform"
+                      />
+                    )}
                   </button>
+
+                  <p className="text-[11px] text-slate-500">
+                    By submitting this form, you agree to our{" "}
+                    <Link
+                      to="/privacy-policy"
+                      className="text-[#43AF57] hover:underline"
+                    >
+                      privacy policy
+                    </Link>
+                    .
+                  </p>
 
                   <RecaptchaBadge />
                 </form>
