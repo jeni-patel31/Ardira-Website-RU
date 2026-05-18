@@ -37,11 +37,21 @@ function Contact() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
+    
+    if (errors[name]) {
+      setErrors((prev) => {
+        const copy = { ...prev };
+        delete copy[name];
+        return copy;
+      });
+    }
+
     if (name === "phone") {
       // Restrict input to digits only
       setFormData((prev) => ({ ...prev, [name]: value.replace(/[^0-9]/g, "") }));
@@ -52,22 +62,47 @@ function Contact() {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.phone) return;
+    const newErrors: { [key: string]: string } = {};
 
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email.trim())) {
-      setSubmitError("Please enter a valid email address.");
+    if (!formData.name.trim()) {
+      newErrors.name = "Full Name is required";
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(formData.email.trim())) {
+        newErrors.email = "Please enter a valid email address.";
+      }
+    }
+
+    if (!formData.phone.trim()) {
+      newErrors.phone = "Phone number is required";
+    } else {
+      const phoneRegex = /^[0-9]{7,15}$/;
+      if (!phoneRegex.test(formData.phone)) {
+        newErrors.phone = "Phone number must contain between 7 and 15 digits only.";
+      }
+    }
+
+    if (!formData.company.trim()) {
+      newErrors.company = "Company Name is required";
+    }
+
+    if (!formData.product) {
+      newErrors.product = "Product of Interest is required";
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      // Set the submit error banner to show the first error
+      const firstKey = Object.keys(newErrors)[0];
+      setSubmitError(newErrors[firstKey]);
       return;
     }
 
-    // Phone validation (only digits, min 7 characters, max 15 characters)
-    const phoneRegex = /^[0-9]{7,15}$/;
-    if (!phoneRegex.test(formData.phone)) {
-      setSubmitError("Phone number must contain between 7 and 15 digits only.");
-      return;
-    }
-
+    setErrors({});
     setIsSubmitting(true);
     setSubmitError(null);
 
@@ -409,8 +444,12 @@ function Contact() {
                       placeholder="Your name"
                       value={formData.name}
                       onChange={handleChange}
-                      required
-                      style={inputStyle}
+                      style={{
+                        ...inputStyle,
+                        border: errors.name
+                          ? "1.5px solid #ef4444"
+                          : "1.5px solid var(--border-color)",
+                      }}
                     />
                   </div>
                   <div
@@ -431,8 +470,12 @@ function Contact() {
                       placeholder="your@email.com"
                       value={formData.email}
                       onChange={handleChange}
-                      required
-                      style={inputStyle}
+                      style={{
+                        ...inputStyle,
+                        border: errors.email
+                          ? "1.5px solid #ef4444"
+                          : "1.5px solid var(--border-color)",
+                      }}
                     />
                   </div>
                 </div>
@@ -462,8 +505,12 @@ function Contact() {
                       placeholder="e.g., 1234567890"
                       value={formData.phone}
                       onChange={handleChange}
-                      required
-                      style={inputStyle}
+                      style={{
+                        ...inputStyle,
+                        border: errors.phone
+                          ? "1.5px solid #ef4444"
+                          : "1.5px solid var(--border-color)",
+                      }}
                     />
                   </div>
                   <div
@@ -476,7 +523,7 @@ function Contact() {
                         color: "var(--text-primary)",
                       }}
                     >
-                      Company
+                      Company <span style={{ color: "#ef4444" }}>*</span>
                     </label>
                     <input
                       name="company"
@@ -484,7 +531,12 @@ function Contact() {
                       placeholder="Your company"
                       value={formData.company}
                       onChange={handleChange}
-                      style={inputStyle}
+                      style={{
+                        ...inputStyle,
+                        border: errors.company
+                          ? "1.5px solid #ef4444"
+                          : "1.5px solid var(--border-color)",
+                      }}
                     />
                   </div>
                 </div>
@@ -499,15 +551,30 @@ function Contact() {
                       color: "var(--text-primary)",
                     }}
                   >
-                    Product of Interest
+                    Product of Interest <span style={{ color: "#ef4444" }}>*</span>
                   </label>
                   <Select
                     value={formData.product}
-                    onValueChange={(val) =>
-                      setFormData((prev) => ({ ...prev, product: val }))
-                    }
+                    onValueChange={(val) => {
+                      setFormData((prev) => ({ ...prev, product: val }));
+                      if (errors.product) {
+                        setErrors((prev) => {
+                          const copy = { ...prev };
+                          delete copy.product;
+                          return copy;
+                        });
+                      }
+                    }}
                   >
-                    <SelectTrigger style={{ ...inputStyle, height: 42 }}>
+                    <SelectTrigger
+                      style={{
+                        ...inputStyle,
+                        height: 42,
+                        border: errors.product
+                          ? "1.5px solid #ef4444"
+                          : "1.5px solid var(--border-color)",
+                      }}
+                    >
                       <SelectValue placeholder="Select a product..." />
                     </SelectTrigger>
                     <SelectContent>
