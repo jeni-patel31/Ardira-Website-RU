@@ -47,7 +47,7 @@ const team = [
   },
   {
     name: "Reddy Rachamallu",
-    title: "Co-Founder and CTO",
+    title: "Chief Architect",
     initials: "RR",
     image: reddy,
   },
