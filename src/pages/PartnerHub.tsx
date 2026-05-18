@@ -1,4 +1,4 @@
-﻿import { useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import SEO from "../components/SEO";
@@ -577,13 +577,15 @@ export default function PartnerHub() {
                           }
                         }}
                       >
-                        <div
-                          className={`w-full rounded-xl border overflow-hidden ${errors.country ? "border-red-500" : "border-slate-200"}`}
+                        <SelectTrigger
+                          className={`w-full px-4 py-2.5 h-[42px] rounded-xl border bg-white text-sm text-left focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
+                            errors.country
+                              ? "border-red-500 focus:ring-red-500"
+                              : "border-slate-200 focus:ring-emerald-500"
+                          }`}
                         >
-                          <SelectTrigger className="w-full py-2 h-[42px] rounded-xl bg-white focus:outline-none focus:ring-2 transition-all">
-                            <SelectValue placeholder="Select country" />
-                          </SelectTrigger>
-                        </div>
+                          <SelectValue placeholder="Select country" />
+                        </SelectTrigger>
                         <SelectContent className="bg-white">
                           <SelectItem value="USA">USA</SelectItem>
                           <SelectItem value="Canada">Canada</SelectItem>
@@ -612,13 +614,15 @@ export default function PartnerHub() {
                           }
                         }}
                       >
-                        <div
-                          className={`w-full rounded-xl border overflow-hidden ${errors.partnerType ? "border-red-500" : "border-slate-200"}`}
+                        <SelectTrigger
+                          className={`w-full px-4 py-2.5 h-[42px] rounded-xl border bg-white text-sm text-left focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
+                            errors.partnerType
+                              ? "border-red-500 focus:ring-red-500"
+                              : "border-slate-200 focus:ring-emerald-500"
+                          }`}
                         >
-                          <SelectTrigger className="w-full py-2 h-[42px] rounded-xl bg-white focus:outline-none focus:ring-2 transition-all">
-                            <SelectValue placeholder="Partnership Type" />
-                          </SelectTrigger>
-                        </div>
+                          <SelectValue placeholder="Partnership Type" />
+                        </SelectTrigger>
                         <SelectContent className="bg-white">
                           <SelectItem value="Reseller">Reseller</SelectItem>
                           <SelectItem value="Referral">Referral</SelectItem>
