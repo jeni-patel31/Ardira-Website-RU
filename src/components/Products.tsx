@@ -79,7 +79,7 @@ const products: Record<
   agentvista: {
     title: "AI-Powered Feedback Automation with SurveyVista & Agentforce.",
     description:
-      "Deploy intelligent AI agents that operate natively within Salesforce — with full CRM context, executing automated actions, delivering results without ever leaving your secure org enviornment.",
+      "Deploy intelligent AI agents that operate natively within Salesforce — with full CRM context, executing automated actions, delivering results without ever leaving your secure org environment.",
     image: avImageLogo,
     features: [
       "AI agents with full CRM context",

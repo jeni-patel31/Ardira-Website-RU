@@ -349,13 +349,13 @@ export default function PartnerHub() {
               {
                 step: "02",
                 title: "Onboard",
-                desc: "Our partner team will review your application and set you up with training.",
+                desc: "Our partner team will review your application and set you up with training, resources, and a dedicated partner manager.",
                 icon: Users,
               },
               {
                 step: "03",
                 title: "Grow Together",
-                desc: "Start referring, reselling, or integrating. Access joint GTM resources.",
+                desc: "Start referring, reselling, or integrating. Access joint GTM resources, shared leads, and co-marketing support.",
                 icon: Rocket,
               },
             ].map((item, i) => (
