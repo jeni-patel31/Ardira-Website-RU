@@ -309,7 +309,7 @@ function Footer() {
               transition: "var(--transition)",
             }}
           >
-            Terms of Service
+            Terms of Use
           </Link>
         </div>
       </div>
