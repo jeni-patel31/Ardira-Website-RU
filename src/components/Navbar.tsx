@@ -182,40 +182,42 @@ function Navbar() {
       </nav>
 
       {/* Mobile Menu Overlay */}
-      <div className={`mobile-menu-overlay${isMenuOpen ? " open" : ""}`}>
-        <Link
-          to="/#product"
-          className="mobile-nav-link"
-          onClick={handleLinkClick}
-        >
-          Products
-        </Link>
-        <Link
-          to="/#why-native"
-          className="mobile-nav-link"
-          onClick={handleLinkClick}
-        >
-          Why Native
-        </Link>
-        <Link to="/team" className="mobile-nav-link" onClick={handleLinkClick}>
-          Company
-        </Link>
-        <Link
-          to="/partner-hub"
-          className="mobile-nav-link"
-          onClick={handleLinkClick}
-        >
-          Partner Hub
-        </Link>
-        <Link
-          to="/#contact"
-          className="mobile-nav-link"
-          onClick={handleLinkClick}
-          style={{ color: "var(--primary-green)" }}
-        >
-          Book Demo
-        </Link>
-      </div>
+      {isMenuOpen && (
+        <div className="mobile-menu-overlay open">
+          <Link
+            to="/#product"
+            className="mobile-nav-link"
+            onClick={handleLinkClick}
+          >
+            Products
+          </Link>
+          <Link
+            to="/#why-native"
+            className="mobile-nav-link"
+            onClick={handleLinkClick}
+          >
+            Why Native
+          </Link>
+          <Link to="/team" className="mobile-nav-link" onClick={handleLinkClick}>
+            Company
+          </Link>
+          <Link
+            to="/partner-hub"
+            className="mobile-nav-link"
+            onClick={handleLinkClick}
+          >
+            Partner Hub
+          </Link>
+          <Link
+            to="/#contact"
+            className="mobile-nav-link"
+            onClick={handleLinkClick}
+            style={{ color: "var(--primary-green)" }}
+          >
+            Book Demo
+          </Link>
+        </div>
+      )}
     </>
   );
 }
