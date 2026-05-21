@@ -252,11 +252,10 @@ html body[data-scroll-locked] {
 }
 
 /* Navbar hover */
-.nav-menu a:hover {
+.nav-menu a:not(.btn-demo):hover {
   color: var(--primary-green) !important;
 }
 .btn-demo:hover {
-  background: var(--primary-green-dark) !important;
   transform: translateY(-2px);
 }
 
