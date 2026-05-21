@@ -31,10 +31,10 @@ export default function Terms() {
             </h2>
             <p className="mb-4">
               The website located at <a
-                href="https://ardira.com"
+                href="https://www.ardira.com"
                 className="text-emerald-600 hover:text-emerald-700 underline"
               >
-              ardira.com
+              www.ardira.com
               </a>, (the "Website") is
               published, owned, and operated by Ardira Corporation, its
               affiliates and related entities ("Ardira", "the Company," "we,"
