@@ -173,7 +173,7 @@ function Contact() {
         background: "#fff",
         borderTop: "1px solid var(--border-color)",
         scrollMarginTop: "70px",
-        minHeight: "calc(100vh - 70px)",
+        minHeight: "clamp(500px, calc(100vh - 70px), 750px)",
       }}
     >
       <div style={{ maxWidth: "var(--max-width)", margin: "0 auto" }}>
