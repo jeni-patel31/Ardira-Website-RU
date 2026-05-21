@@ -273,7 +273,7 @@ export default function PrivacyPolicy() {
               <p className="font-semibold">Legal, Ardira</p>
               <p>2040 Martin Ave</p>
               <p>Santa Clara, CA 95050</p>
-              <p>1-669-777-6838</p>
+              <p><a href="tel:+16697776838" className="text-emerald-600 hover:text-emerald-700">1.669.777.6838</a></p>
               <p><a href="mailto:privacy@ardira.com" className="text-emerald-600 hover:text-emerald-700 underline">privacy@ardira.com</a></p>
             </div>
           </section>
