@@ -10,9 +10,9 @@ export default function Terms() {
         keywords="terms of service, terms of use, Ardira terms"
         ogTitle="Ardira Terms of Service"
         ogDescription="Terms and conditions for using Ardira's website and services."
-        ogUrl="https://ardira.com/terms-of-service"
+        ogUrl="https://ardira.com/terms-of-use"
       />
-      <StructuredData type="WebPage" name="Terms of Service" description="Ardira's Terms of Service." url="https://ardira.com/terms-of-service" />
+      <StructuredData type="WebPage" name="Terms of Service" description="Ardira's Terms of Service." url="https://ardira.com/terms-of-use" />
       <main className="flex-grow w-full responsive-section">
         <div style={{
           maxWidth: "var(--max-width)",

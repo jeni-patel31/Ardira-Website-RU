@@ -300,7 +300,7 @@ function Footer() {
             Privacy Policy
           </Link>
           <Link
-            to="/terms-of-service"
+            to="/terms-of-use"
             onClick={handleLinkClick}
             style={{
               fontSize: 12.5,
