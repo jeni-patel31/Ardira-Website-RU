@@ -137,8 +137,9 @@ function Features() {
           Why Native Matters
         </span>
         <h2
+          className="section-heading-lg"
           style={{
-            fontSize: 52,
+            fontSize: "clamp(28px, 6vw, 52px)",
             fontWeight: 800,
             color: "var(--navy)",
             marginBottom: 20,

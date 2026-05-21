@@ -186,6 +186,7 @@ function Contact() {
           }}
         >
           <div
+            className="contact-info-col"
             style={{
               paddingRight: 20,
               display: "flex",
@@ -234,7 +235,7 @@ function Contact() {
               Contact our team to schedule a demo, learn more about our
               products, or simply ask a question. We respond promptly.
             </p>
-            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+            <div className="contact-info-items" style={{ display: "flex", flexDirection: "column", gap: 12 }}>
               {[
                 {
                   icon: (
@@ -429,6 +430,7 @@ function Contact() {
                 </div>
 
                 <div
+                  className="contact-form-row"
                   style={{
                     display: "grid",
                     gridTemplateColumns: "1fr 1fr",
@@ -490,6 +492,7 @@ function Contact() {
                 </div>
 
                 <div
+                  className="contact-form-row"
                   style={{
                     display: "grid",
                     gridTemplateColumns: "1fr 1fr",

@@ -205,10 +205,11 @@ function Products() {
             Our Products
           </span>
           <h2
+            className="section-heading-lg"
             style={{
               color: "var(--navy)",
               marginBottom: 12,
-              fontSize: 52,
+              fontSize: "clamp(28px, 6vw, 52px)",
               fontWeight: 800,
               lineHeight: 1.2,
               letterSpacing: "-0.02em",

@@ -160,7 +160,7 @@ function Footer() {
             ))}
           </ul>
         </div>
-        <div className="footer-col" style={{ justifySelf: "end" }}>
+        <div className="footer-col contact-col">
           <h4
             style={{
               fontSize: 11,
@@ -195,6 +195,7 @@ function Footer() {
                   fontSize: 13.5,
                   color: "rgba(255,255,255,0.6)",
                   lineHeight: 1.6,
+                  textAlign: "left",
                 }}
               >
                 2040 Martin Ave

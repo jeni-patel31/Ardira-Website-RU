@@ -9,6 +9,7 @@ const partners = Array.from(new Set(allPartners)); // Remove duplicates
 function TrustedSection() {
   return (
     <section
+      className="trusted-section-outer"
       style={{
         padding: "56px 48px",
         background: "var(--bg-light)",

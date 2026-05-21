@@ -7,7 +7,7 @@
   opacity: 1 !important;
   position: fixed !important;
   bottom: 20px !important;
-  right: 20px !important;
+  right: 0px !important;
   z-index: 9999 !important;
   width: 60px !important;
   height: auto !important;
@@ -446,7 +446,7 @@
   .product-tabs-grid {
     grid-template-columns: 1fr !important;
     gap: 0 !important;
-    min-height: auto !important;
+    min-height: 580px !important;
     height: auto !important;
   }
   .mobile-only {
@@ -525,13 +525,30 @@
     grid-template-columns: 1fr !important;
   }
   .footer-grid {
-    grid-template-columns: 1fr 1fr !important;
+    grid-template-columns: 1.5fr 1fr !important;
+    gap: 48px 32px !important;
+  }
+  .contact-col {
+    justify-self: start !important;
   }
   .features-grid-cols {
     grid-template-columns: repeat(2, 1fr) !important;
   }
   .comparison-grid {
     grid-template-columns: 1fr !important;
+  }
+  /* Stats: force 2x2 grid on tablet */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  /* Scale down large headings for tablet */
+  .section-heading-lg {
+    font-size: 38px !important;
+  }
+  /* Trusted logos section edge padding */
+  .trusted-section-outer {
+    padding-left: 32px !important;
+    padding-right: 32px !important;
   }
 }
 
@@ -608,6 +625,10 @@
   .form-row-grid {
     grid-template-columns: 1fr !important;
   }
+  /* Contact form: stack all 2-column form rows into single column */
+  .contact-form-row {
+    grid-template-columns: 1fr !important;
+  }
   .footer-grid {
     grid-template-columns: 1fr 1fr !important;
     text-align: center;
@@ -660,7 +681,48 @@
     font-size: 12px !important;
   }
   .stats-grid {
-    gap: 24px !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+  }
+  /* Scale down large headings for mobile */
+  .section-heading-lg {
+    font-size: 30px !important;
+  }
+  /* Trusted logos section edge padding */
+  .trusted-section-outer {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  /* Contact section: left align info when stacked */
+  .contact-info-col {
+    padding-right: 0 !important;
+  }
+  .contact-info-items {
+    align-items: flex-start !important;
+  }
+  .contact-info-items > div {
+    justify-content: flex-start;
+    flex-direction: row !important;
+    text-align: left;
+    gap: 12px !important;
+  }
+  .product-tabs-grid {
+    min-height: 740px !important;
+  }
+  /* Comparison grid stacking: remove right border for non-native col */
+  .comparison-grid > div:first-child {
+    border-right: none !important;
+    border-bottom: 1.5px solid var(--border-color) !important;
+  }
+  /* Native col border fix on stack */
+  .comparison-grid .native-col {
+    border-left: none !important;
+    border-top: 3px solid var(--primary-green) !important;
+  }
+  /* 404 page padding */
+  .notfound-page {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
   }
 }
 
@@ -688,8 +750,51 @@
   }
 }
 
+/* Small mobile: single column stats */
 @media (max-width: 480px) {
   .stats-grid {
     grid-template-columns: 1fr !important;
+  }
+  .responsive-section {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  .responsive-nav {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  .section-heading-lg {
+    font-size: 26px !important;
+  }
+  .product-tabs-grid {
+    min-height: 800px !important;
+  }
+  /* Footer: full single column on very small screens */
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+  .footer-grid > div:first-child,
+  .footer-grid > div:last-child {
+    grid-column: span 1;
+  }
+  /* Hero section tighter spacing */
+  .hero-buttons-col .btn {
+    padding: 12px 24px !important;
+    font-size: 14px !important;
+  }
+  /* Trusted logos section edge padding */
+  .trusted-section-outer {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  /* Contact form padding */
+  .product-content-area {
+    padding: 20px 16px !important;
+  }
+  /* 404 page padding */
+  .notfound-page {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
   }
 }
