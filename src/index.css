@@ -667,8 +667,9 @@ html body[data-scroll-locked] {
     text-align: center;
   }
   .footer-links-col {
-    flex-direction: column;
-    gap: 12px;
+    flex-direction: row !important;
+    gap: 24px !important;
+    justify-content: center;
     align-items: center;
   }
   /* Product panel actions fix */
@@ -775,15 +776,6 @@ html body[data-scroll-locked] {
   }
   .product-tabs-grid {
     min-height: 800px !important;
-  }
-  /* Footer: full single column on very small screens */
-  .footer-grid {
-    grid-template-columns: 1fr !important;
-    gap: 40px !important;
-  }
-  .footer-grid > div:first-child,
-  .footer-grid > div:last-child {
-    grid-column: span 1;
   }
   /* Hero section tighter spacing */
   .hero-buttons-col .btn {
