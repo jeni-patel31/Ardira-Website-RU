@@ -623,8 +623,12 @@ html body[data-scroll-locked] {
   .hero-badge {
     margin-bottom: 24px !important;
     display: flex !important;
+    align-items: center !important;
     width: 100% !important;
     box-sizing: border-box !important;
+    white-space: nowrap !important;
+    font-size: 11px !important;
+    letter-spacing: 0.1em !important;
   }
   .hero-heading {
     font-size: clamp(28px, 5.5vw, 40px) !important;
