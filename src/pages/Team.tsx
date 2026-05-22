@@ -108,6 +108,11 @@ export default function About() {
         ogTitle="Ardira Team - Salesforce Experts"
         ogDescription="Experienced leadership and advisory board dedicated to Salesforce innovation"
         ogUrl="https://ardira.com/team"
+        ogImage="https://ardira.com/ArdiraLogo.webp"
+        ogImageWidth="512"
+        ogImageHeight="512"
+        ogImageType="image/webp"
+        ogLogo="https://ardira.com/ArdiraLogo.webp"
       />
       <StructuredData type="Organization" />
 

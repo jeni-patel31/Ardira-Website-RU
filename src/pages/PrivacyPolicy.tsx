@@ -11,6 +11,11 @@ export default function PrivacyPolicy() {
         ogTitle="Ardira Privacy Policy"
         ogDescription="How Ardira handles and protects your personal information."
         ogUrl="https://ardira.com/privacy-policy"
+        ogImage="https://ardira.com/ArdiraLogo.webp"
+        ogImageWidth="512"
+        ogImageHeight="512"
+        ogImageType="image/webp"
+        ogLogo="https://ardira.com/ArdiraLogo.webp"
       />
       <StructuredData type="WebPage" name="Privacy Policy" description="Ardira's Privacy Policy." url="https://ardira.com/privacy-policy" />
       <main className="flex-grow w-full responsive-section">

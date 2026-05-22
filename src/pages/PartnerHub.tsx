@@ -198,6 +198,11 @@ export default function PartnerHub() {
         ogTitle="Ardira Partner Hub"
         ogDescription="Partner with Ardira to deliver native Salesforce solutions and grow your business."
         ogUrl="https://ardira.com/partner-hub"
+        ogImage="https://ardira.com/ArdiraLogo.webp"
+        ogImageWidth="512"
+        ogImageHeight="512"
+        ogImageType="image/webp"
+        ogLogo="https://ardira.com/ArdiraLogo.webp"
       />
       <StructuredData
         type="WebPage"

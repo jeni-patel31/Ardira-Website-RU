@@ -40,6 +40,12 @@ function Home() {
         ogTitle="Ardira — 100% Native Salesforce Applications"
         ogDescription="Enterprise-grade, 100% native Salesforce products. No integrations. No data leaks."
         ogUrl="https://ardira.com"
+        ogImage="https://ardira.com/ArdiraLogo.webp"
+        ogImageWidth="512"
+        ogImageHeight="512"
+        ogImageType="image/webp"
+        ogLogo="https://ardira.com/ArdiraLogo.webp"
+        ogType="website"
       />
       <StructuredData type="Organization" />
       <StructuredData type="WebSite" />

@@ -11,6 +11,11 @@ export default function Terms() {
         ogTitle="Ardira Terms of Use"
         ogDescription="Terms and conditions for using Ardira's website and services."
         ogUrl="https://ardira.com/terms-of-use"
+        ogImage="https://ardira.com/ArdiraLogo.webp"
+        ogImageWidth="512"
+        ogImageHeight="512"
+        ogImageType="image/webp"
+        ogLogo="https://ardira.com/ArdiraLogo.webp"
       />
       <StructuredData type="WebPage" name="Terms of Use" description="Ardira's Terms of Use." url="https://ardira.com/terms-of-use" />
       <main className="flex-grow w-full responsive-section">

@@ -8,6 +8,10 @@ interface SEOProps {
   ogDescription?: string;
   ogUrl?: string;
   ogImage?: string;
+  ogImageWidth?: string;
+  ogImageHeight?: string;
+  ogImageType?: string;
+  ogLogo?: string;
   ogType?: string;
   canonicalUrl?: string;
 }
@@ -54,6 +58,10 @@ export default function SEO({
   ogDescription,
   ogUrl,
   ogImage,
+  ogImageWidth,
+  ogImageHeight,
+  ogImageType,
+  ogLogo,
   ogType = "website",
   canonicalUrl,
 }: SEOProps) {
@@ -93,9 +101,33 @@ export default function SEO({
 
     if (ogImage) {
       setMetaTag("property", "og:image", ogImage);
+      
+      // Set image dimensions and type
+      if (ogImageWidth) {
+        setMetaTag("property", "og:image:width", ogImageWidth);
+      }
+      if (ogImageHeight) {
+        setMetaTag("property", "og:image:height", ogImageHeight);
+      }
+      if (ogImageType) {
+        setMetaTag("property", "og:image:type", ogImageType);
+      }
     } else {
       removeMetaTag("property", "og:image");
+      removeMetaTag("property", "og:image:width");
+      removeMetaTag("property", "og:image:height");
+      removeMetaTag("property", "og:image:type");
     }
+
+    // OG Logo
+    if (ogLogo) {
+      setMetaTag("property", "og:logo", ogLogo);
+    } else {
+      removeMetaTag("property", "og:logo");
+    }
+
+    // OG Site Name
+    setMetaTag("property", "og:site_name", "Ardira");
 
     // Canonical
     if (canonicalUrl) {
@@ -114,10 +146,14 @@ export default function SEO({
       removeMetaTag("property", "og:description");
       removeMetaTag("property", "og:url");
       removeMetaTag("property", "og:image");
+      removeMetaTag("property", "og:image:width");
+      removeMetaTag("property", "og:image:height");
+      removeMetaTag("property", "og:image:type");
+      removeMetaTag("property", "og:logo");
       removeMetaTag("property", "og:type");
       removeCanonical();
     };
-  }, [title, description, keywords, ogTitle, ogDescription, ogUrl, ogImage, ogType, canonicalUrl]);
+  }, [title, description, keywords, ogTitle, ogDescription, ogUrl, ogImage, ogImageWidth, ogImageHeight, ogImageType, ogLogo, ogType, canonicalUrl]);
 
   return null;
 }
