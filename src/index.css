@@ -673,7 +673,7 @@ html body[data-scroll-locked] {
   .trust-indicators-col img {
     height: 32px !important;
   }
-  .trust-sep {
+  .trust-indicators-col > div.trust-sep {
     display: none !important;
   }
   .features-grid-cols {
