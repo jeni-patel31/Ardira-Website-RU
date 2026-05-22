@@ -48,7 +48,7 @@ const products: Record<
   formvista: {
     title: "Endless Applications: The best data collection solution you need.",
     description:
-      "Native Salesforce business forms that write data directly into your CRM — no third-party tools, no integration overhead, no data leaving your org.Beautiful,branded forms connected to any Salesforce object.",
+      "Native Salesforce business forms that write data directly into your CRM — no third-party tools, no integration overhead, no data leaving your org. Beautiful,branded forms connected to any Salesforce object.",
     image: fvImageLogo,
     features: [
       "Writes to any Salesforce object",
