@@ -271,7 +271,7 @@ function Footer() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          paddingTop: 24,
+          paddingTop: 12,
           borderTop: "1px solid rgba(255,255,255,0.08)",
           flexWrap: "wrap" as const,
           gap: 12,
