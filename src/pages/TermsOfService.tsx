@@ -218,7 +218,7 @@ export default function Terms() {
             <h2 className="text-xl md:text-2xl font-semibold text-[#0f172a] mb-4">
               Disclaimer
             </h2>
-            <p className="uppercase text-xs font-semibold tracking-wide bg-slate-100 p-4 rounded-lg mb-4 leading-relaxed">
+            <p className="uppercase text-xs font-semibold tracking-wide mb-4 leading-relaxed">
               ALL INFORMATION OR SERVICES PROVIDED BY THE COMPANY TO YOU VIA THE
               WEBSITE, INCLUDING, WITHOUT LIMITATION, ALL CONTENT, ARE PROVIDED
               "AS IS" AND "WHERE IS" AND WITHOUT ANY WARRANTIES OF ANY KIND. THE
@@ -255,9 +255,7 @@ export default function Terms() {
             <h2 className="text-xl md:text-2xl font-semibold text-[#0f172a] mb-4">
               Limitation of Liability
             </h2>
-            <p className="uppercase text-xs font-semibold tracking-wide bg-slate-100 p-4 rounded-lg mb-4 leading-relaxed">
-              UNDER NO CIRCUMSTANCES SHALL THE COMPANY OR ANY OF ITS THIRD-PARTY
-              LICENSORS BE LIABLE TO YOU OR TO ANY THIRD PARTY FOR ANY DIRECT,
+            <p className="uppercase text-xs font-semibold tracking-wide mb-4 leading-relaxed">
               INDIRECT, INCIDENTAL, CONSEQUENTIAL, PUNITIVE, SPECIAL OR
               EXEMPLARY DAMAGES (INCLUDING, WITHOUT LIMITATION, LOSS OF PROFITS,
               LOSS OF USE, LOSS OF DATA, LOSS OF INFORMATION OR PROGRAMS ON YOUR
