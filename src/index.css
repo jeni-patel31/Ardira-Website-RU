@@ -655,11 +655,9 @@ html body[data-scroll-locked] {
     font-size: 15px !important;
   }
   .trust-indicators-col {
-    flex-direction: row !important;
-    justify-content: flex-start !important;
-    align-items: center !important;
-    gap: 16px !important;
-    flex-wrap: wrap !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
     width: 100% !important;
   }
   .trust-indicators-col > div {
