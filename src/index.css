@@ -617,9 +617,6 @@ html body[data-scroll-locked] {
     padding-bottom: 56px !important;
     text-align: left !important;
   }
-  .trusted-section-outer {
-    display: none !important;
-  }
   .hero-content {
     text-align: left !important;
   }
@@ -822,6 +819,15 @@ html body[data-scroll-locked] {
   }
   .product-tabs-grid {
     min-height: 800px !important;
+  }
+  /* Footer: full single column on very small screens */
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+  .footer-grid > div:first-child,
+  .footer-grid > div:last-child {
+    grid-column: span 1;
   }
   /* Hero section tighter spacing */
   .hero-buttons-col .btn {
