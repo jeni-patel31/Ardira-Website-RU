@@ -823,11 +823,30 @@ html body[data-scroll-locked] {
   /* Footer: full single column on very small screens */
   .footer-grid {
     grid-template-columns: 1fr !important;
+    text-align: left !important;
     gap: 40px !important;
+  }
+  .footer-grid > div:first-child img {
+    margin: 0 !important;
+    height: 32px !important;
   }
   .footer-grid > div:first-child,
   .footer-grid > div:last-child {
     grid-column: span 1;
+  }
+  .footer-col {
+    justify-self: flex-start !important;
+    align-items: flex-start !important;
+  }
+  .footer-col ul {
+    align-items: flex-start !important;
+  }
+  .footer-bottom-col {
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+  .footer-links-col {
+    justify-content: flex-start !important;
   }
   /* Hero section tighter spacing */
   .hero-buttons-col .btn {

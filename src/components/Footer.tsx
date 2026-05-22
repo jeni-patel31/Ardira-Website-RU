@@ -70,7 +70,7 @@ function Footer() {
         <div className="footer-col">
           <h4
             style={{
-              fontSize: 11,
+              fontSize: 14,
               fontWeight: 700,
               letterSpacing: "0.1em",
               textTransform: "uppercase" as const,
@@ -109,7 +109,7 @@ function Footer() {
         <div className="footer-col">
           <h4
             style={{
-              fontSize: 11,
+              fontSize: 14,
               fontWeight: 700,
               letterSpacing: "0.1em",
               textTransform: "uppercase" as const,
@@ -163,7 +163,7 @@ function Footer() {
         <div className="footer-col contact-col">
           <h4
             style={{
-              fontSize: 11,
+              fontSize: 14,
               fontWeight: 700,
               letterSpacing: "0.1em",
               textTransform: "uppercase" as const,
