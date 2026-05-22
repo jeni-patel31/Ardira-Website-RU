@@ -705,15 +705,22 @@ html body[data-scroll-locked] {
     flex-direction: column;
   }
   .footer-bottom-col {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    flex-direction: column-reverse !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 12px !important;
   }
   .footer-links-col {
-    flex-direction: row !important;
-    gap: 24px !important;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row-reverse !important;
+    gap: 12px !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  .footer-links-col a:first-child::before {
+    content: "|" !important;
+    margin-right: 12px !important;
+    color: rgba(255, 255, 255, 0.3) !important;
+    pointer-events: none !important;
   }
   /* Product panel actions fix */
   .product-actions-row {
@@ -841,13 +848,7 @@ html body[data-scroll-locked] {
   .footer-col ul {
     align-items: flex-start !important;
   }
-  .footer-bottom-col {
-    align-items: flex-start !important;
-    text-align: left !important;
-  }
-  .footer-links-col {
-    justify-content: flex-start !important;
-  }
+
   /* Hero section tighter spacing */
   .hero-buttons-col .btn {
     padding: 12px 24px !important;
