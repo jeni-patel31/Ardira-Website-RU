@@ -28,7 +28,7 @@ function Hero() {
 
   return (
     <section
-      className="responsive-section"
+      className="responsive-section hero-section"
       style={{
         position: "relative",
         overflow: "hidden",
@@ -52,6 +52,7 @@ function Hero() {
         }}
       />
       <div
+        className="hero-content"
         style={{
           position: "relative",
           zIndex: 1,
@@ -60,6 +61,7 @@ function Hero() {
         }}
       >
         <div
+          className="hero-badge"
           style={{
             display: "inline-flex",
             alignItems: "center",
@@ -90,6 +92,7 @@ function Hero() {
           100% Salesforce-Native Applications
         </div>
         <h1
+          className="hero-heading"
           style={{
             margin: "16px 0 16px 0",
             color: "var(--navy)",
@@ -110,6 +113,7 @@ function Hero() {
           to it.
         </h1>
         <p
+          className="hero-paragraph"
           style={{
             fontSize: 16,
             margin: "16px auto 32px",
