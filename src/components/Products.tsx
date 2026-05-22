@@ -260,10 +260,12 @@ function Products() {
                   display: "none", // Controlled by CSS but adding inline for safety
                   alignItems: "center",
                   justifyContent: "space-between",
-                  padding: "16px 20px",
+                  padding: "0 16px",
+                  height: 80,
                   background: "var(--bg-light)",
                   borderBottom: "1px solid var(--border-color)",
                   width: "100%",
+                  boxSizing: "border-box",
                 }}
               >
                 <button
@@ -273,40 +275,49 @@ function Products() {
                     background: "#fff",
                     border: "1px solid var(--border-color)",
                     borderRadius: "50%",
-                    width: 36,
-                    height: 36,
+                    width: 40,
+                    height: 40,
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     cursor: "pointer",
                     color: "var(--primary-green)",
                     boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
+                    flexShrink: 0,
                   }}
                 >
-                  <ChevronLeft size={20} />
+                  <ChevronLeft size={22} />
                 </button>
 
-                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 12, flex: 1, justifyContent: "center", minWidth: 0 }}>
                   <img
                     src={productMeta[activeTab].icon}
                     alt=""
-                    style={{ width: 28, height: 28, objectFit: "contain" }}
+                    style={{ width: 38, height: 38, objectFit: "contain", flexShrink: 0 }}
                   />
-                  <div style={{ display: "flex", flexDirection: "column" }}>
+                  <div style={{ display: "flex", flexDirection: "column", minWidth: 0 }}>
                     <span
                       style={{
-                        fontSize: 14,
+                        fontSize: 17,
                         fontWeight: 700,
                         color: "var(--navy)",
+                        lineHeight: 1.2,
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
                       }}
                     >
                       {productMeta[activeTab].name}
                     </span>
                     <span
                       style={{
-                        fontSize: 11,
+                        fontSize: 12,
                         color: "var(--text-muted)",
                         marginTop: 2,
+                        lineHeight: 1.2,
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
                       }}
                     >
                       {productMeta[activeTab].subtitle}
@@ -321,17 +332,18 @@ function Products() {
                     background: "#fff",
                     border: "1px solid var(--border-color)",
                     borderRadius: "50%",
-                    width: 36,
-                    height: 36,
+                    width: 40,
+                    height: 40,
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     cursor: "pointer",
                     color: "var(--primary-green)",
                     boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
+                    flexShrink: 0,
                   }}
                 >
-                  <ChevronRight size={20} />
+                  <ChevronRight size={22} />
                 </button>
               </div>
 
