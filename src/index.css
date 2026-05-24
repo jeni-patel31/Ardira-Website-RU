@@ -614,7 +614,7 @@ html body[data-scroll-locked] {
   }
   .hero-section {
     padding-top: 40px !important;
-    padding-bottom: 84px !important;
+    padding-bottom: 72px !important;
     text-align: center !important;
   }
   .hero-content {
@@ -641,14 +641,14 @@ html body[data-scroll-locked] {
   }
   .hero-paragraph {
     font-size: 15px !important;
-    margin: 16px auto 24px !important;
+    margin: 16px auto 32px !important;
     text-align: center !important;
   }
   .hero-buttons-col {
     flex-direction: column !important;
     width: 100% !important;
     align-items: center !important;
-    gap: 16px !important;
+    gap: 20px !important;
     margin-bottom: 32px !important;
   }
   .hero-buttons-col .btn {
