@@ -289,7 +289,7 @@ function Products() {
                   <ChevronLeft size={22} />
                 </button>
 
-                <div style={{ display: "flex", alignItems: "center", gap: 12, flex: 1, justifyContent: "center", minWidth: 0 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, flex: 1, justifyContent: "center", minWidth: 0 }}>
                   <img
                     src={productMeta[activeTab].icon}
                     alt=""
@@ -298,26 +298,22 @@ function Products() {
                   <div style={{ display: "flex", flexDirection: "column", minWidth: 0 }}>
                     <span
                       style={{
-                        fontSize: 17,
+                        fontSize: 16,
                         fontWeight: 700,
                         color: "var(--navy)",
                         lineHeight: 1.2,
-                        whiteSpace: "nowrap",
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
+                        whiteSpace: "normal",
                       }}
                     >
                       {productMeta[activeTab].name}
                     </span>
                     <span
                       style={{
-                        fontSize: 12,
+                        fontSize: 11,
                         color: "var(--text-muted)",
                         marginTop: 2,
                         lineHeight: 1.2,
-                        whiteSpace: "nowrap",
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
+                        whiteSpace: "normal",
                       }}
                     >
                       {productMeta[activeTab].subtitle}
