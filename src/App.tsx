@@ -1,28 +1,13 @@
 import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from "react-router-dom";
-import { useEffect, lazy, Suspense } from "react";
+import { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-
-const Home = lazy(() => import("./pages/Home"));
-const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
-const TermsOfService = lazy(() => import("./pages/TermsOfService"));
-const PartnerHub = lazy(() => import("./pages/PartnerHub"));
-const Team = lazy(() => import("./pages/Team"));
-const NotFound = lazy(() => import("./pages/NotFound"));
-
-function PageLoader() {
-  return (
-    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: "60vh", background: "#fff" }}>
-      <div style={{ width: 40, height: 40, border: "4px solid #f0fdf4", borderTopColor: "#43AF57", borderRadius: "50%", animation: "spin 1s linear infinite" }}></div>
-      <style>{`
-        @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-        }
-      `}</style>
-    </div>
-  );
-}
+import Home from "./pages/Home";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
+import PartnerHub from "./pages/PartnerHub";
+import Team from "./pages/Team";
+import NotFound from "./pages/NotFound";
 
 let isInitialAppLoad = true;
 
@@ -84,16 +69,14 @@ function App() {
       <ScrollToTop />
       <div style={{ width: "100%", margin: 0, background: "#fff", minHeight: "100vh", position: "relative" }}>
         <Navbar />
-        <Suspense fallback={<PageLoader />}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/team" element={<Team />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/terms-of-use" element={<TermsOfService />} />
-            <Route path="/partner-hub" element={<PartnerHub />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/team" element={<Team />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-of-use" element={<TermsOfService />} />
+          <Route path="/partner-hub" element={<PartnerHub />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
         <Footer />
       </div>
     </Router>
