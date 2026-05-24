@@ -68,18 +68,10 @@ function Navbar() {
             <img
               src={ArdiraLogo}
               alt="Ardira"
-              style={{ height: 90, width: "auto", display: "block" }}
+              className="nav-logo"
             />
           </Link>
-          <ul
-            className="nav-menu"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              listStyle: "none",
-              gap: 28,
-            }}
-          >
+          <ul className="nav-menu">
             <li className="nav-hide-mobile">
               <Link
                 to="/#product"
@@ -145,19 +137,6 @@ function Navbar() {
                 to="/#contact"
                 className="btn-demo"
                 onClick={handleLinkClick}
-                style={{
-                  fontSize: 14,
-                  fontWeight: 600,
-                  padding: "8px 20px",
-                  background: "var(--primary-green)",
-                  color: "#fff",
-                  borderRadius: 7,
-                  boxShadow: "0 3px 10px rgba(57,180,74,0.25)",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  textDecoration: "none",
-                }}
               >
                 Book Demo
               </Link>
