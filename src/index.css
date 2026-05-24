@@ -263,9 +263,6 @@ html body[data-scroll-locked] {
 .logo-track {
   animation: scroll-logos 40s linear infinite;
 }
-.logo-track:hover {
-  animation-play-state: paused;
-}
 .logo-item img {
   opacity: 0.7;
   transition: var(--transition);
