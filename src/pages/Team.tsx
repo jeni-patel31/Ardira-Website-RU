@@ -8,7 +8,7 @@ import ardiraTeam from "@assets/ArdiraTeam.webp";
 import rajesh from "@assets/ArdiraMind/rajesh.webp";
 import hitesh from "@assets/ArdiraMind/hitesh.webp";
 import brijesh from "@assets/ArdiraMind/brijesh.webp";
-import qRegan from "@assets/ArdiraMind/Ll-photo.webp";
+import qRegan from "@assets/ArdiraMind/quinn.webp";
 import reddy from "@assets/ArdiraMind/Reddy.webp";
 
 import devAdvisor from "@assets/AdvisoryBoard/dev-advisor.webp";
