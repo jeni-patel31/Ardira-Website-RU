@@ -30,11 +30,7 @@ function ScrollToTop() {
     isInitialAppLoad = false;
 
     if (wasReload) {
-      if (window.location.pathname !== "/") {
-        navigate("/", { replace: true });
-      } else {
-        window.scrollTo(0, 0);
-      }
+      window.scrollTo(0, 0);
       return;
     }
 
