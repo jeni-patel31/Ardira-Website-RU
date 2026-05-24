@@ -614,7 +614,7 @@ html body[data-scroll-locked] {
   }
   .hero-section {
     padding-top: 40px !important;
-    padding-bottom: 96px !important;
+    padding-bottom: 84px !important;
     text-align: left !important;
   }
   .hero-content {
@@ -656,8 +656,8 @@ html body[data-scroll-locked] {
   }
   .trust-indicators-col {
     flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 16px !important;
+    align-items: center !important;
+    gap: 22px !important;
     width: 100% !important;
   }
   .trust-indicators-col > div {
@@ -675,7 +675,7 @@ html body[data-scroll-locked] {
   }
   .trust-indicators-col img {
     height: 44px !important;
-    margin-left: -6px !important;
+    margin-left: 0 !important;
   }
   .trust-indicators-col > div.trust-sep {
     display: none !important;
