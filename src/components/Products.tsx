@@ -292,7 +292,7 @@ function Products() {
                 <div style={{ display: "flex", alignItems: "center", gap: 8, flex: 1, justifyContent: "center", minWidth: 0 }}>
                   <img
                     src={productMeta[activeTab].icon}
-                    alt=""
+                    alt={productMeta[activeTab].name}
                     style={{ width: 38, height: 38, objectFit: "contain", flexShrink: 0 }}
                   />
                   <div style={{ display: "flex", flexDirection: "column", minWidth: 0 }}>
@@ -390,7 +390,7 @@ function Products() {
                     >
                       <img
                         src={productMeta[key].icon}
-                        alt=""
+                        alt={productMeta[key].name}
                         style={{ width: 32, height: 32, objectFit: "contain" }}
                       />
                       <div>
@@ -433,7 +433,7 @@ function Products() {
                 >
                   <img
                     src={products[activeTab].image}
-                    alt=""
+                    alt={productMeta[activeTab].name}
                     style={{
                       height: activeTab === "relationshipvista" ? 65 : 40,
                       marginBottom: 16,
