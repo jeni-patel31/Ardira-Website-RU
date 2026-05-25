@@ -1,10 +1,7 @@
 <?php
 // api/partner.php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
 
-require __DIR__ . '/../vendor/autoload.php';
-
+// CORS Headers
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
@@ -40,12 +37,14 @@ $partnerType = isset($data['partnerType']) ? htmlspecialchars(strip_tags($data['
 $message = isset($data['message']) ? htmlspecialchars(strip_tags($data['message'])) : '';
 $recaptchaToken = isset($data['recaptchaToken']) ? $data['recaptchaToken'] : '';
 
+// Validation (Mandatory fields check)
 if (empty($fullName) || empty($email) || empty($company) || empty($phone) || empty($country) || empty($partnerType) || empty($message)) {
     http_response_code(400);
     echo json_encode(["status" => "error", "message" => "All fields are required."]);
     exit();
 }
 
+// Email format validation
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     http_response_code(400);
     echo json_encode(["status" => "error", "message" => "Invalid email address."]);
@@ -86,11 +85,8 @@ if ($recaptchaToken) {
     }
 }
 
-// Credentials
-$smtpUser = getenv('GMAIL_USER') ?: 'pateljeni3110@gmail.com';
-$smtpPass = getenv('GMAIL_APP_PASSWORD') ?: '';
-
-$logoUrl = "https://ardira-website.vercel.app/ArdiraLogo.png";
+// Form/Email Template - Preserved per request
+$logoUrl = "https://ardira.com/ArdiraLogo.png";
 
 function buildEmailTemplate($headingText, $rowsHtml) {
     global $logoUrl;
@@ -196,69 +192,6 @@ $prospectRows = [
 $salesBody = buildEmailTemplate("Following partner application received via Ardira Partner Hub", buildRowsHtml($internalRows));
 $prospectBody = buildEmailTemplate("We have received your details, one of our representative will get in touch with you shortly.", buildRowsHtml($prospectRows));
 
-function sendMail($to, $cc, $subject, $body, $smtpUser, $smtpPass, $replyToEmail = null) {
-    if (!class_exists('PHPMailer\PHPMailer\PHPMailer')) {
-        return "PHPMailer library is not loaded. Make sure composer dependencies are installed.";
-    }
-
-    $mail = new PHPMailer(true);
-    try {
-        $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com';
-        $mail->SMTPAuth   = true;
-        $mail->Username   = $smtpUser;
-        $mail->Password   = str_replace(' ', '', $smtpPass); 
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port       = 587;
-
-        $mail->setFrom($smtpUser, 'Ardira Partnerships');
-        $mail->addAddress($to);
-        if ($cc) {
-            $mail->addCC($cc);
-        }
-        if ($replyToEmail) {
-            $mail->addReplyTo($replyToEmail, $replyToEmail);
-        }
-
-        $mail->isHTML(true);
-        $mail->Subject = $subject;
-        $mail->Body    = $body;
-        
-        $mail->send();
-        return true;
-    } catch (Exception $e) {
-        return "Error: {$mail->ErrorInfo}";
-    }
-}
-
-$errors = [];
-
-if (empty($smtpPass)) {
-    http_response_code(500);
-    echo json_encode(["status" => "error", "message" => "Server email configuration is missing (GMAIL_APP_PASSWORD)"]);
-    exit();
-}
-
-$subjectSales = "Partner Application from Ardira website";
-$subjectProspect = "Thank You for your Partner Application - Ardira";
-$TEAM_EMAIL = $smtpUser;
-
-// 1. Send internal copy to Sales Team
-$salesResult = sendMail($TEAM_EMAIL, null, $subjectSales, $salesBody, $smtpUser, $smtpPass, $email);
-if ($salesResult !== true) {
-    $errors[] = "Sales email failed: " . $salesResult;
-}
-
-// 2. Send Auto-Responder to the Prospect (Submitter)
-$prospectResult = sendMail($email, null, $subjectProspect, $prospectBody, $smtpUser, $smtpPass, $TEAM_EMAIL);
-if ($prospectResult !== true) {
-    $errors[] = "Prospect email failed: " . $prospectResult;
-}
-
-if (!empty($errors)) {
-    http_response_code(500);
-    echo json_encode(["status" => "error", "error" => "Partial or total mail failure.", "details" => $errors]);
-} else {
-    http_response_code(200);
-    echo json_encode(["status" => "success", "success" => true, "message" => "Application submitted successfully"]);
-}
+// Success response - Email sending logic has been removed as requested.
+http_response_code(200);
+echo json_encode(["status" => "success", "success" => true, "message" => "Application submitted successfully"]);
