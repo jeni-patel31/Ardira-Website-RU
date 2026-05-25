@@ -1,5 +1,10 @@
 <?php
 // api/contact.php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+// Require Composer autoloader deployed by vercel-php
+require __DIR__ . '/../vendor/autoload.php';
 
 // CORS Headers
 header("Access-Control-Allow-Origin: *");
@@ -36,14 +41,12 @@ $product = isset($data['product']) ? htmlspecialchars(strip_tags($data['product'
 $message = isset($data['message']) ? htmlspecialchars(strip_tags($data['message'])) : '';
 $recaptchaToken = isset($data['recaptchaToken']) ? $data['recaptchaToken'] : '';
 
-// Validation (Mandatory fields check)
 if (empty($name) || empty($email)) {
     http_response_code(400);
     echo json_encode(["status" => "error", "message" => "Name and email are required."]);
     exit();
 }
 
-// Email format validation
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     http_response_code(400);
     echo json_encode(["status" => "error", "message" => "Invalid email address."]);
@@ -84,7 +87,10 @@ if ($recaptchaToken) {
     }
 }
 
-// Form/Email Template - Preserved per request
+// Credentials
+$smtpUser = getenv('GMAIL_USER') ?: 'pateljeni3110@gmail.com';
+$smtpPass = getenv('GMAIL_APP_PASSWORD') ?: '';
+
 $logoUrl = "https://ardira.com/ArdiraLogo.png";
 
 // Email Template Builder
@@ -192,6 +198,69 @@ $prospectRows = [
 $salesBody = buildEmailTemplate("Following message received via contact us form", buildRowsHtml($internalRows));
 $prospectBody = buildEmailTemplate("We have received your details, one of our representative will get in touch with you shortly.", buildRowsHtml($prospectRows));
 
-// Success response - Email sending logic has been removed as requested.
-http_response_code(200);
-echo json_encode(["status" => "success", "success" => true, "message" => "Form submitted successfully"]);
+function sendMail($to, $cc, $subject, $body, $smtpUser, $smtpPass, $replyToEmail = null) {
+    if (!class_exists('PHPMailer\PHPMailer\PHPMailer')) {
+        return "PHPMailer library is not loaded. Make sure composer dependencies are installed.";
+    }
+
+    $mail = new PHPMailer(true);
+    try {
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.gmail.com';
+        $mail->SMTPAuth   = true;
+        $mail->Username   = $smtpUser;
+        $mail->Password   = str_replace(' ', '', $smtpPass); 
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port       = 587;
+
+        $mail->setFrom($smtpUser, 'Ardira Sales');
+        $mail->addAddress($to);
+        if ($cc) {
+            $mail->addCC($cc);
+        }
+        if ($replyToEmail) {
+            $mail->addReplyTo($replyToEmail, $replyToEmail);
+        }
+
+        $mail->isHTML(true);
+        $mail->Subject = $subject;
+        $mail->Body    = $body;
+        
+        $mail->send();
+        return true;
+    } catch (Exception $e) {
+        return "Error: {$mail->ErrorInfo}";
+    }
+}
+
+$errors = [];
+
+if (empty($smtpPass)) {
+    http_response_code(500);
+    echo json_encode(["status" => "error", "message" => "Server email configuration is missing (GMAIL_APP_PASSWORD)"]);
+    exit();
+}
+
+$subjectSales = "Inquiry from Ardira website";
+$subjectProspect = "Thank You for contacting us regarding Ardira";
+$TEAM_EMAIL = $smtpUser;
+
+// 1. Send internal copy to Sales Team
+$salesResult = sendMail($TEAM_EMAIL, null, $subjectSales, $salesBody, $smtpUser, $smtpPass, $email);
+if ($salesResult !== true) {
+    $errors[] = "Sales email failed: " . $salesResult;
+}
+
+// 2. Send Auto-Responder to the Prospect (Submitter)
+$prospectResult = sendMail($email, null, $subjectProspect, $prospectBody, $smtpUser, $smtpPass, $TEAM_EMAIL);
+if ($prospectResult !== true) {
+    $errors[] = "Prospect email failed: " . $prospectResult;
+}
+
+if (!empty($errors)) {
+    http_response_code(500);
+    echo json_encode(["status" => "error", "error" => "Partial or total mail failure.", "details" => $errors]);
+} else {
+    http_response_code(200);
+    echo json_encode(["status" => "success", "success" => true, "message" => "Form submitted successfully"]);
+}
