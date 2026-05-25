@@ -91,6 +91,83 @@ export default function PartnerHub() {
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
+  const validateSequenceUpTo = (fieldName: string, currentData: typeof formData) => {
+    const fieldSequence = ["fullName", "company", "email", "phone", "country", "partnerType", "message"];
+    const currentIndex = fieldSequence.indexOf(fieldName);
+    
+    if (currentIndex === -1) return;
+
+    setErrors((prev) => {
+      const nextErrors = { ...prev };
+
+      // Validate all fields up to the designated field's index
+      for (let i = 0; i <= currentIndex; i++) {
+        const fName = fieldSequence[i];
+        const value = currentData[fName as keyof typeof currentData] || "";
+        let errorMsg = "";
+
+        if (fName === "fullName") {
+          if (!value.trim()) {
+            errorMsg = "Please enter your Full Name.";
+          }
+        } else if (fName === "company") {
+          if (!value.trim()) {
+            errorMsg = "Please enter your Company Name.";
+          }
+        } else if (fName === "email") {
+          if (!value.trim()) {
+            errorMsg = "Please enter your Business Email.";
+          } else {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(value.trim())) {
+              errorMsg = "Please enter a valid email address.";
+            }
+          }
+        } else if (fName === "phone") {
+          if (!value.trim()) {
+            errorMsg = "Please enter your Phone Number.";
+          } else {
+            const phoneRegex = /^[0-9]{7,15}$/;
+            if (!phoneRegex.test(value)) {
+              errorMsg = "Phone number must contain between 7 and 15 digits only.";
+            }
+          }
+        } else if (fName === "country") {
+          if (!value) {
+            errorMsg = "Please select your Country / Region.";
+          }
+        } else if (fName === "partnerType") {
+          if (!value) {
+            errorMsg = "Please select a Partnership Type.";
+          }
+        } else if (fName === "message") {
+          if (!value.trim()) {
+            errorMsg = "Please enter your message.";
+          } else if (value.trim().length < 10) {
+            errorMsg = "Message must be at least 10 characters.";
+          }
+        }
+
+        if (errorMsg) {
+          nextErrors[fName] = errorMsg;
+        } else {
+          delete nextErrors[fName];
+        }
+      }
+
+      return nextErrors;
+    });
+  };
+
+  const handleBlur = (
+    e: React.FocusEvent<any>
+  ) => {
+    const { name } = e.target;
+    if (name) {
+      validateSequenceUpTo(name, formData);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const newErrors: { [key: string]: string } = {};
@@ -127,14 +204,6 @@ export default function PartnerHub() {
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
-      // If more than one required field is not entered/valid, show generic message
-      if (Object.keys(newErrors).length > 1) {
-        setSubmitError("Please fill out all required fields.");
-      } else {
-        // Exactly one error: show the specific message!
-        const singleKey = Object.keys(newErrors)[0];
-        setSubmitError(newErrors[singleKey]);
-      }
       return;
     }
 
@@ -447,6 +516,7 @@ export default function PartnerHub() {
                       </label>
                       <input
                         type="text"
+                        name="fullName"
                         value={formData.fullName}
                         onChange={(e) => {
                           setFormData({
@@ -461,6 +531,7 @@ export default function PartnerHub() {
                             });
                           }
                         }}
+                        onBlur={handleBlur}
                         className={`w-full px-4 py-2.5 rounded-xl border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
                           errors.fullName
                             ? "border-red-500 focus:ring-red-500"
@@ -468,6 +539,9 @@ export default function PartnerHub() {
                         }`}
                         placeholder="Full Name"
                       />
+                      {errors.fullName && (
+                        <p className="text-red-500 text-xs mt-1.5 font-medium">{errors.fullName}</p>
+                      )}
                     </div>
                     <div>
                       <label className="block text-sm font-semibold text-[#0f172a] mb-1.5">
@@ -475,6 +549,7 @@ export default function PartnerHub() {
                       </label>
                       <input
                         type="text"
+                        name="company"
                         value={formData.company}
                         onChange={(e) => {
                           setFormData({ ...formData, company: e.target.value });
@@ -486,6 +561,7 @@ export default function PartnerHub() {
                             });
                           }
                         }}
+                        onBlur={handleBlur}
                         className={`w-full px-4 py-2.5 rounded-xl border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
                           errors.company
                             ? "border-red-500 focus:ring-red-500"
@@ -493,6 +569,9 @@ export default function PartnerHub() {
                         }`}
                         placeholder="Company Name"
                       />
+                      {errors.company && (
+                        <p className="text-red-500 text-xs mt-1.5 font-medium">{errors.company}</p>
+                      )}
                     </div>
                   </div>
 
@@ -503,6 +582,7 @@ export default function PartnerHub() {
                       </label>
                       <input
                         type="email"
+                        name="email"
                         value={formData.email}
                         onChange={(e) => {
                           setFormData({ ...formData, email: e.target.value });
@@ -514,6 +594,7 @@ export default function PartnerHub() {
                             });
                           }
                         }}
+                        onBlur={handleBlur}
                         className={`w-full px-4 py-2.5 rounded-xl border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
                           errors.email
                             ? "border-red-500 focus:ring-red-500"
@@ -521,6 +602,9 @@ export default function PartnerHub() {
                         }`}
                         placeholder="Business Email"
                       />
+                      {errors.email && (
+                        <p className="text-red-500 text-xs mt-1.5 font-medium">{errors.email}</p>
+                      )}
                     </div>
                     <div>
                       <label className="block text-sm font-semibold text-[#0f172a] mb-1.5">
@@ -528,6 +612,7 @@ export default function PartnerHub() {
                       </label>
                       <input
                         type="tel"
+                        name="phone"
                         value={formData.phone}
                         onChange={(e) => {
                           setFormData({
@@ -542,6 +627,7 @@ export default function PartnerHub() {
                             });
                           }
                         }}
+                        onBlur={handleBlur}
                         className={`w-full px-4 py-2.5 rounded-xl border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
                           errors.phone
                             ? "border-red-500 focus:ring-red-500"
@@ -549,6 +635,9 @@ export default function PartnerHub() {
                         }`}
                         placeholder="e.g., 1234567890"
                       />
+                      {errors.phone && (
+                        <p className="text-red-500 text-xs mt-1.5 font-medium">{errors.phone}</p>
+                      )}
                     </div>
                   </div>
 
@@ -560,7 +649,7 @@ export default function PartnerHub() {
                       <Select
                         value={formData.country}
                         onValueChange={(value) => {
-                          setFormData({ ...formData, country: value });
+                          setFormData((prev) => ({ ...prev, country: value }));
                           if (errors.country) {
                             setErrors((prev) => {
                               const copy = { ...prev };
@@ -571,6 +660,8 @@ export default function PartnerHub() {
                         }}
                       >
                         <SelectTrigger
+                          name="country"
+                          onBlur={() => validateSequenceUpTo("country", formData)}
                           className={`w-full px-4 py-2.5 h-[42px] rounded-xl border bg-white text-sm text-left focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
                             errors.country
                               ? "border-red-500 focus:ring-red-500"
@@ -589,6 +680,9 @@ export default function PartnerHub() {
                           <SelectItem value="Other">Other</SelectItem>
                         </SelectContent>
                       </Select>
+                      {errors.country && (
+                        <p className="text-red-500 text-xs mt-1.5 font-medium">{errors.country}</p>
+                      )}
                     </div>
                     <div>
                       <label className="block text-sm font-semibold text-[#0f172a] mb-1.5">
@@ -597,7 +691,7 @@ export default function PartnerHub() {
                       <Select
                         value={formData.partnerType}
                         onValueChange={(value) => {
-                          setFormData({ ...formData, partnerType: value });
+                          setFormData((prev) => ({ ...prev, partnerType: value }));
                           if (errors.partnerType) {
                             setErrors((prev) => {
                               const copy = { ...prev };
@@ -608,6 +702,8 @@ export default function PartnerHub() {
                         }}
                       >
                         <SelectTrigger
+                          name="partnerType"
+                          onBlur={() => validateSequenceUpTo("partnerType", formData)}
                           className={`w-full px-4 py-2.5 h-[42px] rounded-xl border bg-white text-sm text-left focus:outline-none focus:ring-2 focus:border-transparent transition-all ${
                             errors.partnerType
                               ? "border-red-500 focus:ring-red-500"
@@ -622,6 +718,9 @@ export default function PartnerHub() {
                           <SelectItem value="Technology">Technology</SelectItem>
                         </SelectContent>
                       </Select>
+                      {errors.partnerType && (
+                        <p className="text-red-500 text-xs mt-1.5 font-medium">{errors.partnerType}</p>
+                      )}
                     </div>
                   </div>
 
@@ -632,6 +731,7 @@ export default function PartnerHub() {
                     </label>
                     <textarea
                       rows={4}
+                      name="message"
                       value={formData.message}
                       onChange={(e) => {
                         setFormData({ ...formData, message: e.target.value });
@@ -643,6 +743,7 @@ export default function PartnerHub() {
                           });
                         }
                       }}
+                      onBlur={handleBlur}
                       className={`w-full px-4 py-3 rounded-xl border bg-white text-sm focus:outline-none focus:ring-2 focus:border-transparent transition-all resize-none ${
                         errors.message
                           ? "border-red-500 focus:ring-red-500"
@@ -650,6 +751,9 @@ export default function PartnerHub() {
                       }`}
                       placeholder="Tell us about your business"
                     />
+                    {errors.message && (
+                      <p className="text-red-500 text-xs mt-1.5 font-medium">{errors.message}</p>
+                    )}
                   </div>
                   {submitError && (
                     <div className="p-3 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3">

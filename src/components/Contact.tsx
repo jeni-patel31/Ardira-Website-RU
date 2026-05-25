@@ -44,19 +44,88 @@ function Contact() {
   ) => {
     const { name, value } = e.target;
     
-    if (errors[name]) {
-      setErrors((prev) => {
-        const copy = { ...prev };
-        delete copy[name];
-        return copy;
-      });
-    }
+    setErrors((prev) => {
+      const copy = { ...prev };
+      delete copy[name];
+      return copy;
+    });
 
     if (name === "phone") {
       // Restrict input to digits only
       setFormData((prev) => ({ ...prev, [name]: value.replace(/[^0-9]/g, "") }));
     } else {
       setFormData((prev) => ({ ...prev, [name]: value }));
+    }
+  };
+
+  const validateSequenceUpTo = (fieldName: string, currentData: typeof formData) => {
+    const fieldSequence = ["name", "email", "phone", "company", "product", "message"];
+    const currentIndex = fieldSequence.indexOf(fieldName);
+    
+    if (currentIndex === -1) return;
+
+    setErrors((prev) => {
+      const nextErrors = { ...prev };
+
+      // Validate all fields up to the designated field's index
+      for (let i = 0; i <= currentIndex; i++) {
+        const fName = fieldSequence[i];
+        const value = currentData[fName as keyof typeof currentData] || "";
+        let errorMsg = "";
+
+        if (fName === "name") {
+          if (!value.trim()) {
+            errorMsg = "Please enter your Full Name.";
+          }
+        } else if (fName === "email") {
+          if (!value.trim()) {
+            errorMsg = "Please enter your Email.";
+          } else {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(value.trim())) {
+              errorMsg = "Please enter a valid email address.";
+            }
+          }
+        } else if (fName === "phone") {
+          if (!value.trim()) {
+            errorMsg = "Please enter your Phone Number.";
+          } else {
+            const phoneRegex = /^[0-9]{7,15}$/;
+            if (!phoneRegex.test(value)) {
+              errorMsg = "Phone number must contain between 7 and 15 digits only.";
+            }
+          }
+        } else if (fName === "company") {
+          if (!value.trim()) {
+            errorMsg = "Please enter your Company Name.";
+          }
+        } else if (fName === "product") {
+          if (!value) {
+            errorMsg = "Please select a Product of Interest.";
+          }
+        } else if (fName === "message") {
+          if (!value.trim()) {
+            errorMsg = "Please enter your Message.";
+          }
+        }
+
+        if (errorMsg) {
+          nextErrors[fName] = errorMsg;
+        } else {
+          delete nextErrors[fName];
+        }
+      }
+
+      return nextErrors;
+    });
+  };
+
+  const handleBlur = (
+    e: React.FocusEvent<any>
+  ) => {
+    const { name } = e.target;
+    if (name) {
+      validateSequenceUpTo(name, formData);
     }
   };
 
@@ -100,14 +169,6 @@ function Contact() {
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
-      // If more than one required field is not entered/valid, show generic message
-      if (Object.keys(newErrors).length > 1) {
-        setSubmitError("Please fill out all required fields.");
-      } else {
-        // Exactly one error: show the specific message!
-        const singleKey = Object.keys(newErrors)[0];
-        setSubmitError(newErrors[singleKey]);
-      }
       return;
     }
 
@@ -456,6 +517,7 @@ function Contact() {
                       placeholder="Your name"
                       value={formData.name}
                       onChange={handleChange}
+                      onBlur={handleBlur}
                       style={{
                         ...inputStyle,
                         border: errors.name
@@ -463,6 +525,11 @@ function Contact() {
                           : "1.5px solid var(--border-color)",
                       }}
                     />
+                    {errors.name && (
+                      <span style={{ color: "#ef4444", fontSize: 11, fontWeight: 500, alignSelf: "flex-start" }}>
+                        {errors.name}
+                      </span>
+                    )}
                   </div>
                   <div
                     style={{ display: "flex", flexDirection: "column", gap: 4 }}
@@ -482,6 +549,7 @@ function Contact() {
                       placeholder="your@email.com"
                       value={formData.email}
                       onChange={handleChange}
+                      onBlur={handleBlur}
                       style={{
                         ...inputStyle,
                         border: errors.email
@@ -489,6 +557,11 @@ function Contact() {
                           : "1.5px solid var(--border-color)",
                       }}
                     />
+                    {errors.email && (
+                      <span style={{ color: "#ef4444", fontSize: 11, fontWeight: 500, alignSelf: "flex-start" }}>
+                        {errors.email}
+                      </span>
+                    )}
                   </div>
                 </div>
 
@@ -518,6 +591,7 @@ function Contact() {
                       placeholder="e.g., 1234567890"
                       value={formData.phone}
                       onChange={handleChange}
+                      onBlur={handleBlur}
                       style={{
                         ...inputStyle,
                         border: errors.phone
@@ -525,6 +599,11 @@ function Contact() {
                           : "1.5px solid var(--border-color)",
                       }}
                     />
+                    {errors.phone && (
+                      <span style={{ color: "#ef4444", fontSize: 11, fontWeight: 500, alignSelf: "flex-start" }}>
+                        {errors.phone}
+                      </span>
+                    )}
                   </div>
                   <div
                     style={{ display: "flex", flexDirection: "column", gap: 4 }}
@@ -544,6 +623,7 @@ function Contact() {
                       placeholder="Your company"
                       value={formData.company}
                       onChange={handleChange}
+                      onBlur={handleBlur}
                       style={{
                         ...inputStyle,
                         border: errors.company
@@ -551,6 +631,11 @@ function Contact() {
                           : "1.5px solid var(--border-color)",
                       }}
                     />
+                    {errors.company && (
+                      <span style={{ color: "#ef4444", fontSize: 11, fontWeight: 500, alignSelf: "flex-start" }}>
+                        {errors.company}
+                      </span>
+                    )}
                   </div>
                 </div>
 
@@ -580,6 +665,8 @@ function Contact() {
                     }}
                   >
                     <SelectTrigger
+                      name="product"
+                      onBlur={() => validateSequenceUpTo("product", formData)}
                       style={{
                         ...inputStyle,
                         height: 42,
@@ -605,6 +692,11 @@ function Contact() {
                       </SelectItem>
                     </SelectContent>
                   </Select>
+                  {errors.product && (
+                    <span style={{ color: "#ef4444", fontSize: 11, fontWeight: 500, alignSelf: "flex-start" }}>
+                      {errors.product}
+                    </span>
+                  )}
                 </div>
 
                 <div
@@ -624,6 +716,7 @@ function Contact() {
                     placeholder="How can we help?"
                     value={formData.message}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                     style={{
                       ...inputStyle,
                       resize: "none",
@@ -633,6 +726,11 @@ function Contact() {
                         : "1.5px solid var(--border-color)",
                     }}
                   />
+                  {errors.message && (
+                    <span style={{ color: "#ef4444", fontSize: 11, fontWeight: 500, alignSelf: "flex-start" }}>
+                      {errors.message}
+                    </span>
+                  )}
                 </div>
 
                 {submitError && (
