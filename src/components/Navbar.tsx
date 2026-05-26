@@ -69,9 +69,9 @@ function Navbar() {
               src={ArdiraLogo}
               alt="Ardira"
               className="nav-logo"
-              width="138"
+              width="123"
               height="90"
-              style={{ aspectRatio: "138/90" }}
+              style={{ aspectRatio: "224/164" }}
             />
           </Link>
           <ul className="nav-menu">
