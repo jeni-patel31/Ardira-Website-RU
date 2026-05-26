@@ -302,6 +302,7 @@ function Contact() {
                 {
                   icon: (
                     <svg
+                      aria-hidden="true"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -317,6 +318,7 @@ function Contact() {
                 {
                   icon: (
                     <svg
+                      aria-hidden="true"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -341,6 +343,7 @@ function Contact() {
                 {
                   icon: (
                     <svg
+                      aria-hidden="true"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -503,6 +506,7 @@ function Contact() {
                     style={{ display: "flex", flexDirection: "column", gap: 4 }}
                   >
                     <label
+                      htmlFor="contact-name"
                       style={{
                         fontSize: 12,
                         fontWeight: 600,
@@ -512,6 +516,7 @@ function Contact() {
                       Full Name <span style={{ color: "#ef4444" }}>*</span>
                     </label>
                     <input
+                      id="contact-name"
                       name="name"
                       type="text"
                       placeholder="Your name"
@@ -535,6 +540,7 @@ function Contact() {
                     style={{ display: "flex", flexDirection: "column", gap: 4 }}
                   >
                     <label
+                      htmlFor="contact-email"
                       style={{
                         fontSize: 12,
                         fontWeight: 600,
@@ -544,6 +550,7 @@ function Contact() {
                       Email <span style={{ color: "#ef4444" }}>*</span>
                     </label>
                     <input
+                      id="contact-email"
                       name="email"
                       type="email"
                       placeholder="your@email.com"
@@ -577,6 +584,7 @@ function Contact() {
                     style={{ display: "flex", flexDirection: "column", gap: 4 }}
                   >
                     <label
+                      htmlFor="contact-phone"
                       style={{
                         fontSize: 12,
                         fontWeight: 600,
@@ -586,6 +594,7 @@ function Contact() {
                       Phone <span style={{ color: "#ef4444" }}>*</span>
                     </label>
                     <input
+                      id="contact-phone"
                       name="phone"
                       type="tel"
                       placeholder="e.g., 1234567890"
@@ -609,6 +618,7 @@ function Contact() {
                     style={{ display: "flex", flexDirection: "column", gap: 4 }}
                   >
                     <label
+                      htmlFor="contact-company"
                       style={{
                         fontSize: 12,
                         fontWeight: 600,
@@ -618,6 +628,7 @@ function Contact() {
                       Company <span style={{ color: "#ef4444" }}>*</span>
                     </label>
                     <input
+                      id="contact-company"
                       name="company"
                       type="text"
                       placeholder="Your company"
@@ -643,6 +654,7 @@ function Contact() {
                   style={{ display: "flex", flexDirection: "column", gap: 4 }}
                 >
                   <label
+                    htmlFor="contact-product"
                     style={{
                       fontSize: 12,
                       fontWeight: 600,
@@ -665,6 +677,7 @@ function Contact() {
                     }}
                   >
                     <SelectTrigger
+                      id="contact-product"
                       name="product"
                       onBlur={() => validateSequenceUpTo("product", formData)}
                       style={{
@@ -703,6 +716,7 @@ function Contact() {
                   style={{ display: "flex", flexDirection: "column", gap: 4 }}
                 >
                   <label
+                    htmlFor="contact-message"
                     style={{
                       fontSize: 12,
                       fontWeight: 600,
@@ -712,6 +726,7 @@ function Contact() {
                     Message <span style={{ color: "#ef4444" }}>*</span>
                   </label>
                   <textarea
+                    id="contact-message"
                     name="message"
                     placeholder="How can we help?"
                     value={formData.message}

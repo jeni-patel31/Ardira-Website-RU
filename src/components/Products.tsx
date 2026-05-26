@@ -271,6 +271,7 @@ function Products() {
                 <button
                   onClick={handlePrev}
                   className="carousel-nav-btn-inline"
+                  aria-label="Previous product"
                   style={{
                     background: "#fff",
                     border: "1px solid var(--border-color)",
@@ -286,7 +287,7 @@ function Products() {
                     flexShrink: 0,
                   }}
                 >
-                  <ChevronLeft size={22} />
+                  <ChevronLeft size={22} aria-hidden="true" />
                 </button>
 
                 <div style={{ display: "flex", alignItems: "center", gap: 8, flex: 1, justifyContent: "center", minWidth: 0 }}>
@@ -324,6 +325,7 @@ function Products() {
                 <button
                   onClick={handleNext}
                   className="carousel-nav-btn-inline"
+                  aria-label="Next product"
                   style={{
                     background: "#fff",
                     border: "1px solid var(--border-color)",
@@ -339,7 +341,7 @@ function Products() {
                     flexShrink: 0,
                   }}
                 >
-                  <ChevronRight size={22} />
+                  <ChevronRight size={22} aria-hidden="true" />
                 </button>
               </div>
 

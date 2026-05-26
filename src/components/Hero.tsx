@@ -240,7 +240,9 @@ function Hero() {
             <img
               src={AppExchangeImg}
               alt="AppExchange"
-              style={{ height: 40, width: "auto" }}
+              width="120"
+              height="40"
+              style={{ height: 40, width: "auto", aspectRatio: "120/40" }}
             />
           </div>
         </div>

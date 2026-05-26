@@ -69,14 +69,14 @@ function App() {
       <ScrollToTop />
       <div style={{ width: "100%", margin: 0, background: "#fff", minHeight: "100vh", position: "relative" }}>
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/team" element={<Team />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/terms-of-use" element={<TermsOfService />} />
-          <Route path="/partner-hub" element={<PartnerHub />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/team" element={<Team />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-use" element={<TermsOfService />} />
+            <Route path="/partner-hub" element={<PartnerHub />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
         <Footer />
       </div>
     </Router>

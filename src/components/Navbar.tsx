@@ -69,6 +69,9 @@ function Navbar() {
               src={ArdiraLogo}
               alt="Ardira"
               className="nav-logo"
+              width="138"
+              height="90"
+              style={{ aspectRatio: "138/90" }}
             />
           </Link>
           <ul className="nav-menu">
@@ -144,6 +147,7 @@ function Navbar() {
             <li className="hamburger-btn">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label={isMenuOpen ? "Close mobile menu" : "Open mobile menu"}
                 style={{
                   background: "none",
                   border: "none",
@@ -153,7 +157,7 @@ function Navbar() {
                   color: "var(--navy)",
                 }}
               >
-                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                {isMenuOpen ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
               </button>
             </li>
           </ul>

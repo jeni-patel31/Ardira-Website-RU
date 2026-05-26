@@ -171,6 +171,9 @@ export default function About() {
               <img loading="lazy"
                 src={ardiraTeam}
                 alt="The Ardira Team"
+                width="600"
+                height="400"
+                style={{ aspectRatio: "600/400" }}
                 className="w-full rounded-2xl shadow-lg border border-slate-100"
               />
             </motion.div>
@@ -269,6 +272,9 @@ export default function About() {
                   <img loading="lazy"
                     src={member.image}
                     alt={member.name}
+                    width="200"
+                    height="216"
+                    style={{ aspectRatio: "200/216" }}
                     className={`w-50 h-54 object-cover rounded-lg mb-5 shadow-sm transition-all duration-300 group-hover:shadow-lg`}
                   />
                 )}
@@ -316,6 +322,9 @@ export default function About() {
                 <img loading="lazy"
                   src={member.image}
                   alt={member.name}
+                  width="200"
+                  height="216"
+                  style={{ aspectRatio: "200/216" }}
                   className={`w-50 h-54 object-cover rounded-lg mb-5 shadow-sm transition-all duration-300 group-hover:shadow-lg`}
                 />
                 <h3 className="text-lg md:text-xl font-semibold font-display text-[#0f172a] mb-2">

@@ -176,6 +176,7 @@ function Footer() {
           <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
             <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
               <svg
+                aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
                 height="16"
@@ -207,6 +208,7 @@ function Footer() {
             </div>
             <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
               <svg
+                aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
                 height="16"
@@ -235,6 +237,7 @@ function Footer() {
             </div>
             <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
               <svg
+                aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
                 height="16"

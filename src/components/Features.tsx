@@ -2,6 +2,7 @@ const features = [
   {
     icon: (
       <svg
+        aria-hidden="true"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -24,6 +25,7 @@ const features = [
   {
     icon: (
       <svg
+        aria-hidden="true"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -40,6 +42,7 @@ const features = [
   {
     icon: (
       <svg
+        aria-hidden="true"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -155,7 +158,7 @@ function Features() {
         <p
           style={{
             fontSize: 16,
-            color: "#64748b",
+            color: "var(--text-secondary)",
             lineHeight: 1.7,
             margin: "0 auto 60px",
             maxWidth: 700,
